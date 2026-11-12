@@ -12,27 +12,29 @@ cd "$(dirname "$0")"
 
 SRC="../Medicare Part D Changes for 2027_1080p.mp4"
 OUT="${1:-../Medicare Part D Changes for 2027 - Shots 34-37 (16x9).mp4}"
-LAYER="$(mktemp -d)/layer.mp4"
+LAYER="${LAYER_IN:-$(mktemp -d)/layer.mp4}"   # set LAYER_IN=<file> to reuse an existing graphics render
 
 START=248.6      # source time (4:08.6) where Shot 34 begins, just before "Right now, pull out..."
 DUR=30.84        # 29.64 s of footage (to the end of the source) + 1.2 s hold
 HOLD=1.2
 
 # 1. graphics + audio (narration, music, SFX are mixed by HyperFrames from assets/audio)
-npx --yes hyperframes@0.9.39 render --fps 25 -q high -o "$LAYER"
+[ -n "${LAYER_IN:-}" ] && [ -f "$LAYER" ] || npx --yes hyperframes@0.9.39 render --fps 25 -q high -o "$LAYER"
 
 # 2. key + composite
 #    crop 808x1080 @ x=556  : the portrait green-screen region inside the 1920x1080 pillarbox
 #    chromakey 0x08B83C     : the matte's actual green (~RGB 8,184,60), not pure 00FF00
-#    scale to 972 px tall   : left third; centred on x=335, bottom-anchored (y=108)
+#    The key only produces a transparency mask (alphaextract -> erosion -> light blur); the
+#    colours come from the ORIGINAL pixels via alphamerge, so skin, shirt and suit are not
+#    colour-shifted (no despill on the figure). One erosion pass removes the green edge fringe.
+#    scale to 972 px tall   : left third; same aspect as the source (808:1080 -> 728:972),
+#                             centred on x=335, bottom-anchored (y=108)
 ffmpeg -y -loglevel error -stats \
   -i "$LAYER" -ss "$START" -i "$SRC" \
   -filter_complex "
-    [1:v]crop=808:1080:556:0,
-         chromakey=color=0x08B83C:similarity=0.14:blend=0.07,
-         despill=type=green:mix=0.6:expand=0.2,
-         scale=728:972:flags=lanczos,
-         tpad=stop_mode=clone:stop_duration=${HOLD}[fg];
+    [1:v]crop=808:1080:556:0,format=yuv420p,split=2[ka][kb];
+    [ka]chromakey=color=0x08B83C:similarity=0.14:blend=0.07,format=yuva420p,alphaextract,erosion,gblur=sigma=0.6[al];
+    [kb][al]alphamerge,scale=728:972:flags=lanczos,tpad=stop_mode=clone:stop_duration=${HOLD}[fg];
     [0:v][fg]overlay=x=-29:y=108:eof_action=pass,format=yuv420p[v]" \
   -map "[v]" -map 0:a -t "$DUR" \
   -c:v libx264 -preset slow -crf 16 -colorspace bt709 -color_primaries bt709 -color_trc bt709 \

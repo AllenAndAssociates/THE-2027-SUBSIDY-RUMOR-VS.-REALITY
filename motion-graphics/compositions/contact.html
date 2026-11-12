@@ -13,9 +13,10 @@
       width: 1124px;
       height: 890px;
       border-radius: 32px;
-      background: linear-gradient(160deg, #123058 0%, #0b1f3a 55%, #08172e 100%);
+      background-color: #0b1f3a;
+      background-image: linear-gradient(160deg, #123058 0%, #0b1f3a 55%, #08172e 100%);
       border: 2px solid rgba(212, 175, 55, 0.7);
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 26px 60px rgba(11, 31, 58, 0.28);
       overflow: hidden;
     }
     #ct-band {
@@ -294,7 +295,7 @@
 
     // resolving chord at 29.40: light sweep + gold glow on the card
     tl.fromTo("#ct-sweep", { x: -320 }, { x: 1300, duration: 1.0, ease: "power2.inOut" }, 29.4);
-    tl.fromTo("#ct-card", { boxShadow: "0 30px 80px rgba(0,0,0,0.45)" }, { boxShadow: "0 30px 80px rgba(0,0,0,0.45), 0 0 70px 6px rgba(212,175,55,0.5)", duration: 0.7, ease: "power2.out" }, 29.4);
+    tl.fromTo("#ct-card", { boxShadow: "0 26px 60px rgba(11,31,58,0.28)" }, { boxShadow: "0 26px 60px rgba(11,31,58,0.28), 0 0 60px 6px rgba(212,175,55,0.55)", duration: 0.7, ease: "power2.out" }, 29.4);
 
     window.__timelines["contact"] = tl;
   </script>

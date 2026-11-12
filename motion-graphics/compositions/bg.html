@@ -4,7 +4,7 @@
       position: absolute;
       inset: 0;
       overflow: hidden;
-      background: linear-gradient(135deg, #061225 0%, #0b1f3a 48%, #10294b 100%);
+      background: linear-gradient(180deg, #ffffff 0%, #ffffff 70%, #f4f6fa 100%);
     }
     #bg-dots {
       position: absolute;
@@ -12,7 +12,7 @@
       top: 0;
       width: 1244px;
       height: 1080px;
-      background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1.6px, transparent 1.7px);
+      background-image: radial-gradient(rgba(11, 31, 58, 0.09) 1.6px, transparent 1.7px);
       background-size: 38px 38px;
     }
     #bg-spot {
@@ -22,8 +22,8 @@
       width: 700px;
       height: 1080px;
       background:
-        radial-gradient(ellipse 330px 470px at 335px 470px, rgba(86, 140, 215, 0.42), rgba(86, 140, 215, 0) 72%),
-        radial-gradient(ellipse 300px 120px at 335px 1060px, rgba(212, 175, 55, 0.22), rgba(212, 175, 55, 0) 75%);
+        radial-gradient(ellipse 330px 470px at 335px 470px, rgba(150, 176, 214, 0.30), rgba(150, 176, 214, 0) 72%),
+        radial-gradient(ellipse 300px 90px at 335px 1062px, rgba(11, 31, 58, 0.10), rgba(11, 31, 58, 0) 75%);
     }
     #bg-rule {
       position: absolute;
@@ -31,19 +31,13 @@
       top: 126px;
       width: 2px;
       height: 890px;
-      background: linear-gradient(180deg, rgba(212, 175, 55, 0), rgba(212, 175, 55, 0.55) 30%, rgba(212, 175, 55, 0.55) 70%, rgba(212, 175, 55, 0));
-    }
-    #bg-vig {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 85% 85% at 50% 50%, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.38) 100%);
+      background: linear-gradient(180deg, rgba(212, 175, 55, 0), rgba(212, 175, 55, 0.7) 30%, rgba(212, 175, 55, 0.7) 70%, rgba(212, 175, 55, 0));
     }
   </style>
   <div id="root" data-composition-id="bg" data-width="1920" data-height="1080">
     <div id="bg-dots" data-layout-ignore></div>
     <div id="bg-spot"></div>
     <div id="bg-rule"></div>
-    <div id="bg-vig"></div>
   </div>
   <script>
     const tl = gsap.timeline({ paused: true });
