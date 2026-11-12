@@ -1,0 +1,49 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: 'Inter', sans-serif; color: #1B1F4B; }
+    .e { position: absolute; }
+    .bgf { position: absolute; inset: 0; }
+    .pg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .st { position: absolute; width: 1124px; height: 890px; }
+
+  </style>
+  <div id="root" data-composition-id="shot04" data-width="1920" data-height="1080">
+    <div id="s04-bg" class="bgf" style="background:#0872B3"></div>
+    <div id="s04-pg" class="pg">
+    <div id="s04e10" class="e" style="left:60px;top:46px;width:68px;height:68px;border-radius:16px;background:#fff"><svg viewBox="0 0 24 24" style="position:absolute;left:12px;top:12px;width:44px;height:44px"><path fill="#0B1F3A" d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z"/></svg></div>
+    <div id="s04e11" class="e" style="left:150px;top:42px;white-space:nowrap;font-size:48px;font-weight:400;color:#fff;letter-spacing:-.01em">Part D funding</div>
+    <div id="s04e12" class="e" style="left:150px;top:104px;white-space:nowrap;background:#D4AF37;color:#0B1F3A;font-size:22px;font-weight:900;padding:5px 14px;border-radius:5px">Who pays whom</div>
+    <div id="s04e13" class="e" style="left:1550px;top:690px;width:320px;height:320px;border-radius:50%;background:#0a0a0a;border:10px solid #D4AF37;box-shadow:0 10px 30px rgba(0,0,0,.3)"></div>
+    </div>
+    <div id="s04-st" class="st" style="left:398px;top:150px">
+    <div id="s04e1" class="e" style="left:60px;top:40px;white-space:nowrap;background:#F6E4A6;color:#0B1F3A;font-size:48px;font-weight:700;border-radius:8px;padding:8px 18px;line-height:1.15">How Part D is funded</div>
+    <div id="s04e2" class="e" style="left:100px;top:280px;width:230px;height:230px;border-radius:50%;background:#fff"><svg viewBox="0 0 24 24" style="position:absolute;left:48px;top:48px;width:133px;height:133px"><path fill="#0B1F3A" d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z"/></svg></div>
+    <div id="s04e3" class="e" style="left:447px;top:280px;width:230px;height:230px;border-radius:50%;background:#F6E4A6"><svg viewBox="0 0 24 24" style="position:absolute;left:48px;top:48px;width:133px;height:133px"><path fill="#0B1F3A" d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg></div>
+    <div id="s04e4" class="e" style="left:794px;top:280px;width:230px;height:230px;border-radius:50%;background:#D4AF37"><svg viewBox="0 0 24 24" style="position:absolute;left:48px;top:48px;width:133px;height:133px"><path fill="#0B1F3A" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
+    <svg id="s04e5" class="e" style="left:0;top:0;width:1124px;height:890px;overflow:visible"><path d="M350 395 L430 395 M400 378 L430 395 L400 411" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <svg id="s04e6" class="e" style="left:0;top:0;width:1124px;height:890px;overflow:visible"><path d="M697 395 L777 395 M747 378 L777 395 L747 411" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div id="s04e7" class="e" style="left:100px;top:540px;font-size:42px;color:#fff;font-weight:700;text-align:center;line-height:1.2;width:230px;">Federal<br>government</div>
+    <div id="s04e8" class="e" style="left:447px;top:540px;font-size:42px;color:#fff;font-weight:700;text-align:center;line-height:1.2;width:230px;">Part D<br>insurers</div>
+    <div id="s04e9" class="e" style="left:794px;top:540px;font-size:42px;color:#fff;font-weight:700;text-align:center;line-height:1.2;width:230px;">You</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo('#s04-bg', { opacity: 0 }, { opacity: 1, duration: 0.25, ease: 'power2.out' }, 0);
+    tl.fromTo('#s04e1',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.5,ease:'power2.out'},0.300);
+    tl.fromTo('#s04e2',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},3.900);
+    tl.fromTo('#s04e3',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},4.500);
+    tl.fromTo('#s04e4',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},5.620);
+    tl.fromTo('#s04e5 path',{strokeDashoffset:1},{strokeDashoffset:0,duration:0.4,ease:'power2.inOut'},4.500);
+    tl.fromTo('#s04e6 path',{strokeDashoffset:1},{strokeDashoffset:0,duration:0.4,ease:'power2.inOut'},5.620);
+    tl.fromTo('#s04e7',{opacity:0,rotation:0},{opacity:1,rotation:0,duration:0.45,ease:'power2.out'},3.900);
+    tl.fromTo('#s04e8',{opacity:0,rotation:0},{opacity:1,rotation:0,duration:0.45,ease:'power2.out'},4.500);
+    tl.fromTo('#s04e9',{opacity:0,rotation:0},{opacity:1,rotation:0,duration:0.45,ease:'power2.out'},5.620);
+    tl.fromTo('#s04e10',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.4,ease:'back.out(2)'},0.150);
+    tl.fromTo('#s04e11',{opacity:0,x:-80},{opacity:1,x:0,duration:0.45,ease:'power3.out'},0.200);
+    tl.fromTo('#s04e12',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.4,ease:'power2.out'},0.350);
+    tl.fromTo('#s04e13',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},0.300);
+    tl.to(['#s04-st', '#s04-pg'], { opacity: 0, duration: 0.22, ease: 'power2.in' }, 6.200);
+    window.__timelines['shot04'] = tl;
+  </script>
+</template>

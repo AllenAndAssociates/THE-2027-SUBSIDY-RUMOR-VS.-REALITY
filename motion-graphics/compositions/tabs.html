@@ -78,37 +78,44 @@
   </style>
   <div id="root" data-composition-id="tabs" data-width="1920" data-height="1080">
     <div id="tabs-bar" data-layout-ignore>
-      <div class="tab done" id="tab1"><div class="doneov"></div><div class="in"><span class="num">1</span><span class="lbl">The Rumor</span></div></div>
-      <div class="tab done" id="tab2"><div class="doneov"></div><div class="in"><span class="num">2</span><span class="lbl">Subsidy</span></div></div>
-      <div class="tab done" id="tab3"><div class="doneov"></div><div class="in"><span class="num">3</span><span class="lbl">Locked-In</span></div></div>
-      <div class="tab done" id="tab4"><div class="doneov"></div><div class="in"><span class="num">4</span><span class="lbl">Premiums</span></div></div>
-      <div class="tab done" id="tab5"><div class="doneov"></div><div class="in"><span class="num">5</span><span class="lbl">Shop Smart</span></div></div>
+      <div class="tab" id="tab1"><div class="doneov" id="tab1-done"></div><div class="fill" id="tab1-fill"></div><div class="in"><span class="num" id="tab1-num">1</span><span class="lbl" id="tab1-lbl">The Rumor</span></div></div>
+      <div class="tab" id="tab2"><div class="doneov" id="tab2-done"></div><div class="fill" id="tab2-fill"></div><div class="in"><span class="num" id="tab2-num">2</span><span class="lbl" id="tab2-lbl">Subsidy</span></div></div>
+      <div class="tab" id="tab3"><div class="doneov" id="tab3-done"></div><div class="fill" id="tab3-fill"></div><div class="in"><span class="num" id="tab3-num">3</span><span class="lbl" id="tab3-lbl">Locked-In</span></div></div>
+      <div class="tab" id="tab4"><div class="doneov" id="tab4-done"></div><div class="fill" id="tab4-fill"></div><div class="in"><span class="num" id="tab4-num">4</span><span class="lbl" id="tab4-lbl">Levers</span></div></div>
+      <div class="tab" id="tab5"><div class="doneov" id="tab5-done"></div><div class="fill" id="tab5-fill"></div><div class="in"><span class="num" id="tab5-num">5</span><span class="lbl" id="tab5-lbl">Shop Smart</span></div></div>
       <div class="tab" id="tab6"><div class="doneov" id="tab6-done"></div><div class="fill" id="tab6-fill"></div><div class="in"><span class="num" id="tab6-num">6</span><span class="lbl" id="tab6-lbl">ANOC &amp; Dec 7</span></div></div>
-      <div class="tab" id="tab7"><div class="doneov"></div><div class="fill" id="tab7-fill"></div><div class="in"><span class="num" id="tab7-num">7</span><span class="lbl" id="tab7-lbl">Free Review</span></div></div>
+      <div class="tab" id="tab7"><div class="doneov" id="tab7-done"></div><div class="fill" id="tab7-fill"></div><div class="in"><span class="num" id="tab7-num">7</span><span class="lbl" id="tab7-lbl">Free Review</span></div></div>
     </div>
   </div>
   <script>
     const tl = gsap.timeline({ paused: true });
-    const NAVY = "#071428";
-
-    // Shot 34: Chapter Tab 6 (ANOC & Dec 7) lights up
-    tl.to("#tab6-fill", { opacity: 1, duration: 0.35, ease: "power2.out" }, 0.18);
-    tl.to("#tab6-lbl", { color: NAVY, duration: 0.35 }, 0.18);
-    tl.to("#tab6-num", { backgroundColor: NAVY, color: "#f1d27a", duration: 0.35 }, 0.18);
-    tl.fromTo("#tab6", { boxShadow: "0 0 0 0 rgba(212,175,55,0)" }, { boxShadow: "0 6px 22px 0 rgba(212,175,55,0.6)", duration: 0.45, ease: "power2.out" }, 0.18);
-
-    // Shot 37: Tab 6 completes, Chapter Tab 7 (Free Review) lights up
-    tl.to("#tab6-fill", { opacity: 0, duration: 0.35, ease: "power2.inOut" }, 19.94);
-    tl.to("#tab6-done", { opacity: 1, duration: 0.35 }, 19.94);
-    tl.to("#tab6-lbl", { color: "#0b1f3a", duration: 0.35 }, 19.94);
-    tl.to("#tab6-num", { backgroundColor: "rgba(212,175,55,0.4)", color: "#4a3700", duration: 0.35 }, 19.94);
-    tl.to("#tab6", { boxShadow: "0 0 0 0 rgba(212,175,55,0)", duration: 0.35 }, 19.94);
-
-    tl.to("#tab7-fill", { opacity: 1, duration: 0.35, ease: "power2.out" }, 20.1);
-    tl.to("#tab7-lbl", { color: NAVY, duration: 0.35 }, 20.1);
-    tl.to("#tab7-num", { backgroundColor: NAVY, color: "#f1d27a", duration: 0.35 }, 20.1);
-    tl.fromTo("#tab7", { boxShadow: "0 0 0 0 rgba(212,175,55,0)" }, { boxShadow: "0 6px 22px 0 rgba(212,175,55,0.6)", duration: 0.45, ease: "power2.out" }, 20.1);
-
+    const NAVY = "#0b1f3a";
+    function light(i, t) {
+      tl.to("#tab" + i + "-fill", { opacity: 1, duration: 0.35, ease: "power2.out" }, t);
+      tl.to("#tab" + i + "-lbl", { color: NAVY, duration: 0.35 }, t);
+      tl.to("#tab" + i + "-num", { backgroundColor: NAVY, color: "#f1d27a", duration: 0.35 }, t);
+      tl.to("#tab" + i, { boxShadow: "0 6px 22px 0 rgba(212,175,55,0.6)", duration: 0.45, ease: "power2.out" }, t);
+    }
+    function done(i, t) {
+      tl.to("#tab" + i + "-fill", { opacity: 0, duration: 0.35, ease: "power2.inOut" }, t);
+      tl.to("#tab" + i + "-done", { opacity: 1, duration: 0.35 }, t);
+      tl.to("#tab" + i + "-lbl", { color: NAVY, duration: 0.35 }, t);
+      tl.to("#tab" + i + "-num", { backgroundColor: "rgba(212,175,55,0.4)", color: "#4a3700", duration: 0.35 }, t);
+      tl.to("#tab" + i, { boxShadow: "0 0 0 0 rgba(212,175,55,0)", duration: 0.35 }, t);
+    }
+    light(1, 0.180);
+    done(1, 23.270);
+    light(2, 23.270);
+    done(2, 78.150);
+    light(3, 78.150);
+    done(3, 101.990);
+    light(4, 101.990);
+    done(4, 140.770);
+    light(5, 140.770);
+    done(5, 248.780);
+    light(6, 248.780);
+    done(6, 268.540);
+    light(7, 268.540);
     window.__timelines["tabs"] = tl;
   </script>
 </template>

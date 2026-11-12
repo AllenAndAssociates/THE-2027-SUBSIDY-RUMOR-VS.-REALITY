@@ -1,0 +1,39 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: 'Inter', sans-serif; color: #1B1F4B; }
+    .e { position: absolute; }
+    .bgf { position: absolute; inset: 0; }
+    .pg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .st { position: absolute; width: 1124px; height: 890px; }
+
+  </style>
+  <div id="root" data-composition-id="shot08" data-width="1920" data-height="1080">
+    <div id="s08-bg" class="bgf" style="background:#fff"></div>
+    <div id="s08-pg" class="pg">
+    
+    </div>
+    <div id="s08-st" class="st" style="left:40px;top:150px">
+    <div id="s08e1" class="e" style="left:120px;top:360px;width:300px;height:300px;border-radius:50%;background:#1B3F7A"><svg viewBox="0 0 24 24" style="position:absolute;left:63px;top:63px;width:174px;height:174px"><path fill="#FFFFFF" d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg></div>
+    <div id="s08e2" class="e" style="left:470px;top:120px;width:130px;height:130px;border-radius:50%;background:#F6E4A6"><svg viewBox="0 0 24 24" style="position:absolute;left:27px;top:27px;width:75px;height:75px"><path fill="#0B1F3A" d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div>
+    <div id="s08e3" class="e" style="left:650px;top:180px;width:130px;height:130px;border-radius:50%;background:#F6E4A6"><svg viewBox="0 0 24 24" style="position:absolute;left:27px;top:27px;width:75px;height:75px"><path fill="#0B1F3A" d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div>
+    <div id="s08e4" class="e" style="left:830px;top:120px;width:130px;height:130px;border-radius:50%;background:#F6E4A6"><svg viewBox="0 0 24 24" style="position:absolute;left:27px;top:27px;width:75px;height:75px"><path fill="#0B1F3A" d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div>
+    <div id="s08e5" class="e" style="left:60px;top:40px;white-space:nowrap;background:#F6E4A6;color:#0B1F3A;font-size:46px;font-weight:700;border-radius:8px;padding:8px 18px;line-height:1.15">Plans must stand on their own economics</div>
+    <div id="s08e6" class="e" style="left:470px;top:620px;font-size:44px;color:#0B1F3A;font-weight:700;text-align:left;line-height:1.2;width:600px;">No more extra subsidy to lean on</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo('#s08-bg', { opacity: 0 }, { opacity: 1, duration: 0.25, ease: 'power2.out' }, 0);
+    tl.fromTo('#s08e1',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},0.200);
+    tl.fromTo('#s08e2',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},0.520);
+    tl.to('#s08e2',{y:380,opacity:0,duration:.6,ease:'power2.in'},5.300);
+    tl.fromTo('#s08e3',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},0.520);
+    tl.to('#s08e3',{y:380,opacity:0,duration:.6,ease:'power2.in'},5.420);
+    tl.fromTo('#s08e4',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},0.520);
+    tl.to('#s08e4',{y:380,opacity:0,duration:.6,ease:'power2.in'},5.540);
+    tl.fromTo('#s08e5',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.5,ease:'power2.out'},5.300);
+    tl.fromTo('#s08e6',{opacity:0,rotation:0},{opacity:1,rotation:0,duration:0.45,ease:'power2.out'},6.020);
+    tl.to(['#s08-st', '#s08-pg'], { opacity: 0, duration: 0.22, ease: 'power2.in' }, 7.000);
+    window.__timelines['shot08'] = tl;
+  </script>
+</template>

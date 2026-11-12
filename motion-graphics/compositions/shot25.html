@@ -1,0 +1,51 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: 'Inter', sans-serif; color: #1B1F4B; }
+    .e { position: absolute; }
+    .bgf { position: absolute; inset: 0; }
+    .pg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .st { position: absolute; width: 1124px; height: 890px; }
+
+  </style>
+  <div id="root" data-composition-id="shot25" data-width="1920" data-height="1080">
+    <div id="s25-bg" class="bgf" style="background:#3A4D68"></div>
+    <div id="s25-pg" class="pg">
+    <div id="s25e11" class="e" style="left:60px;top:46px;width:68px;height:68px;border-radius:16px;background:#fff"><svg viewBox="0 0 24 24" style="position:absolute;left:12px;top:12px;width:44px;height:44px"><path fill="#0B1F3A" d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
+    <div id="s25e12" class="e" style="left:150px;top:42px;white-space:nowrap;font-size:48px;font-weight:400;color:#fff;letter-spacing:-.01em">Medicare.gov</div>
+    <div id="s25e13" class="e" style="left:150px;top:104px;white-space:nowrap;background:#D4AF37;color:#0B1F3A;font-size:22px;font-weight:900;padding:5px 14px;border-radius:5px">Plan finder</div>
+    <div id="s25e14" class="e" style="left:1550px;top:690px;width:320px;height:320px;border-radius:50%;background:#0a0a0a;border:10px solid #D4AF37;box-shadow:0 10px 30px rgba(0,0,0,.3)"></div>
+    </div>
+    <div id="s25-st" class="st" style="left:398px;top:150px">
+    <div id="s25e1" class="e" style="left:40px;top:90px;width:1044px;height:620px;background:#FFFFFF;border-radius:22px;box-shadow:0 14px 34px rgba(27,31,75,.16);"></div>
+    <div id="s25e2" class="e" style="left:40px;top:90px;width:1044px;height:76px;background:#0B1F3A;border-radius:22px 22px 0 0"></div>
+    <div id="s25e3" class="e" style="left:80px;top:105px;font-size:40px;color:#FFFFFF;font-weight:700;text-align:left;line-height:1.2;width:400px;">Medicare.gov</div>
+    <div id="s25e4" class="e" style="left:80px;top:200px;white-space:nowrap;background:#F6E4A6;color:#0B1F3A;font-size:40px;font-weight:700;border-radius:8px;padding:8px 18px;line-height:1.15">Sort: lowest monthly premium ▼</div>
+    <div id="s25e5" class="e" style="left:80px;top:290px;width:964px;height:86px;background:#F1F4F4;border-radius:14px;font-size:38px;font-weight:700;line-height:86px;padding-left:30px;color:#0B1F3A">Plan A<span style="position:absolute;left:520px">$0 / month</span></div>
+    <div id="s25e6" class="e" style="left:80px;top:390px;width:964px;height:86px;background:#F1F4F4;border-radius:14px;font-size:38px;font-weight:700;line-height:86px;padding-left:30px;color:#0B1F3A">Plan B<span style="position:absolute;left:520px">$0 / month</span></div>
+    <div id="s25e7" class="e" style="left:80px;top:490px;width:964px;height:86px;background:#F1F4F4;border-radius:14px;font-size:38px;font-weight:700;line-height:86px;padding-left:30px;color:#0B1F3A">Plan C<span style="position:absolute;left:520px">$7 / month</span></div>
+    <div id="s25e8" class="e" style="left:0px;top:0px;font-family:'Montserrat',sans-serif;font-weight:900;line-height:1.02;font-size:1px;color:#fff;text-align:left;white-space:nowrap;"></div>
+    <div id="s25e9" class="e" style="left:760px;top:590px;width:284px;height:80px;background:#0484C5;color:#fff;border-radius:40px;font-size:38px;font-weight:900;line-height:80px;text-align:center">ENROLL</div>
+    <div id="s25e10" class="e" style="left:220px;top:745px;white-space:nowrap;border:10px solid #D4AF37;color:#0B1F3A;background:rgba(255,255,255,.92);border-radius:18px;padding:6px 30px;font-family:'Montserrat',sans-serif;font-weight:900;font-size:64px;line-height:1.1">Biggest mistake</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo('#s25-bg', { opacity: 0 }, { opacity: 1, duration: 0.25, ease: 'power2.out' }, 0);
+    tl.fromTo('#s25e1',{opacity:0,y:28,scale:.9,rotation:0},{opacity:1,y:0,scale:1,rotation:0,duration:0.5,ease:'back.out(1.5)'},1.820);
+    tl.fromTo('#s25e2',{opacity:0,rotation:0},{opacity:1,rotation:0,duration:0.5,ease:'power2.out'},1.820);
+    tl.fromTo('#s25e3',{opacity:0,rotation:0},{opacity:1,rotation:0,duration:0.45,ease:'power2.out'},1.820);
+    tl.fromTo('#s25e4',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.5,ease:'power2.out'},3.260);
+    tl.fromTo('#s25e5',{opacity:0,x:-80},{opacity:1,x:0,duration:0.4,ease:'power3.out'},3.940);
+    tl.fromTo('#s25e6',{opacity:0,x:-80},{opacity:1,x:0,duration:0.4,ease:'power3.out'},3.940);
+    tl.fromTo('#s25e7',{opacity:0,x:-80},{opacity:1,x:0,duration:0.4,ease:'power3.out'},3.940);
+    tl.fromTo('#s25e8',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},0.100);
+    tl.fromTo('#s25e9',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},5.820);
+    tl.fromTo('#s25e10',{opacity:0,scale:2.6,rotation:-16},{opacity:1,scale:1,rotation:-4,duration:.28,ease:'power4.in'},0.400);
+    tl.fromTo('#s25e11',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.4,ease:'back.out(2)'},0.150);
+    tl.fromTo('#s25e12',{opacity:0,x:-80},{opacity:1,x:0,duration:0.45,ease:'power3.out'},0.200);
+    tl.fromTo('#s25e13',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.4,ease:'power2.out'},0.350);
+    tl.fromTo('#s25e14',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},0.300);
+    tl.to(['#s25-st', '#s25-pg'], { opacity: 0, duration: 0.22, ease: 'power2.in' }, 6.960);
+    window.__timelines['shot25'] = tl;
+  </script>
+</template>

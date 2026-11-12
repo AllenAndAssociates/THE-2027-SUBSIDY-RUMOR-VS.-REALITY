@@ -1,0 +1,38 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: 'Inter', sans-serif; color: #1B1F4B; }
+    .e { position: absolute; }
+    .bgf { position: absolute; inset: 0; }
+    .pg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .st { position: absolute; width: 1124px; height: 890px; }
+
+  </style>
+  <div id="root" data-composition-id="shot16" data-width="1920" data-height="1080">
+    <div id="s16-bg" class="bgf" style="background:#0872B3"></div>
+    <div id="s16-pg" class="pg">
+    
+    </div>
+    <div id="s16-st" class="st" style="left:398px;top:150px">
+    <div id="s16e1" class="e" style="left:60px;top:40px;white-space:nowrap;background:#F6E4A6;color:#0B1F3A;font-size:46px;font-weight:700;border-radius:8px;padding:8px 18px;line-height:1.15">Many plans across the country</div>
+    <div id="s16e2" class="e" style="left:0px;top:230px;font-family:'Montserrat',sans-serif;font-weight:900;line-height:1.02;font-size:270px;color:#fff;text-align:center;width:380px;">$0</div>
+    <div id="s16e3" class="e" style="left:0px;top:560px;font-size:48px;color:#fff;font-weight:700;text-align:center;line-height:1.2;width:380px;">per month</div>
+    <svg id="s16e4" class="e" style="left:0;top:0;width:1124px;height:890px;overflow:visible"><path d="M400 370 L480 370 M450 353 L480 370 L450 386" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div id="s16e5" class="e" style="left:500px;top:300px;font-family:'Montserrat',sans-serif;font-weight:900;line-height:1.02;font-size:140px;color:#F6E4A6;text-align:center;width:624px;">$10–20</div>
+    <div id="s16e6" class="e" style="left:500px;top:560px;font-size:48px;color:#fff;font-weight:700;text-align:center;line-height:1.2;width:624px;">per month</div>
+    <div id="s16e7" class="e" style="left:160px;top:720px;white-space:nowrap;background:#071428;color:#FFFFFF;font-size:48px;font-weight:700;border-radius:8px;padding:8px 18px;line-height:1.15">Plans that used to be free</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo('#s16-bg', { opacity: 0 }, { opacity: 1, duration: 0.25, ease: 'power2.out' }, 0);
+    tl.fromTo('#s16e1',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.5,ease:'power2.out'},0.200);
+    tl.fromTo('#s16e2',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},2.960);
+    tl.fromTo('#s16e3',{opacity:0,rotation:0},{opacity:1,rotation:0,duration:0.45,ease:'power2.out'},2.960);
+    tl.fromTo('#s16e4 path',{strokeDashoffset:1},{strokeDashoffset:0,duration:0.4,ease:'power2.inOut'},4.420);
+    tl.fromTo('#s16e5',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},4.420);
+    tl.fromTo('#s16e6',{opacity:0,rotation:0},{opacity:1,rotation:0,duration:0.45,ease:'power2.out'},4.420);
+    tl.fromTo('#s16e7',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.5,ease:'power2.out'},2.300);
+    tl.to(['#s16-st', '#s16-pg'], { opacity: 0, duration: 0.22, ease: 'power2.in' }, 6.560);
+    window.__timelines['shot16'] = tl;
+  </script>
+</template>

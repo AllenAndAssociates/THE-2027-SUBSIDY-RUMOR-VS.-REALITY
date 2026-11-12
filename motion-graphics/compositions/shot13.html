@@ -1,0 +1,43 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: 'Inter', sans-serif; color: #1B1F4B; }
+    .e { position: absolute; }
+    .bgf { position: absolute; inset: 0; }
+    .pg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .st { position: absolute; width: 1124px; height: 890px; }
+
+  </style>
+  <div id="root" data-composition-id="shot13" data-width="1920" data-height="1080">
+    <div id="s13-bg" class="bgf" style="background:#0484C5"></div>
+    <div id="s13-pg" class="pg">
+    <div id="s13e7" class="e" style="left:60px;top:46px;width:68px;height:68px;border-radius:16px;background:#fff"><svg viewBox="0 0 24 24" style="position:absolute;left:12px;top:12px;width:44px;height:44px"><path fill="#0B1F3A" d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
+    <div id="s13e8" class="e" style="left:150px;top:42px;white-space:nowrap;font-size:48px;font-weight:400;color:#fff;letter-spacing:-.01em">Deductible</div>
+    <div id="s13e9" class="e" style="left:150px;top:104px;white-space:nowrap;background:#D4AF37;color:#0B1F3A;font-size:22px;font-weight:900;padding:5px 14px;border-radius:5px">Regulated by law</div>
+    <div id="s13e10" class="e" style="left:1550px;top:690px;width:320px;height:320px;border-radius:50%;background:#0a0a0a;border:10px solid #D4AF37;box-shadow:0 10px 30px rgba(0,0,0,.3)"></div>
+    </div>
+    <div id="s13-st" class="st" style="left:398px;top:150px">
+    <div id="s13e1" class="e" style="left:60px;top:40px;white-space:nowrap;background:#F6E4A6;color:#0B1F3A;font-size:44px;font-weight:700;border-radius:8px;padding:8px 18px;line-height:1.15">Standard maximum deductible: regulated by law</div>
+    <div id="s13e2" class="e" style="left:60px;top:230px;width:1004px;height:80px;background:#fff;border-radius:40px;box-shadow:inset 0 2px 8px rgba(27,31,75,.15)"></div>
+    <div id="s13e3" class="e" style="left:60px;top:230px;width:1004px;height:80px;background:#4F9B22;border-radius:40px"></div>
+    <div id="s13e4" class="e" style="left:60px;top:330px;font-size:44px;color:#fff;font-weight:700;text-align:right;line-height:1.2;width:1004px;">$2,400 in covered costs</div>
+    <div id="s13e5" class="e" style="left:60px;top:440px;font-family:'Montserrat',sans-serif;font-weight:900;line-height:1.02;font-size:380px;color:#fff;text-align:left;width:700px;">$0</div>
+    <div id="s13e6" class="e" style="left:700px;top:620px;white-space:nowrap;background:#071428;color:#FFFFFF;font-size:72px;font-weight:700;border-radius:8px;padding:8px 18px;line-height:1.15">you pay</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo('#s13-bg', { opacity: 0 }, { opacity: 1, duration: 0.25, ease: 'power2.out' }, 0);
+    tl.fromTo('#s13e1',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.5,ease:'power2.out'},1.240);
+    tl.fromTo('#s13e2',{opacity:0,rotation:0},{opacity:1,rotation:0,duration:0.5,ease:'power2.out'},4.040);
+    tl.fromTo('#s13e3',{scaleX:0,transformOrigin:'0% 50%'},{scaleX:1,duration:1.6,ease:'power2.out'},4.040);
+    tl.fromTo('#s13e4',{opacity:0,rotation:0},{opacity:1,rotation:0,duration:0.45,ease:'power2.out'},4.420);
+    tl.fromTo('#s13e5',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},7.580);
+    tl.fromTo('#s13e6',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.5,ease:'power2.out'},7.240);
+    tl.fromTo('#s13e7',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.4,ease:'back.out(2)'},0.150);
+    tl.fromTo('#s13e8',{opacity:0,x:-80},{opacity:1,x:0,duration:0.45,ease:'power3.out'},0.200);
+    tl.fromTo('#s13e9',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.4,ease:'power2.out'},0.350);
+    tl.fromTo('#s13e10',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},0.300);
+    tl.to(['#s13-st', '#s13-pg'], { opacity: 0, duration: 0.22, ease: 'power2.in' }, 8.180);
+    window.__timelines['shot13'] = tl;
+  </script>
+</template>

@@ -19,8 +19,11 @@ ROOT = os.path.dirname(HERE)
 CLIP0 = 248.6            # global time where Shot 34 (checklist/contact scenes) starts
 TOTAL = 279.44           # 278.24 s of footage + 1.2 s hold
 
-INK, TEAL, DTEAL, PINK, BLUE, PURP, YEL = "#1B1F4B", "#1F7A6B", "#0F3D36", "#E5197C", "#2437D6", "#4B2A93", "#FFF27A"
-GRAYT, LGRAY, WHITE, BLACK = "#6B7280", "#C3CCCC", "#FFFFFF", "#0B0B0B"
+INK, TEAL, DTEAL, PINK, BLUE, PURP, YEL = "#0B1F3A", "#4F9B22", "#2F6A12", "#D4AF37", "#0484C5", "#1B3F7A", "#F6E4A6"   # PINK is now brand GOLD
+# USAFacts-style full-bleed stages, in Allen & Associates brand colours (names kept from the first draft:
+# BG_PINK = deep navy, BG_BLUE/BG_SKY = logo blue, BG_GREEN = logo green, BG_NAVY = navy, BG_YEL = light gold)
+BG_PINK, BG_BLUE, BG_SKY, BG_GREEN, BG_NAVY, BG_YEL, BG_GRAY = "#10294B", "#0872B3", "#0484C5", "#4A8F1F", "#0B1F3A", "#F1D27A", "#3A4D68"
+GRAYT, LGRAY, WHITE, BLACK = "#5B6B82", "#C3CCCC", "#FFFFFF", "#071428"
 
 ICON = {
     "dollar": "M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z",
@@ -72,14 +75,61 @@ ends = starts[1:] + [CLIP0]
 CHAPTER_START = {1: 0.0, 2: starts[3], 3: starts[10], 4: starts[13], 5: starts[18], 6: CLIP0 + 0.18, 7: CLIP0 + 19.94}
 
 
+# layout: F = full-bleed graphic (no presenter) | B = full-bleed graphic + presenter in a ring-bordered circle
+#         HR / HL = presenter large on the white talk backdrop (right / left), graphic on the other side
+# (n: (layout, background, default text colour, header (title, subtitle, icon) or None))
+LAYOUT = {
+    1: ("F", BG_PINK, "#fff", None), 2: ("HR", "#fff", INK, None), 3: ("HL", "#fff", INK, None),
+    4: ("B", BG_BLUE, "#fff", ("Part D funding", "Who pays whom", "bank")),
+    5: ("B", BG_NAVY, "#fff", ("Federal subsidies", "The past two years", "dollar")),
+    6: ("B", BG_GREEN, "#fff", ("Monthly premium", "With vs. without subsidy", "dollar")),
+    7: ("F", BG_PINK, "#fff", None), 8: ("HR", "#fff", INK, None), 9: ("F", BG_YEL, INK, None), 10: ("HR", "#fff", INK, None),
+    11: ("B", BG_NAVY, "#fff", ("Locked in by law", "2027 rules", "lock")),
+    12: ("F", BG_GREEN, "#fff", None),
+    13: ("B", BG_SKY, "#fff", ("Deductible", "Regulated by law", "lock")),
+    14: ("HR", "#fff", INK, None),
+    15: ("B", BG_PINK, "#fff", ("Premium forecast", "Part D enrollees", "up")),
+    16: ("F", BG_BLUE, "#fff", None),
+    17: ("B", BG_GREEN, "#fff", ("Formulary", "List of covered drugs", "list")),
+    18: ("B", BG_GREEN, "#fff", ("Formulary", "List of covered drugs", "list")),
+    19: ("HL", "#fff", INK, None),
+    20: ("B", BG_NAVY, "#fff", ("Plan year", "January 1 start", "calendar")),
+    21: ("B", BG_NAVY, "#fff", ("Mid-year changes", "Covered drug list", "list")),
+    22: ("F", BG_PINK, "#fff", None),
+    23: ("B", BG_YEL, INK, ("Appeals", "Exception request", "doc")),
+    24: ("B", BG_SKY, "#fff", ("Open enrollment", "Oct 15 – Dec 7", "calendar")),
+    25: ("B", BG_GRAY, "#fff", ("Medicare.gov", "Plan finder", "search")),
+    26: ("F", BG_PINK, "#fff", None),
+    27: ("B", BG_GREEN, "#fff", ("Plan finder", "Enter every medication", "pill")),
+    28: ("B", BG_BLUE, "#fff", ("Annual cost", "$0 plan vs. $40 plan", "dollar")),
+    29: ("HR", "#fff", INK, None), 30: ("F", BG_NAVY, "#fff", None), 31: ("HL", "#fff", INK, None),
+    32: ("B", BG_PINK, "#fff", ("Danger 1", "No out-of-pocket cap", "shield")),
+    33: ("B", BG_NAVY, "#fff", ("Danger 2", "Late enrollment penalty", "clock")),
+}
+STAGE_XY = {"F": (398, 150), "B": (398, 150), "HR": (40, 150), "HL": (756, 150)}
+HERO_CX = {"HR": 1470, "HL": 430}
+BUBBLE = (1550, 690, 320)     # x, y, outer diameter (ring included)
+
+
 def norm(s):
     return re.sub(r"[^a-z0-9]", "", s.lower())
+
+
+def contrast_fg(bg):
+    """navy on light fills (gold, pale gold, white), white on dark/saturated fills"""
+    h = bg.lstrip("#")
+    if len(h) != 6:
+        return WHITE
+    r, g, b = (int(h[i:i + 2], 16) for i in (0, 2, 4))
+    return INK if (0.299 * r + 0.587 * g + 0.114 * b) > 150 else WHITE
 
 
 class Shot:
     def __init__(self, n):
         self.n, self.start, self.end = n, starts[n - 1], ends[n - 1]
         self.html, self.js, self.sfx, self.k = [], [], [], 0
+        self.page = []
+        self.layout, self.bg, self.fg, self.header = LAYOUT[n]
         self.missing = []
 
     # ---- timing
@@ -105,7 +155,7 @@ class Shot:
         elif anim == "fade":
             f, to = "{opacity:0,rotation:%s}" % rot, "{opacity:1,rotation:%s,duration:%s,ease:'power2.out'}" % (rot, dur)
         elif anim == "wipe":
-            f, to = "{clipPath:'inset(0 100% 0 0)'}", "{clipPath:'inset(0 0% 0 0)',duration:%s,ease:'power2.out'}" % dur
+            f, to = "{clipPath:'inset(0 100% 0 0)'}", "{clipPath:'inset(0 0%% 0 0)',duration:%s,ease:'power2.out'}" % dur
         elif anim == "left":
             f, to = "{opacity:0,x:-80}", "{opacity:1,x:0,duration:%s,ease:'power3.out'}" % dur
         elif anim == "right":
@@ -129,9 +179,9 @@ class Shot:
         if sfx:
             self.sfx.append((self.start + t, sfx))
 
-    def add(self, html, t, anim="pop", dur=0.5, sfx=None, rot=0):
+    def add(self, html, t, anim="pop", dur=0.5, sfx=None, rot=0, page=False):
         i = self.nid()
-        self.html.append(html.replace("@ID", i))
+        (self.page if page else self.html).append(html.replace("@ID", i))
         self.tin(i, t, anim, dur, sfx, rot)
         return i
 
@@ -143,7 +193,8 @@ class Shot:
     def dark(self, text, x, y, t, size=40, **k):
         return self.chip(text, x, y, t, bg=BLACK, fg=WHITE, size=size, **k)
 
-    def ttl(self, text, x, y, t, size=72, color=INK, w=None, outline=False, align="left", anim="pop", sfx=None, upper=True, rot=0):
+    def ttl(self, text, x, y, t, size=72, color=None, w=None, outline=False, align="left", anim="pop", sfx=None, upper=True, rot=0):
+        color = color or self.fg
         st = "font-family:'Montserrat',sans-serif;font-weight:900;line-height:1.02;font-size:%dpx;color:%s;text-align:%s;" % (size, color, align)
         if upper:
             st += "text-transform:uppercase;"
@@ -152,30 +203,32 @@ class Shot:
         st += ("width:%dpx;" % w) if w else "white-space:nowrap;"
         return self.add('<div id="@ID" class="e" style="left:%dpx;top:%dpx;%s">%s</div>' % (x, y, st, text), t, anim, 0.5, sfx, rot)
 
-    def txt(self, text, x, y, t, size=38, color=INK, w=None, weight=700, align="left", anim="fade", sfx=None):
-        st = "font-size:%dpx;color:%s;font-weight:%d;text-align:%s;line-height:1.2;" % (size, color, weight, align)
+    def txt(self, text, x, y, t, size=38, color=None, w=None, weight=700, align="left", anim="fade", sfx=None):
+        st = "font-size:%dpx;color:%s;font-weight:%d;text-align:%s;line-height:1.2;" % (size, color or self.fg, weight, align)
         st += ("width:%dpx;" % w) if w else "white-space:nowrap;"
         return self.add('<div id="@ID" class="e" style="left:%dpx;top:%dpx;%s">%s</div>' % (x, y, st, text), t, anim, 0.45, sfx)
 
-    def badge(self, icon, x, y, d, t, bg=BLUE, fg=WHITE, anim="zoom", sfx=None):
+    def badge(self, icon, x, y, d, t, bg=BLUE, fg=None, anim="zoom", sfx=None):
         s = int(d * 0.58)
+        fg = fg or contrast_fg(bg)
         return self.add('<div id="@ID" class="e" style="left:%dpx;top:%dpx;width:%dpx;height:%dpx;border-radius:50%%;background:%s"><svg viewBox="0 0 24 24" style="position:absolute;left:%dpx;top:%dpx;width:%dpx;height:%dpx"><path fill="%s" d="%s"/></svg></div>' % (x, y, d, d, bg, (d - s) // 2, (d - s) // 2, s, s, fg, ICON[icon]), t, anim, 0.5, sfx)
 
-    def num(self, text, x, y, d, t, bg=PINK, fg=WHITE, anim="zoom", sfx=None):
+    def num(self, text, x, y, d, t, bg=PINK, fg=None, anim="zoom", sfx=None):
+        fg = fg or contrast_fg(bg)
         return self.add('<div id="@ID" class="e" style="left:%dpx;top:%dpx;width:%dpx;height:%dpx;border-radius:50%%;background:%s;color:%s;font-family:\'Montserrat\',sans-serif;font-weight:900;font-size:%dpx;line-height:%dpx;text-align:center">%s</div>' % (x, y, d, d, bg, fg, int(d * 0.58), d, text), t, anim, 0.5, sfx)
 
     def card(self, x, y, w, h, t, bg=WHITE, radius=26, anim="pop", border=None, rot=0, sfx=None):
         b = "border:%s;" % border if border else ""
         return self.add('<div id="@ID" class="e" style="left:%dpx;top:%dpx;width:%dpx;height:%dpx;background:%s;border-radius:%dpx;box-shadow:0 14px 34px rgba(27,31,75,.16);%s"></div>' % (x, y, w, h, bg, radius, b), t, anim, 0.5, sfx, rot)
 
-    def stat(self, text, x, y, t, size=200, color=TEAL, w=None, align="left", anim="zoom", sfx=None):
-        return self.ttl(text, x, y, t, size=size, color=color, w=w, align=align, anim=anim, sfx=sfx, upper=False)
+    def stat(self, text, x, y, t, size=200, color=None, w=None, align="left", anim="zoom", sfx=None):
+        return self.ttl(text, x, y, t, size=size, color=color or self.fg, w=w, align=align, anim=anim, sfx=sfx, upper=False)
 
     def bar(self, x, y, w, h, t, color=TEAL, anim="growx", radius=14, dur=0.7, sfx=None):
         return self.add('<div id="@ID" class="e" style="left:%dpx;top:%dpx;width:%dpx;height:%dpx;background:%s;border-radius:%dpx"></div>' % (x, y, w, h, color, radius), t, anim, dur, sfx)
 
     def stamp(self, text, x, y, t, color=PINK, size=84, rot=-8, sfx="stamp", bg="rgba(255,255,255,.92)"):
-        return self.add('<div id="@ID" class="e" style="left:%dpx;top:%dpx;white-space:nowrap;border:10px solid %s;color:%s;background:%s;border-radius:18px;padding:6px 30px;font-family:\'Montserrat\',sans-serif;font-weight:900;font-size:%dpx;line-height:1.1">%s</div>' % (x, y, color, color, bg, size, text), t, "stamp", 0.3, sfx, rot)
+        return self.add('<div id="@ID" class="e" style="left:%dpx;top:%dpx;white-space:nowrap;border:10px solid %s;color:%s;background:%s;border-radius:18px;padding:6px 30px;font-family:\'Montserrat\',sans-serif;font-weight:900;font-size:%dpx;line-height:1.1">%s</div>' % (x, y, color, INK, bg, size, text), t, "stamp", 0.3, sfx, rot)
 
     def arrow(self, x1, y1, x2, y2, t, color=INK, wd=10, dur=0.6, head=True):
         i = self.nid()
@@ -214,11 +267,27 @@ class Shot:
     def drug(self, label, x, y, w, t, ok=True, anim="left"):
         return self.add('<div id="@ID" class="e" style="left:%dpx;top:%dpx;width:%dpx;height:84px;background:#fff;border-radius:18px;box-shadow:0 8px 20px rgba(27,31,75,.12);font-size:34px;font-weight:700;color:%s;line-height:84px;padding-left:92px"><svg viewBox="0 0 24 24" style="position:absolute;left:22px;top:20px;width:44px;height:44px"><path fill="%s" d="%s"/></svg>%s</div>' % (x, y, w, INK, TEAL if ok else PINK, ICON["pill"], label), t, anim, 0.4)
 
+    def decorate(self):
+        """Header (title + icon + subtitle chip) and presenter ring, at page coordinates."""
+        if self.header:
+            title, sub, icon = self.header
+            self.badge(icon, 60, 46, 64, 0.15, bg="#fff", fg=INK, page=True) if False else None
+            self.add('<div id="@ID" class="e" style="left:60px;top:46px;width:68px;height:68px;border-radius:16px;background:#fff"><svg viewBox="0 0 24 24" style="position:absolute;left:12px;top:12px;width:44px;height:44px"><path fill="%s" d="%s"/></svg></div>' % (INK, ICON[icon]), 0.15, "zoom", 0.4, page=True)
+            self.add('<div id="@ID" class="e" style="left:150px;top:42px;white-space:nowrap;font-size:48px;font-weight:400;color:%s;letter-spacing:-.01em">%s</div>' % (self.fg, title), 0.2, "left", 0.45, page=True)
+            self.add('<div id="@ID" class="e" style="left:150px;top:104px;white-space:nowrap;background:%s;color:%s;font-size:22px;font-weight:900;padding:5px 14px;border-radius:5px">%s</div>' % (PINK, INK, sub), 0.35, "wipe", 0.4, page=True)
+        if self.layout == "B":
+            x, y, d = BUBBLE
+            ring = INK if self.bg == BG_YEL else PINK
+            self.add('<div id="@ID" class="e" style="left:%dpx;top:%dpx;width:%dpx;height:%dpx;border-radius:50%%;background:#0a0a0a;border:10px solid %s;box-shadow:0 10px 30px rgba(0,0,0,.3)"></div>' % (x, y, d, d, ring), 0.3, "zoom", 0.5, page=True)
+
     # ---- output
     def render(self):
+        self.decorate()
         n = self.n
         css = open(os.path.join(HERE, "common.css")).read()
         body = "\n    ".join(self.html)
+        page = "\n    ".join(self.page)
+        sx, sy = STAGE_XY[self.layout]
         js = "\n    ".join(self.js)
         dur = self.end - self.start
         return """<template>
@@ -226,19 +295,23 @@ class Shot:
 %s
   </style>
   <div id="root" data-composition-id="shot%02d" data-width="1920" data-height="1080">
-    <div id="s%02d-st" class="st">
+    <div id="s%02d-bg" class="bgf" style="background:%s"></div>
+    <div id="s%02d-pg" class="pg">
+    %s
+    </div>
+    <div id="s%02d-st" class="st" style="left:%dpx;top:%dpx">
     %s
     </div>
   </div>
   <script>
     const tl = gsap.timeline({ paused: true });
-    tl.fromTo('#s%02d-st', { opacity: 0 }, { opacity: 1, duration: 0.25, ease: 'power2.out' }, 0);
+    tl.fromTo('#s%02d-bg', { opacity: 0 }, { opacity: 1, duration: 0.25, ease: 'power2.out' }, 0);
     %s
-    tl.to('#s%02d-st', { opacity: 0, duration: 0.28, ease: 'power2.in' }, %.3f);
+    tl.to(['#s%02d-st', '#s%02d-pg'], { opacity: 0, duration: 0.22, ease: 'power2.in' }, %.3f);
     window.__timelines['shot%02d'] = tl;
   </script>
 </template>
-""" % (css, n, n, body, n, js, n, dur - 0.32, n)
+""" % (css, n, n, self.bg, n, page, n, sx, sy, body, n, js, n, n, dur - 0.26, n)
 
 
 # ================================================================== SHOT SPECS
@@ -246,9 +319,8 @@ def build(n):
     s = Shot(n)
     C = s.chip
     if n == 1:   # the rumor headlines
-        s.card(0, 0, 1124, 890, 0.1, bg=PINK, radius=30, anim="fade")
         s.card(60, 90, 1000, 250, "w:headlines", rot=-2, sfx="pop")
-        s.badge("warn", 90, 150, 130, "w:headlines", bg=PINK)
+        s.badge("warn", 90, 150, 130, "w:headlines", bg=BG_PINK)
         s.ttl("Medicare Part D<br>is ending in 2027?!", 250, 124, "w:headlines", size=58, color=BLACK, rot=-2)
         s.card(110, 400, 920, 190, "w:prices", rot=1.5, sfx="pop2")
         s.badge("up", 140, 440, 110, "w:prices", bg=PINK)
@@ -272,19 +344,19 @@ def build(n):
         s.stat("Since 1994", 60, 580, "w:since", size=150, color=BLUE, sfx="pop")
     elif n == 4:  # how funded
         s.chip("How Part D is funded", 60, 40, 0.3, size=48)
-        s.badge("bank", 100, 280, 230, "w:look", bg=BLUE, sfx="pop")
-        s.badge("building", 447, 280, 230, "w:Part", bg=PURP, sfx="pop2")
-        s.badge("person", 794, 280, 230, "w:recently", bg=TEAL, sfx="pop")
-        s.arrow(350, 395, 430, 395, "w:Part", dur=0.4)
-        s.arrow(697, 395, 777, 395, "w:recently", dur=0.4)
+        s.badge("bank", 100, 280, 230, "w:look", bg="#fff", fg=INK, sfx="pop")
+        s.badge("building", 447, 280, 230, "w:Part", bg=YEL, fg=INK, sfx="pop2")
+        s.badge("person", 794, 280, 230, "w:recently", bg=PINK, sfx="pop")
+        s.arrow(350, 395, 430, 395, "w:Part", dur=0.4, color="#fff")
+        s.arrow(697, 395, 777, 395, "w:recently", dur=0.4, color="#fff")
         s.txt("Federal<br>government", 100, 540, "w:look", size=42, w=230, align="center")
         s.txt("Part D<br>insurers", 447, 540, "w:Part", size=42, w=230, align="center")
         s.txt("You", 794, 540, "w:recently", size=42, w=230, align="center")
     elif n == 5:  # subsidies flow
         s.chip("Special federal subsidies", 60, 40, "w:special", size=48)
-        s.badge("bank", 100, 250, 260, "w:federal", bg=BLUE, sfx="pop")
-        s.badge("building", 764, 250, 260, "w:billion", bg=PURP, sfx="pop2")
-        s.arrow(380, 380, 744, 380, "w:paid", dur=0.8, wd=12)
+        s.badge("bank", 100, 250, 260, "w:federal", bg="#fff", fg=INK, sfx="pop")
+        s.badge("building", 764, 250, 260, "w:billion", bg=PINK, sfx="pop2")
+        s.arrow(380, 380, 744, 380, "w:paid", dur=0.8, wd=12, color="#fff")
         for k, dt in enumerate((0.0, 0.5, 1.0)):
             i = s.badge("dollar", 392, 320, 120, "w:paid", bg=YEL, fg=INK, anim="fade")
             s.js.append("tl.fromTo('#%s',{x:0},{x:%d,duration:1.4,ease:'none'},%.3f);" % (i, 230, s.T("w:paid") + 0.15 + dt))
@@ -294,21 +366,21 @@ def build(n):
         s.dark("The past two years", 60, 740, "w:past", size=44)
     elif n == 6:  # premiums kept low
         s.chip("Monthly Part D premium", 60, 40, 0.3, size=48)
-        s.bar(220, 330, 280, 430, "w:premiums", color=LGRAY, anim="growy")
-        s.bar(220, 560, 280, 200, "w:premiums", color=TEAL, anim="growy")
+        s.bar(220, 330, 280, 430, "w:premiums", color="rgba(255,255,255,.35)", anim="growy")
+        s.bar(220, 560, 280, 200, "w:premiums", color="#fff", anim="growy")
         s.bar(220, 330, 280, 230, "w:subsidies", color=YEL, anim="growy")
         s.txt("What you pay", 520, 640, "w:premiums", size=44, w=420)
         s.txt("Taxpayer subsidy", 520, 410, "w:taxpayer", size=44, w=420)
         s.dark("Kept artificially low", 520, 130, "w:artificially", size=52, sfx="pop")
         s.txt("while new program rules rolled out", 520, 215, "w:rolled", size=36, w=520, weight=400)
     elif n == 7:  # profits up, subsidy ended
-        s.stat("15–17%", 40, 90, "w:fifteen", size=230, color=PINK, sfx="pop")
+        s.stat("15–17%", 40, 90, "w:fifteen", size=230, color=YEL, sfx="pop")
         s.add('<div id="@ID" class="e" style="left:520px;top:340px"></div>', 0.1, "fade")
         s.chip("Insurer profits climbed", 60, 360, "w:profits", size=54)
-        s.badge("up", 880, 150, 170, "w:climb", bg=PINK)
-        s.badge("dollar", 60, 520, 240, "w:decided", bg=BLUE)
+        s.badge("up", 880, 150, 170, "w:climb", bg="#fff", fg=BG_PINK)
+        s.badge("dollar", 60, 520, 240, "w:decided", bg=PINK)
         s.txt("Extra insurer<br>subsidy", 330, 570, "w:decided", size=56, w=500)
-        s.stamp("Ended", 600, 670, "w:end", color=PINK, size=100, rot=-7)
+        s.stamp("Ended", 600, 670, "w:end", color=BG_PINK, size=100, rot=-7)
     elif n == 8:  # stand on own economics
         s.badge("building", 120, 360, 300, "w:Federal", bg=PURP, sfx="pop")
         for k, xx in enumerate((470, 650, 830)):
@@ -340,15 +412,15 @@ def build(n):
         s.chip("Locked in by federal law", 60, 40, 0.3, size=48)
         s.card(40, 160, 500, 600, "w:two")
         s.card(584, 160, 500, 600, "w:touch")
-        s.num("1", 80, 195, 96, "w:two", bg=PINK)
-        s.num("2", 624, 195, 96, "w:touch", bg=PINK)
+        s.num("1", 80, 195, 96, "w:two", bg=BG_PINK)
+        s.num("2", 624, 195, 96, "w:touch", bg=BG_PINK)
         s.badge("lock", 190, 330, 200, "w:locked", bg=BLUE, sfx="lock")
         s.badge("lock", 734, 330, 200, "w:locked", bg=BLUE)
         s.ttl("Out-of-pocket cap", 70, 590, "w:two", size=42, w=440, align="center", color=INK)
         s.ttl("Deductible", 614, 590, "w:touch", size=42, w=440, align="center", color=INK)
     elif n == 12:  # $2,400
         s.chip("2027 maximum annual out-of-pocket cap", 60, 60, "w:By", size=46)
-        s.stat("$2,400", 30, 190, "w:twenty", size=330, color=TEAL, w=1064, align="center", sfx="pop")
+        s.stat("$2,400", 30, 190, "w:twenty", size=330, color="#fff", w=1064, align="center", sfx="pop")
         s.txt("on covered prescriptions", 60, 600, "w:covered", size=56, w=1004, align="center")
         s.dark("Set by law", 440, 720, "w:set", size=52, sfx="lock")
     elif n == 13:  # deductible + $0
@@ -356,7 +428,7 @@ def build(n):
         s.add('<div id="@ID" class="e" style="left:60px;top:230px;width:1004px;height:80px;background:#fff;border-radius:40px;box-shadow:inset 0 2px 8px rgba(27,31,75,.15)"></div>', "w:Once", "fade")
         s.bar(60, 230, 1004, 80, "w:Once", color=TEAL, anim="growx", radius=40, dur=1.6)
         s.txt("$2,400 in covered costs", 60, 330, "w:hit", size=44, w=1004, align="right")
-        s.stat("$0", 60, 440, "w:zero", size=380, color=PINK, w=700, sfx="pop")
+        s.stat("$0", 60, 440, "w:zero", size=380, color="#fff", w=700, sfx="pop")
         s.dark("you pay", 700, 620, "w:pay", size=72)
     elif n == 14:  # two levers
         s.chip("Insurers' two levers to protect profits", 60, 40, "w:levers", size=46)
@@ -370,16 +442,16 @@ def build(n):
         s.ttl("Drug<br>formularies", 614, 600, "w:formularies", size=48, w=440, align="center")
     elif n == 15:  # half see higher
         s.chip("Government forecast", 60, 40, "w:forecasts", size=46)
-        s.people(110, 150, 10, 5, 25, "w:roughly", size=70, gap=20, hl_t="w:higher")
-        s.ttl("About half", 60, 630, "w:half", size=110, color=PINK, sfx="pop")
+        s.people(110, 150, 10, 5, 25, "w:roughly", size=70, gap=20, c1=YEL, c2="rgba(255,255,255,.45)", hl_t="w:higher")
+        s.ttl("About half", 60, 630, "w:half", size=110, color=YEL, sfx="pop")
         s.txt("of people on Part D will see<br>higher monthly premiums next year", 60, 750, "w:higher", size=40, w=1000)
     elif n == 16:  # $0 -> $10-20
         s.chip("Many plans across the country", 60, 40, "w:Across", size=46)
-        s.stat("$0", 40, 190, "w:zero", size=330, color=TEAL, w=420, align="center", sfx="pop")
-        s.txt("per month", 40, 560, "w:zero", size=48, w=420, align="center")
-        s.arrow(480, 360, 580, 360, "w:jumping", dur=0.4, wd=14)
-        s.stat("$10–20", 560, 230, "w:jumping", size=190, color=PINK, w=560, align="center", sfx="pop2")
-        s.txt("per month", 560, 560, "w:jumping", size=48, w=560, align="center")
+        s.stat("$0", 0, 230, "w:zero", size=270, color="#fff", w=380, align="center", sfx="pop")
+        s.txt("per month", 0, 560, "w:zero", size=48, w=380, align="center")
+        s.arrow(400, 370, 480, 370, "w:jumping", dur=0.4, wd=14, color="#fff")
+        s.stat("$10–20", 500, 300, "w:jumping", size=140, color=YEL, w=624, align="center", sfx="pop2")
+        s.txt("per month", 500, 560, "w:jumping", size=48, w=624, align="center")
         s.dark("Plans that used to be free", 160, 720, "w:used", size=48)
     elif n == 17:  # formulary
         s.chip("Lever 2: the formulary", 60, 40, "w:second", size=46)
@@ -398,19 +470,19 @@ def build(n):
             s.js.append("tl.to('#s18e%d',{opacity:.18,x:60,duration:.5,ease:'power2.in'},%.3f);" % (4 + k, s.T("w:slimming") + 0.18 * (k - 2)))
         s.badge("warn", 760, 150, 170, "w:risk", bg=PINK)
         s.txt("Expensive drugs =<br>big financial risk<br>for insurers", 720, 360, "w:risk", size=44, w=380, align="center")
-        s.dark("Fewer drugs covered", 720, 640, "w:slimming", size=40)
+        s.dark("Fewer drugs covered", 700, 610, "w:slimming", size=38)
     elif n == 19:  # the catch
-        s.dark("The unfair catch", 60, 60, "w:catch", size=64, sfx="pop")
-        s.badge("lock", 120, 260, 420, "w:locked", bg=PINK, sfx="lock")
-        s.ttl("You pick a plan.<br>You're locked in.", 580, 300, "w:pick", size=70, w=520)
-        s.txt("It surprises most seniors", 580, 560, "w:surprises", size=44, w=500, color=GRAYT)
+        s.dark("The unfair catch", 60, 40, "w:catch", size=60, sfx="pop")
+        s.badge("lock", 380, 140, 360, "w:locked", bg=PINK, sfx="lock")
+        s.ttl("You pick a plan.<br>You're locked in.", 0, 560, "w:pick", size=64, w=1124, align="center")
+        s.txt("It surprises most seniors", 0, 770, "w:surprises", size=44, w=1124, align="center", color=GRAYT)
     elif n == 20:  # Jan 1 lock
         s.cal("JAN", "1", 60, 90, "w:January", w=240)
         s.chip("Your plan starts", 330, 140, "w:starts", size=48)
         for k in range(12):
             s.add('<div id="@ID" class="e" style="left:%dpx;top:480px;width:78px;height:76px;background:%s;border-radius:12px"></div>' % (60 + k * 85, TEAL), "w:January", "fade", 0.3)
         s.badge("lock", 480, 600, 160, "w:cannot", bg=PINK, sfx="lock")
-        s.chip("No switching mid-year", 680, 640, "w:cannot", bg=PINK, fg=WHITE, size=48)
+        s.chip("No switching mid-year", 660, 650, "w:cannot", bg=PINK, fg=INK, size=40)
         s.chip("Unless you move out of state", 130, 790, "w:unless", size=44)
         s.badge("pin", 60, 780, 70, "w:unless", bg=BLUE)
     elif n == 21:  # drops mid-year
@@ -427,10 +499,10 @@ def build(n):
         s.txt("Plan starts", 40, 350, "w:Imagine", size=42, w=240, align="center")
         s.arrow(300, 200, 420, 200, "w:February", dur=0.4)
         s.cal("FEB", "!", 440, 90, "w:February", w=240, band=PINK)
-        s.badge("mail", 740, 90, 240, "w:letter", bg=BLUE, sfx="pop")
+        s.badge("mail", 740, 90, 240, "w:letter", bg=PINK, sfx="pop")
         s.card(40, 470, 1044, 290, "w:dropping", border="6px solid " + PINK)
-        s.badge("pill", 80, 540, 150, "w:dropping", bg=PINK)
-        s.txt("Your most expensive<br>prescription is dropped", 270, 530, "w:dropping", size=54, w=760)
+        s.badge("pill", 80, 540, 150, "w:dropping", bg=BG_PINK)
+        s.txt("Your most expensive<br>prescription is dropped", 270, 530, "w:dropping", size=54, w=760, color=INK)
         s.stamp("Dropped", 780, 405, "w:expensive", size=56, rot=-6)
     elif n == 23:  # appeal -> no
         s.badge("doc", 80, 130, 280, "w:file", bg=BLUE, sfx="pop")
@@ -439,13 +511,13 @@ def build(n):
         s.badge("building", 620, 130, 280, "w:insurance", bg=PURP)
         s.txt("Insurer", 600, 440, "w:insurance", size=52, w=320, align="center")
         s.stamp("No", 740, 520, "w:no", size=190, rot=-10)
-        s.chip("You can ask. They can still say no.", 60, 740, "w:can", size=46)
+        s.dark("You can ask. They can still say no.", 60, 740, "w:can", size=46)
     elif n == 24:  # shop every fall
         s.chip("Shop your Part D plan every fall", 60, 40, "w:shopping", size=50)
         s.cal("OCT", "15", 60, 200, "w:fifteenth", w=300, band=TEAL, sfx="pop")
         s.cal("DEC", "7", 764, 200, "w:seventh", w=300, band=PINK, sfx="pop2")
-        s.bar(380, 330, 364, 40, "w:between", color=LGRAY, anim="fade")
-        s.bar(380, 330, 364, 40, "w:between", color=TEAL, anim="growx", dur=1.4)
+        s.bar(380, 330, 364, 40, "w:between", color="rgba(255,255,255,.35)", anim="fade")
+        s.bar(380, 330, 364, 40, "w:between", color="#fff", anim="growx", dur=1.4)
         s.dark("Every single fall", 280, 600, "w:every", size=64)
         s.txt("It is so critical", 280, 720, "w:critical", size=48, w=560, align="center", color=GRAYT)
     elif n == 25:  # biggest mistake on medicare.gov
@@ -461,7 +533,7 @@ def build(n):
     elif n == 26:  # $0 is no bargain
         s.card(40, 70, 480, 420, "w:zero", sfx="pop")
         s.stat("$0", 40, 80, "w:zero", size=250, color=TEAL, w=480, align="center")
-        s.txt("per month", 40, 380, "w:zero", size=44, w=480, align="center")
+        s.txt("per month", 40, 380, "w:zero", size=44, w=480, align="center", color=INK)
         s.dark("No bargain if…", 580, 90, "w:bargain", size=60)
         s.badge("close", 580, 260, 110, "w:cover", bg=PINK, sfx="stamp")
         s.txt("It doesn't cover<br>your actual medications", 720, 262, "w:cover", size=44, w=370)
@@ -473,19 +545,19 @@ def build(n):
         s.drug("Medication A · 10 mg", 60, 160, 560, "w:exact", ok=True)
         s.drug("Medication B · 25 mg", 60, 270, 560, "w:milligram", ok=True)
         s.drug("Medication C · 5 mg", 60, 380, 560, "w:dosage", ok=True)
-        s.arrow(640, 330, 740, 330, "w:calculate", dur=0.4)
+        s.arrow(640, 330, 740, 330, "w:calculate", dur=0.4, color="#fff")
         s.card(760, 190, 320, 400, "w:calculate", sfx="pop")
         s.badge("dollar", 840, 220, 160, "w:calculate", bg=TEAL)
-        s.txt("Your lowest<br>annual cost", 760, 420, "w:lowest", size=44, w=320, align="center")
+        s.txt("Your lowest<br>annual cost", 760, 420, "w:lowest", size=44, w=320, align="center", color=INK)
         s.dark("Not the lowest premium", 120, 640, "w:lowest", size=52)
     elif n == 28:  # $40 plan saves thousands
         s.chip("Often…", 60, 40, "w:Often", size=50)
-        s.bar(160, 240, 300, 520, "w:forty", color=PINK, anim="growy")
-        s.bar(660, 480, 300, 280, "w:forty", color=TEAL, anim="growy")
+        s.bar(160, 240, 300, 520, "w:forty", color=BG_PINK, anim="growy")
+        s.bar(660, 480, 300, 280, "w:forty", color=YEL, anim="growy")
         s.txt("$0 plan", 160, 780, "w:forty", size=44, w=300, align="center")
-        s.txt("Higher yearly cost", 110, 160, "w:forty", size=40, w=400, align="center", color=PINK)
+        s.txt("Higher yearly cost", 110, 160, "w:forty", size=40, w=400, align="center", color="#fff")
         s.txt("$40 plan", 660, 780, "w:forty", size=44, w=300, align="center")
-        s.txt("Lower yearly cost", 610, 400, "w:forty", size=40, w=400, align="center", color=TEAL)
+        s.txt("Lower yearly cost", 610, 400, "w:forty", size=40, w=400, align="center", color=YEL)
         s.chip("Saves thousands", 620, 140, "w:thousands", size=56, sfx="pop")
     elif n == 29:  # healthy
         s.badge("heart", 100, 180, 300, "w:healthy", bg=TEAL, sfx="pop")
@@ -496,20 +568,20 @@ def build(n):
         s.pill(870, 280, "w:cheap", rot=-35, ln=170, th=64, c1=TEAL)
         s.txt("one cheap generic<br>blood pressure pill", 780, 420, "w:generic", size=40, w=300, align="center")
     elif n == 30:  # tempted to drop
-        s.stat("$0", 30, 110, "w:formerly", size=240, color=TEAL, w=330, align="center")
-        s.arrow(370, 250, 470, 250, "w:twenty", dur=0.4, wd=14)
-        s.stat("$20", 470, 110, "w:twenty", size=240, color=PINK, w=330, align="center", sfx="pop")
+        s.stat("$0", 30, 110, "w:formerly", size=240, color="#fff", w=330, align="center")
+        s.arrow(370, 250, 470, 250, "w:twenty", dur=0.4, wd=14, color="#fff")
+        s.stat("$20", 470, 110, "w:twenty", size=240, color=YEL, w=330, align="center", sfx="pop")
         s.txt("per month", 470, 380, "w:twenty", size=44, w=330, align="center")
         s.card(260, 520, 600, 220, "w:tempted", sfx="pop")
         s.add('<div id="@ID" class="e" style="left:300px;top:575px;width:520px;height:110px;background:%s;color:#fff;border-radius:55px;font-size:48px;font-weight:900;line-height:110px;text-align:center">Drop Part D?</div>' % PINK, "w:tempted", "zoom")
     elif n == 31:  # do not make that mistake
-        s.badge("close", 60, 120, 380, "w:Do", bg=PINK, sfx="stamp")
-        s.ttl("Don't drop<br>Part D", 490, 140, "w:Do", size=96, w=620, color=INK)
-        s.chip("without other credible drug coverage", 490, 400, "w:credible", size=40)
-        s.num("2", 490, 520, 170, "w:two", bg=BLUE, sfx="pop")
-        s.ttl("dangers", 690, 570, "w:two", size=72, w=300, color=INK)
-        s.badge("warn", 60, 560, 260, "w:exposed", bg=YEL, fg=INK)
-        s.txt("completely exposed", 40, 830, "w:exposed", size=40, w=320, align="center", color=GRAYT)
+        s.badge("close", 20, 150, 360, "w:Do", bg=PINK, sfx="stamp")
+        s.ttl("Don't drop<br>Part D", 420, 140, "w:Do", size=80, w=700)
+        s.chip("without other credible drug coverage", 420, 380, "w:credible", size=40, w=640)
+        s.num("2", 420, 560, 150, "w:two", bg=BLUE, sfx="pop")
+        s.ttl("dangers", 600, 595, "w:two", size=64, w=420)
+        s.badge("warn", 20, 580, 240, "w:exposed", bg=YEL, fg=INK)
+        s.txt("completely<br>exposed", 270, 650, "w:exposed", size=40, w=240, color=GRAYT) if False else s.txt("completely exposed", 0, 840, "w:exposed", size=40, w=300, align="center", color=GRAYT)
     elif n == 32:  # first danger
         s.num("1", 40, 60, 130, 0.2, bg=PINK)
         s.chip("An unexpected illness…", 200, 85, "w:unexpected", size=50)
@@ -522,7 +594,7 @@ def build(n):
     elif n == 33:  # second danger
         s.num("2", 40, 60, 130, 0.2, bg=PINK)
         s.chip("Enroll in Part D later…", 200, 85, "w:later", size=50)
-        s.badge("clock", 80, 270, 300, "w:eventually", bg=BLUE, sfx="pop")
+        s.badge("clock", 80, 270, 300, "w:eventually", bg="#fff", fg=INK, sfx="pop")
         s.ttl("Permanent<br>lifetime<br>late penalty", 430, 250, "w:permanent", size=84, w=640, color=PINK, sfx="stamp")
         s.dark("Charged by Medicare", 430, 650, "w:Medicare", size=48)
     else:
@@ -568,7 +640,7 @@ def main():
                              ("mouse_click.mp3", 29.02, 0.48, 0.22, None), ("chord.mp3", 29.4, 1.44, 0.4, 0.5)):
         au(src, CLIP0 + t, d, v, fade_out=fo)
     au("music.mp3", CLIP0 + 20.1, 10.74, 0.14, fade_out=0.9, name="finale-music")
-    index = INDEX_TMPL % ("%.2f" % TOTAL, "\n".join(hosts), CLIP0, "%.2f" % (TOTAL - CLIP0), CLIP0, "%.2f" % (TOTAL - CLIP0), "\n".join(audio), "%.2f" % TOTAL)
+    index = INDEX_TMPL % ("%.2f" % TOTAL, "%.2f" % TOTAL, "\n".join(hosts), CLIP0, CLIP0, "%.2f" % (TOTAL - CLIP0), "%.2f" % TOTAL, "\n".join(audio))
     open(os.path.join(ROOT, "index.html"), "w").write(index)
     # --- tabs
     open(os.path.join(ROOT, "compositions", "tabs.html"), "w").write(tabs_html())
@@ -616,7 +688,7 @@ def tabs_html():
     for i in range(1, 8):
         a = CHAPTER_START[i]
         b = CHAPTER_START[i + 1] if i < 7 else None
-        tw.append("light(%d, %.3f);" % (i, a))
+        tw.append("light(%d, %.3f);" % (i, max(a, 0.18)))
         if b is not None:
             tw.append("done(%d, %.3f);" % (i, b))
     return base.replace("@@TABS@@", tabs).replace("@@TW@@", "\n    ".join(tw))

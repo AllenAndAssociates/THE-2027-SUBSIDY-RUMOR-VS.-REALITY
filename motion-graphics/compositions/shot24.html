@@ -1,0 +1,45 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: 'Inter', sans-serif; color: #1B1F4B; }
+    .e { position: absolute; }
+    .bgf { position: absolute; inset: 0; }
+    .pg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .st { position: absolute; width: 1124px; height: 890px; }
+
+  </style>
+  <div id="root" data-composition-id="shot24" data-width="1920" data-height="1080">
+    <div id="s24-bg" class="bgf" style="background:#0484C5"></div>
+    <div id="s24-pg" class="pg">
+    <div id="s24e8" class="e" style="left:60px;top:46px;width:68px;height:68px;border-radius:16px;background:#fff"><svg viewBox="0 0 24 24" style="position:absolute;left:12px;top:12px;width:44px;height:44px"><path fill="#0B1F3A" d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/></svg></div>
+    <div id="s24e9" class="e" style="left:150px;top:42px;white-space:nowrap;font-size:48px;font-weight:400;color:#fff;letter-spacing:-.01em">Open enrollment</div>
+    <div id="s24e10" class="e" style="left:150px;top:104px;white-space:nowrap;background:#D4AF37;color:#0B1F3A;font-size:22px;font-weight:900;padding:5px 14px;border-radius:5px">Oct 15 – Dec 7</div>
+    <div id="s24e11" class="e" style="left:1550px;top:690px;width:320px;height:320px;border-radius:50%;background:#0a0a0a;border:10px solid #D4AF37;box-shadow:0 10px 30px rgba(0,0,0,.3)"></div>
+    </div>
+    <div id="s24-st" class="st" style="left:398px;top:150px">
+    <div id="s24e1" class="e" style="left:60px;top:40px;white-space:nowrap;background:#F6E4A6;color:#0B1F3A;font-size:50px;font-weight:700;border-radius:8px;padding:8px 18px;line-height:1.15">Shop your Part D plan every fall</div>
+    <div id="s24e2" class="e" style="left:60px;top:200px;width:300px;height:300px;background:#fff;border-radius:22px;box-shadow:0 14px 34px rgba(27,31,75,.18);overflow:hidden"><div style="height:90px;background:#4F9B22;color:#fff;font-weight:900;font-size:51px;text-align:center;line-height:90px;letter-spacing:.08em">OCT</div><div style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:126px;color:#0B1F3A;text-align:center;line-height:204px">15</div></div>
+    <div id="s24e3" class="e" style="left:764px;top:200px;width:300px;height:300px;background:#fff;border-radius:22px;box-shadow:0 14px 34px rgba(27,31,75,.18);overflow:hidden"><div style="height:90px;background:#D4AF37;color:#fff;font-weight:900;font-size:51px;text-align:center;line-height:90px;letter-spacing:.08em">DEC</div><div style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:126px;color:#0B1F3A;text-align:center;line-height:204px">7</div></div>
+    <div id="s24e4" class="e" style="left:380px;top:330px;width:364px;height:40px;background:rgba(255,255,255,.35);border-radius:14px"></div>
+    <div id="s24e5" class="e" style="left:380px;top:330px;width:364px;height:40px;background:#fff;border-radius:14px"></div>
+    <div id="s24e6" class="e" style="left:280px;top:600px;white-space:nowrap;background:#071428;color:#FFFFFF;font-size:64px;font-weight:700;border-radius:8px;padding:8px 18px;line-height:1.15">Every single fall</div>
+    <div id="s24e7" class="e" style="left:280px;top:720px;font-size:48px;color:#5B6B82;font-weight:700;text-align:center;line-height:1.2;width:560px;">It is so critical</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo('#s24-bg', { opacity: 0 }, { opacity: 1, duration: 0.25, ease: 'power2.out' }, 0);
+    tl.fromTo('#s24e1',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.5,ease:'power2.out'},0.840);
+    tl.fromTo('#s24e2',{opacity:0,y:28,scale:.9,rotation:0},{opacity:1,y:0,scale:1,rotation:0,duration:0.5,ease:'back.out(1.5)'},4.440);
+    tl.fromTo('#s24e3',{opacity:0,y:28,scale:.9,rotation:0},{opacity:1,y:0,scale:1,rotation:0,duration:0.5,ease:'back.out(1.5)'},5.660);
+    tl.fromTo('#s24e4',{opacity:0,rotation:0},{opacity:1,rotation:0,duration:0.7,ease:'power2.out'},3.560);
+    tl.fromTo('#s24e5',{scaleX:0,transformOrigin:'0% 50%'},{scaleX:1,duration:1.4,ease:'power2.out'},3.560);
+    tl.fromTo('#s24e6',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.5,ease:'power2.out'},2.480);
+    tl.fromTo('#s24e7',{opacity:0,rotation:0},{opacity:1,rotation:0,duration:0.45,ease:'power2.out'},6.680);
+    tl.fromTo('#s24e8',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.4,ease:'back.out(2)'},0.150);
+    tl.fromTo('#s24e9',{opacity:0,x:-80},{opacity:1,x:0,duration:0.45,ease:'power3.out'},0.200);
+    tl.fromTo('#s24e10',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.4,ease:'power2.out'},0.350);
+    tl.fromTo('#s24e11',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},0.300);
+    tl.to(['#s24-st', '#s24-pg'], { opacity: 0, duration: 0.22, ease: 'power2.in' }, 7.000);
+    window.__timelines['shot24'] = tl;
+  </script>
+</template>

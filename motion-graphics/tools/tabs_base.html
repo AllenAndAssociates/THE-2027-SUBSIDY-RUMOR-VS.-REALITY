@@ -1,0 +1,103 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      font-family: "Inter", sans-serif;
+    }
+    #tabs-bar {
+      position: absolute;
+      left: 700px;
+      top: 54px;
+      width: 1124px;
+      height: 56px;
+      display: flex;
+      gap: 10px;
+    }
+    .tab {
+      position: relative;
+      flex: 1 1 auto;
+      height: 56px;
+      border-radius: 16px;
+      border: 1.5px solid #d3dce9;
+      background: #f1f4f9;
+      overflow: hidden;
+    }
+    .tab .fill,
+    .tab .doneov {
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+    }
+    .tab .fill {
+      background: linear-gradient(100deg, #f1d27a, #d4af37);
+      opacity: 0;
+    }
+    .tab .doneov {
+      background: rgba(212, 175, 55, 0.18);
+      box-shadow: inset 0 0 0 1.5px rgba(176, 138, 24, 0.75);
+      opacity: 0;
+    }
+    .tab.done .doneov {
+      opacity: 1;
+    }
+    .tab .in {
+      position: relative;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 12px;
+    }
+    .tab .num {
+      flex: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #dce3ee;
+      color: #4f5f77;
+      font-weight: 900;
+      font-size: 16px;
+      line-height: 28px;
+      text-align: center;
+    }
+    .tab.done .num {
+      background: rgba(212, 175, 55, 0.4);
+      color: #4a3700;
+    }
+    .tab .lbl {
+      font-weight: 700;
+      font-size: 17px;
+      white-space: nowrap;
+      color: #55657d;
+    }
+    .tab.done .lbl {
+      color: #0b1f3a;
+    }
+  </style>
+  <div id="root" data-composition-id="tabs" data-width="1920" data-height="1080">
+    <div id="tabs-bar" data-layout-ignore>
+      @@TABS@@
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const NAVY = "#0b1f3a";
+    function light(i, t) {
+      tl.to("#tab" + i + "-fill", { opacity: 1, duration: 0.35, ease: "power2.out" }, t);
+      tl.to("#tab" + i + "-lbl", { color: NAVY, duration: 0.35 }, t);
+      tl.to("#tab" + i + "-num", { backgroundColor: NAVY, color: "#f1d27a", duration: 0.35 }, t);
+      tl.to("#tab" + i, { boxShadow: "0 6px 22px 0 rgba(212,175,55,0.6)", duration: 0.45, ease: "power2.out" }, t);
+    }
+    function done(i, t) {
+      tl.to("#tab" + i + "-fill", { opacity: 0, duration: 0.35, ease: "power2.inOut" }, t);
+      tl.to("#tab" + i + "-done", { opacity: 1, duration: 0.35 }, t);
+      tl.to("#tab" + i + "-lbl", { color: NAVY, duration: 0.35 }, t);
+      tl.to("#tab" + i + "-num", { backgroundColor: "rgba(212,175,55,0.4)", color: "#4a3700", duration: 0.35 }, t);
+      tl.to("#tab" + i, { boxShadow: "0 0 0 0 rgba(212,175,55,0)", duration: 0.35 }, t);
+    }
+    @@TW@@
+    window.__timelines["tabs"] = tl;
+  </script>
+</template>

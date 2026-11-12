@@ -1,0 +1,47 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: 'Inter', sans-serif; color: #1B1F4B; }
+    .e { position: absolute; }
+    .bgf { position: absolute; inset: 0; }
+    .pg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .st { position: absolute; width: 1124px; height: 890px; }
+
+  </style>
+  <div id="root" data-composition-id="shot32" data-width="1920" data-height="1080">
+    <div id="s32-bg" class="bgf" style="background:#10294B"></div>
+    <div id="s32-pg" class="pg">
+    <div id="s32e9" class="e" style="left:60px;top:46px;width:68px;height:68px;border-radius:16px;background:#fff"><svg viewBox="0 0 24 24" style="position:absolute;left:12px;top:12px;width:44px;height:44px"><path fill="#0B1F3A" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>
+    <div id="s32e10" class="e" style="left:150px;top:42px;white-space:nowrap;font-size:48px;font-weight:400;color:#fff;letter-spacing:-.01em">Danger 1</div>
+    <div id="s32e11" class="e" style="left:150px;top:104px;white-space:nowrap;background:#D4AF37;color:#0B1F3A;font-size:22px;font-weight:900;padding:5px 14px;border-radius:5px">No out-of-pocket cap</div>
+    <div id="s32e12" class="e" style="left:1550px;top:690px;width:320px;height:320px;border-radius:50%;background:#0a0a0a;border:10px solid #D4AF37;box-shadow:0 10px 30px rgba(0,0,0,.3)"></div>
+    </div>
+    <div id="s32-st" class="st" style="left:398px;top:150px">
+    <div id="s32e1" class="e" style="left:40px;top:60px;width:130px;height:130px;border-radius:50%;background:#D4AF37;color:#0B1F3A;font-family:'Montserrat',sans-serif;font-weight:900;font-size:75px;line-height:130px;text-align:center">1</div>
+    <div id="s32e2" class="e" style="left:200px;top:85px;white-space:nowrap;background:#F6E4A6;color:#0B1F3A;font-size:50px;font-weight:700;border-radius:8px;padding:8px 18px;line-height:1.15">An unexpected illness…</div>
+    <div id="s32e3" class="e" style="left:60px;top:260px;width:250px;height:250px;background:#fff;border-radius:22px;box-shadow:0 14px 34px rgba(27,31,75,.18);overflow:hidden"><div style="height:75px;background:#D4AF37;color:#fff;font-weight:900;font-size:42px;text-align:center;line-height:75px;letter-spacing:.08em">MAR</div><div style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:105px;color:#0B1F3A;text-align:center;line-height:170px"></div></div>
+    <div id="s32e4" class="e" style="left:400px;top:270px;width:200px;height:200px;border-radius:50%;background:#1B3F7A"><svg viewBox="0 0 24 24" style="position:absolute;left:42px;top:42px;width:115px;height:115px"><path fill="#FFFFFF" d="M4.22 11.29l7.07-7.07a5 5 0 0 1 7.07 7.07l-7.07 7.07a5 5 0 0 1-7.07-7.07zm1.41 1.41a3 3 0 0 0 4.24 4.24l2.83-2.83-4.24-4.24-2.83 2.83z"/></svg></div>
+    <div id="s32e5" class="e" style="left:340px;top:490px;font-size:44px;color:#fff;font-weight:700;text-align:center;line-height:1.2;width:320px;">Costly<br>medication</div>
+    <div id="s32e6" class="e" style="left:720px;top:250px;width:280px;height:280px;border-radius:50%;background:#C3CCCC"><svg viewBox="0 0 24 24" style="position:absolute;left:59px;top:59px;width:162px;height:162px"><path fill="#FFFFFF" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>
+    <div id="s32e7" class="e" style="left:880px;top:230px;width:130px;height:130px;border-radius:50%;background:#D4AF37"><svg viewBox="0 0 24 24" style="position:absolute;left:27px;top:27px;width:75px;height:75px"><path fill="#0B1F3A" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></div>
+    <div id="s32e8" class="e" style="left:690px;top:560px;font-size:50px;color:#fff;font-weight:700;text-align:center;line-height:1.2;width:360px;">No $2,400 cap</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo('#s32-bg', { opacity: 0 }, { opacity: 1, duration: 0.25, ease: 'power2.out' }, 0);
+    tl.fromTo('#s32e1',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},0.200);
+    tl.fromTo('#s32e2',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.5,ease:'power2.out'},1.100);
+    tl.fromTo('#s32e3',{opacity:0,y:28,scale:.9,rotation:0},{opacity:1,y:0,scale:1,rotation:0,duration:0.5,ease:'back.out(1.5)'},2.600);
+    tl.fromTo('#s32e4',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},3.680);
+    tl.fromTo('#s32e5',{opacity:0,rotation:0},{opacity:1,rotation:0,duration:0.45,ease:'power2.out'},3.680);
+    tl.fromTo('#s32e6',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},7.220);
+    tl.fromTo('#s32e7',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},5.400);
+    tl.fromTo('#s32e8',{opacity:0,rotation:0},{opacity:1,rotation:0,duration:0.45,ease:'power2.out'},7.220);
+    tl.fromTo('#s32e9',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.4,ease:'back.out(2)'},0.150);
+    tl.fromTo('#s32e10',{opacity:0,x:-80},{opacity:1,x:0,duration:0.45,ease:'power3.out'},0.200);
+    tl.fromTo('#s32e11',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.4,ease:'power2.out'},0.350);
+    tl.fromTo('#s32e12',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},0.300);
+    tl.to(['#s32-st', '#s32-pg'], { opacity: 0, duration: 0.22, ease: 'power2.in' }, 7.480);
+    window.__timelines['shot32'] = tl;
+  </script>
+</template>
