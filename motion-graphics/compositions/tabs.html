@@ -1,0 +1,114 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      font-family: "Inter", sans-serif;
+    }
+    #tabs-bar {
+      position: absolute;
+      left: 700px;
+      top: 54px;
+      width: 1124px;
+      height: 56px;
+      display: flex;
+      gap: 10px;
+    }
+    .tab {
+      position: relative;
+      flex: 1 1 auto;
+      height: 56px;
+      border-radius: 16px;
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.05);
+      overflow: hidden;
+    }
+    .tab .fill,
+    .tab .doneov {
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+    }
+    .tab .fill {
+      background: linear-gradient(100deg, #f1d27a, #d4af37);
+      opacity: 0;
+    }
+    .tab .doneov {
+      background: rgba(212, 175, 55, 0.14);
+      box-shadow: inset 0 0 0 1.5px rgba(212, 175, 55, 0.55);
+      opacity: 0;
+    }
+    .tab.done .doneov {
+      opacity: 1;
+    }
+    .tab .in {
+      position: relative;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 12px;
+    }
+    .tab .num {
+      flex: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.55);
+      font-weight: 900;
+      font-size: 16px;
+      line-height: 28px;
+      text-align: center;
+    }
+    .tab.done .num {
+      background: rgba(212, 175, 55, 0.3);
+      color: #fbeab4;
+    }
+    .tab .lbl {
+      font-weight: 700;
+      font-size: 17px;
+      white-space: nowrap;
+      color: rgba(255, 255, 255, 0.5);
+    }
+    .tab.done .lbl {
+      color: rgba(255, 255, 255, 0.92);
+    }
+  </style>
+  <div id="root" data-composition-id="tabs" data-width="1920" data-height="1080">
+    <div id="tabs-bar" data-layout-ignore>
+      <div class="tab done" id="tab1"><div class="doneov"></div><div class="in"><span class="num">1</span><span class="lbl">The Rumor</span></div></div>
+      <div class="tab done" id="tab2"><div class="doneov"></div><div class="in"><span class="num">2</span><span class="lbl">Subsidy</span></div></div>
+      <div class="tab done" id="tab3"><div class="doneov"></div><div class="in"><span class="num">3</span><span class="lbl">Locked-In</span></div></div>
+      <div class="tab done" id="tab4"><div class="doneov"></div><div class="in"><span class="num">4</span><span class="lbl">Premiums</span></div></div>
+      <div class="tab done" id="tab5"><div class="doneov"></div><div class="in"><span class="num">5</span><span class="lbl">Shop Smart</span></div></div>
+      <div class="tab" id="tab6"><div class="doneov" id="tab6-done"></div><div class="fill" id="tab6-fill"></div><div class="in"><span class="num" id="tab6-num">6</span><span class="lbl" id="tab6-lbl">ANOC &amp; Dec 7</span></div></div>
+      <div class="tab" id="tab7"><div class="doneov"></div><div class="fill" id="tab7-fill"></div><div class="in"><span class="num" id="tab7-num">7</span><span class="lbl" id="tab7-lbl">Free Review</span></div></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const NAVY = "#071428";
+
+    // Shot 34: Chapter Tab 6 (ANOC & Dec 7) lights up
+    tl.to("#tab6-fill", { opacity: 1, duration: 0.35, ease: "power2.out" }, 0.18);
+    tl.to("#tab6-lbl", { color: NAVY, duration: 0.35 }, 0.18);
+    tl.to("#tab6-num", { backgroundColor: NAVY, color: "#f1d27a", duration: 0.35 }, 0.18);
+    tl.fromTo("#tab6", { boxShadow: "0 0 0 0 rgba(212,175,55,0)" }, { boxShadow: "0 0 34px 2px rgba(212,175,55,0.55)", duration: 0.45, ease: "power2.out" }, 0.18);
+
+    // Shot 37: Tab 6 completes, Chapter Tab 7 (Free Review) lights up
+    tl.to("#tab6-fill", { opacity: 0, duration: 0.35, ease: "power2.inOut" }, 19.94);
+    tl.to("#tab6-done", { opacity: 1, duration: 0.35 }, 19.94);
+    tl.to("#tab6-lbl", { color: "rgba(255,255,255,0.92)", duration: 0.35 }, 19.94);
+    tl.to("#tab6-num", { backgroundColor: "rgba(212,175,55,0.3)", color: "#fbeab4", duration: 0.35 }, 19.94);
+    tl.to("#tab6", { boxShadow: "0 0 0 0 rgba(212,175,55,0)", duration: 0.35 }, 19.94);
+
+    tl.to("#tab7-fill", { opacity: 1, duration: 0.35, ease: "power2.out" }, 20.1);
+    tl.to("#tab7-lbl", { color: NAVY, duration: 0.35 }, 20.1);
+    tl.to("#tab7-num", { backgroundColor: NAVY, color: "#f1d27a", duration: 0.35 }, 20.1);
+    tl.fromTo("#tab7", { boxShadow: "0 0 0 0 rgba(212,175,55,0)" }, { boxShadow: "0 0 34px 2px rgba(212,175,55,0.55)", duration: 0.45, ease: "power2.out" }, 20.1);
+
+    window.__timelines["tabs"] = tl;
+  </script>
+</template>

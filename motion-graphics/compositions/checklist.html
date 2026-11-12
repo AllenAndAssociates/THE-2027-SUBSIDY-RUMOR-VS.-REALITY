@@ -1,0 +1,433 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      font-family: "Inter", sans-serif;
+      color: #ffffff;
+    }
+    #cl-card {
+      position: absolute;
+      left: 700px;
+      top: 126px;
+      width: 1124px;
+      height: 890px;
+      border-radius: 32px;
+      background: linear-gradient(160deg, #10294b 0%, #0b1f3a 58%, #091a33 100%);
+      border: 2px solid rgba(212, 175, 55, 0.55);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+      overflow: hidden;
+    }
+    #cl-band {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 8px;
+      background: linear-gradient(90deg, #a8841f, #f1d27a, #d4af37);
+    }
+    #cl-eyebrow {
+      position: absolute;
+      left: 44px;
+      top: 32px;
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      color: #d4af37;
+    }
+    #cl-title {
+      position: absolute;
+      left: 44px;
+      top: 58px;
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+    #cl-chip {
+      position: absolute;
+      right: 44px;
+      top: 48px;
+      height: 44px;
+      padding: 0 20px;
+      border-radius: 22px;
+      border: 1.5px solid rgba(212, 175, 55, 0.6);
+      background: rgba(212, 175, 55, 0.12);
+      color: #f1d27a;
+      font-size: 19px;
+      font-weight: 900;
+      line-height: 41px;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
+    .ghost {
+      position: absolute;
+      left: 40px;
+      width: 1044px;
+      height: 156px;
+      border-radius: 22px;
+      border: 2px dashed rgba(255, 255, 255, 0.16);
+    }
+    .row {
+      position: absolute;
+      left: 40px;
+      width: 1044px;
+      height: 156px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1.5px solid rgba(255, 255, 255, 0.1);
+    }
+    .row .glow {
+      position: absolute;
+      inset: -1.5px;
+      border-radius: 22px;
+      border: 2px solid #d4af37;
+      background: rgba(212, 175, 55, 0.07);
+      opacity: 0;
+    }
+    .ring {
+      position: absolute;
+      left: 30px;
+      top: 42px;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      border: 4px solid #d4af37;
+    }
+    .ring .rfill {
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f1d27a, #d4af37);
+    }
+    .ring svg {
+      position: absolute;
+      left: -4px;
+      top: -4px;
+      width: 72px;
+      height: 72px;
+    }
+    .ring path {
+      fill: none;
+      stroke: #071428;
+      stroke-width: 5.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 40;
+      stroke-dashoffset: 40;
+    }
+    .txt {
+      position: absolute;
+      left: 128px;
+      top: 26px;
+      width: 720px;
+    }
+    .step {
+      font-size: 17px;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      color: #d4af37;
+    }
+    .head {
+      margin-top: 4px;
+      font-size: 34px;
+      font-weight: 900;
+      line-height: 1.15;
+      white-space: nowrap;
+    }
+    .sub {
+      margin-top: 8px;
+      font-size: 23px;
+      font-weight: 700;
+      color: #a9b8cf;
+      white-space: nowrap;
+    }
+    .pill {
+      display: inline-block;
+      padding: 0 10px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+    }
+    .pill.gold {
+      background: #d4af37;
+      color: #071428;
+    }
+    .hl {
+      color: #ffffff;
+      background: linear-gradient(#d4af37, #d4af37) no-repeat left bottom / 0% 5px;
+      padding-bottom: 2px;
+    }
+    .art {
+      position: absolute;
+      right: 26px;
+      top: 18px;
+      width: 160px;
+      height: 120px;
+    }
+    .art svg {
+      position: absolute;
+      inset: 0;
+      width: 160px;
+      height: 120px;
+    }
+    #cl-sept {
+      position: absolute;
+      right: -2px;
+      bottom: 2px;
+      height: 32px;
+      padding: 0 12px;
+      border-radius: 16px;
+      background: #d4af37;
+      color: #071428;
+      font-size: 16px;
+      font-weight: 900;
+      line-height: 32px;
+      letter-spacing: 0.08em;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    }
+    #cl-tip {
+      position: absolute;
+      left: 40px;
+      top: 664px;
+      width: 1044px;
+      height: 186px;
+      border-radius: 24px;
+      background: linear-gradient(100deg, #f4d97f 0%, #d4af37 62%, #c29b2c 100%);
+      color: #071428;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+    }
+    #cl-tipbadge {
+      position: absolute;
+      left: 32px;
+      top: 18px;
+      height: 32px;
+      padding: 0 16px;
+      border-radius: 16px;
+      background: #071428;
+      color: #f1d27a;
+      font-size: 17px;
+      font-weight: 900;
+      line-height: 32px;
+      letter-spacing: 0.18em;
+    }
+    #cl-tip1 {
+      position: absolute;
+      left: 32px;
+      top: 58px;
+      font-size: 35px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    #cl-tip2 {
+      position: absolute;
+      left: 32px;
+      top: 104px;
+      font-size: 32px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    #cl-mark {
+      position: relative;
+      display: inline-block;
+      padding: 0 12px;
+      margin-left: -4px;
+    }
+    #cl-markbar {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 1px;
+      bottom: -3px;
+      background: #071428;
+      border-radius: 4px;
+      clip-path: polygon(0 10%, 100% 0, 98% 100%, 1.5% 92%);
+    }
+    #cl-markbar-txt {
+      position: relative;
+      font-weight: 900;
+      color: #071428;
+    }
+    #cl-tip3 {
+      position: absolute;
+      left: 32px;
+      top: 148px;
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      color: rgba(7, 20, 40, 0.78);
+      white-space: nowrap;
+    }
+    #cl-bulb {
+      position: absolute;
+      right: 36px;
+      top: 38px;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: #071428;
+    }
+    #cl-bulb svg {
+      position: absolute;
+      left: 21px;
+      top: 21px;
+      width: 68px;
+      height: 68px;
+    }
+  </style>
+
+  <div id="root" data-composition-id="checklist" data-width="1920" data-height="1080">
+    <div id="cl-card" data-layout-allow-overflow>
+      <div id="cl-band"></div>
+      <div id="cl-eyebrow">ACTION CHECKLIST</div>
+      <div id="cl-title">Your 2027 Part D To-Do List</div>
+      <div id="cl-chip">OPEN ENROLLMENT · OCT 15 – DEC 7</div>
+
+      <div class="ghost" id="cl-ghost1" style="top: 136px"></div>
+      <div class="ghost" id="cl-ghost2" style="top: 308px"></div>
+      <div class="ghost" id="cl-ghost3" style="top: 480px"></div>
+      <div class="ghost" id="cl-ghost4" style="top: 664px; height: 186px; border-radius: 24px"></div>
+
+      <!-- STEP 1 -->
+      <div class="row" id="cl-row1" style="top: 136px">
+        <div class="glow" id="cl-glow1"></div>
+        <div class="ring"><div class="rfill" id="cl-fill1"></div><svg viewBox="0 0 40 40"><path id="cl-tick1" d="M10 21 L17.5 28.5 L30.5 12.5" /></svg></div>
+        <div class="txt">
+          <div class="step">STEP 1</div>
+          <div class="head">Check Your September <span class="hl" id="cl-hl1">ANOC</span> Letter</div>
+          <div class="sub"><span class="pill">2026</span> vs. <span class="pill gold">2027</span> Plan Changes</div>
+        </div>
+        <div class="art" id="cl-art1">
+          <svg viewBox="0 0 160 120" id="cl-letter">
+            <rect x="30" y="4" width="100" height="112" rx="8" fill="#f7f4ea" />
+            <rect x="30" y="4" width="100" height="30" rx="8" fill="#d4af37" />
+            <rect x="30" y="22" width="100" height="12" fill="#d4af37" />
+            <text x="80" y="27" text-anchor="middle" font-family="Inter, sans-serif" font-weight="900" font-size="19" fill="#071428">ANOC</text>
+            <rect x="44" y="48" width="72" height="7" rx="3.5" fill="#9fb0c8" />
+            <rect x="44" y="64" width="72" height="7" rx="3.5" fill="#c3cfdf" />
+            <rect x="44" y="80" width="50" height="7" rx="3.5" fill="#c3cfdf" />
+            <rect x="44" y="96" width="62" height="7" rx="3.5" fill="#c3cfdf" />
+          </svg>
+          <div id="cl-sept">SEPT.</div>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="row" id="cl-row2" style="top: 308px">
+        <div class="glow" id="cl-glow2"></div>
+        <div class="ring"><div class="rfill" id="cl-fill2"></div><svg viewBox="0 0 40 40"><path id="cl-tick2" d="M10 21 L17.5 28.5 L30.5 12.5" /></svg></div>
+        <div class="txt">
+          <div class="step">STEP 2</div>
+          <div class="head">Missing Letter? Call Member ID Card</div>
+          <div class="sub">Use the phone number on your insurance card</div>
+        </div>
+        <div class="art" id="cl-art2">
+          <svg viewBox="0 0 160 120">
+            <rect x="4" y="14" width="150" height="94" rx="12" fill="#1d4377" stroke="#d4af37" stroke-width="2.5" />
+            <rect x="18" y="30" width="30" height="24" rx="5" fill="#d4af37" />
+            <rect x="18" y="66" width="80" height="8" rx="4" fill="#7f9bc4" />
+            <rect x="18" y="82" width="56" height="8" rx="4" fill="#4f74a8" />
+            <text x="62" y="47" font-family="Inter, sans-serif" font-weight="900" font-size="13" fill="#f1d27a" letter-spacing="0.5">MEMBER ID</text>
+            <circle cx="126" cy="86" r="26" fill="#d4af37" stroke="#0b1f3a" stroke-width="4" />
+            <g transform="translate(112 72) scale(1.17)"><path fill="#071428" d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z" /></g>
+          </svg>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="row" id="cl-row3" style="top: 480px">
+        <div class="glow" id="cl-glow3"></div>
+        <div class="ring"><div class="rfill" id="cl-fill3"></div><svg viewBox="0 0 40 40"><path id="cl-tick3" d="M10 21 L17.5 28.5 L30.5 12.5" /></svg></div>
+        <div class="txt">
+          <div class="step">STEP 3</div>
+          <div class="head">Compare All-In Costs Starting <span class="hl" id="cl-hl3">Oct 15</span></div>
+          <div class="sub">Premium + your drugs + pharmacy tier</div>
+        </div>
+        <div class="art" id="cl-art3">
+          <svg viewBox="0 0 160 120">
+            <rect x="26" y="8" width="108" height="104" rx="12" fill="#f7f4ea" />
+            <path d="M26 20 a12 12 0 0 1 12 -12 h84 a12 12 0 0 1 12 12 v18 h-108z" fill="#d4af37" />
+            <text x="80" y="31" text-anchor="middle" font-family="Inter, sans-serif" font-weight="900" font-size="20" fill="#071428" letter-spacing="2">OCT</text>
+            <text x="80" y="92" text-anchor="middle" font-family="Inter, sans-serif" font-weight="900" font-size="54" fill="#071428">15</text>
+            <circle cx="52" cy="8" r="5" fill="#071428" /><circle cx="108" cy="8" r="5" fill="#071428" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- PRO TIP -->
+      <div id="cl-tip">
+        <div id="cl-tipbadge">PRO TIP</div>
+        <div id="cl-tip1">Prescribed a New Drug in November?</div>
+        <div id="cl-tip2">You Can Re-Submit Until <span id="cl-mark"><span id="cl-markbar"></span><span id="cl-markbar-txt">Dec 7 Midnight</span></span></div>
+        <div id="cl-tip3">(Last Choice Wins)</div>
+        <div id="cl-bulb">
+          <svg viewBox="0 0 24 24"><path fill="#f1d27a" d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z" /></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    // ---------- SHOT 34 (0.2 - 6.4): card opens, Step 1 ----------
+    // Card unfolds as the paper-unfold SFX lands (SFX peak ~1.07 s)
+    tl.fromTo(
+      "#cl-card",
+      { opacity: 0, scale: 0.94, y: 34, clipPath: "inset(0% 0% 100% 0% round 32px)" },
+      { opacity: 1, scale: 1, y: 0, clipPath: "inset(0% 0% 0% 0% round 32px)", duration: 0.75, ease: "power3.out" },
+      0.35,
+    );
+    tl.fromTo(["#cl-eyebrow", "#cl-title", "#cl-chip"], { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out", stagger: 0.08 }, 0.75);
+
+    // empty slots show as the card opens, each fills when its row arrives
+    tl.fromTo(["#cl-ghost1", "#cl-ghost2", "#cl-ghost3", "#cl-ghost4"], { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out", stagger: 0.07 }, 0.8);
+    tl.to("#cl-ghost1", { opacity: 0, duration: 0.2 }, 1.4);
+    tl.to("#cl-ghost2", { opacity: 0, duration: 0.2 }, 6.84);
+    tl.to("#cl-ghost3", { opacity: 0, duration: 0.2 }, 10.46);
+    tl.to("#cl-ghost4", { opacity: 0, duration: 0.2 }, 13.5);
+
+    // Step 1 row ("pull out your annual Notice of Change letter")
+    tl.fromTo("#cl-row1", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.98);
+    tl.fromTo("#cl-letter", { scaleY: 0.08, transformOrigin: "50% 0%" }, { scaleY: 1, duration: 0.6, ease: "back.out(1.3)" }, 1.15);
+    tl.fromTo("#cl-sept", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2.2)" }, 5.82); // "September."
+    // "Notice of Change": ANOC underline draws in
+    tl.fromTo("#cl-hl1", { backgroundSize: "0% 5px" }, { backgroundSize: "100% 5px", duration: 0.55, ease: "power2.out" }, 1.92);
+    // Step 1 checks right after "letter," (2.94) -> ding at 2.96
+    tl.fromTo("#cl-fill1", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(2)" }, 2.94);
+    tl.fromTo("#cl-tick1", { strokeDashoffset: 40 }, { strokeDashoffset: 0, duration: 0.28, ease: "power2.out" }, 3.02);
+    tl.fromTo("#cl-glow1", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 2.94);
+
+    // ---------- SHOT 35 (6.4 - 13.1): Steps 2 + 3 ----------
+    // "If you cannot find that letter, call the number on your insurance card,"
+    tl.fromTo("#cl-row2", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 6.74);
+    tl.fromTo("#cl-art2", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.8)" }, 7.3);
+    tl.fromTo("#cl-fill2", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(2)" }, 9.98); // ding 9.98
+    tl.fromTo("#cl-tick2", { strokeDashoffset: 40 }, { strokeDashoffset: 0, duration: 0.28, ease: "power2.out" }, 10.06);
+    tl.fromTo("#cl-glow2", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 9.98);
+
+    // "then compare your options after October fifteenth."
+    tl.fromTo("#cl-row3", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 10.36);
+    tl.fromTo("#cl-art3", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.8)" }, 10.9);
+    tl.fromTo("#cl-hl3", { backgroundSize: "0% 5px" }, { backgroundSize: "100% 5px", duration: 0.6, ease: "power2.out" }, 12.04); // "October"
+    tl.fromTo("#cl-fill3", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(2)" }, 12.98); // ding 12.98
+    tl.fromTo("#cl-tick3", { strokeDashoffset: 40 }, { strokeDashoffset: 0, duration: 0.28, ease: "power2.out" }, 13.06);
+    tl.fromTo("#cl-glow3", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 12.98);
+
+    // ---------- SHOT 36 (13.1 - 19.8): Pro-Tip banner ----------
+    // bell ping at 13.40
+    tl.fromTo("#cl-tip", { opacity: 0, y: 70 }, { opacity: 1, y: 0, duration: 0.55, ease: "back.out(1.4)" }, 13.4);
+    tl.fromTo("#cl-bulb", { scale: 0.4, rotation: -20 }, { scale: 1, rotation: 0, duration: 0.6, ease: "back.out(2)" }, 13.7);
+    // highlighter swipe across "Dec 7 Midnight" while it is spoken (15.96 - 17.36); marker SFX 15.80 -> 16.95
+    tl.fromTo("#cl-markbar", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 1.0, ease: "power1.inOut" }, 15.9);
+    tl.to("#cl-markbar-txt", { color: "#ffffff", duration: 0.5, ease: "none" }, 16.2);
+    tl.fromTo("#cl-tip3", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 17.4);
+    tl.fromTo("#cl-tip", { scale: 1 }, { scale: 1.012, duration: 0.5, yoyo: true, repeat: 1, ease: "sine.inOut" }, 17.0);
+
+    // ---------- Exit (Shot 37 begins at 19.94) ----------
+    tl.to("#cl-card", { opacity: 0, y: -14, scale: 0.985, duration: 0.35, ease: "power2.in" }, 19.9);
+
+    window.__timelines["checklist"] = tl;
+  </script>
+</template>

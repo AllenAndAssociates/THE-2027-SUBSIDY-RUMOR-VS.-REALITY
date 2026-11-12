@@ -1,0 +1,301 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      font-family: "Inter", sans-serif;
+      color: #ffffff;
+    }
+    #ct-card {
+      position: absolute;
+      left: 700px;
+      top: 126px;
+      width: 1124px;
+      height: 890px;
+      border-radius: 32px;
+      background: linear-gradient(160deg, #123058 0%, #0b1f3a 55%, #08172e 100%);
+      border: 2px solid rgba(212, 175, 55, 0.7);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+      overflow: hidden;
+    }
+    #ct-band {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 8px;
+      background: linear-gradient(90deg, #a8841f, #f1d27a, #d4af37);
+    }
+    /* Official logo on a white plate so its green/blue reads on navy */
+    #ct-plate {
+      position: absolute;
+      left: 44px;
+      top: 46px;
+      width: 560px;
+      height: 176px;
+      border-radius: 22px;
+      background: #ffffff;
+      border: 3px solid #d4af37;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+    }
+    #ct-logo {
+      position: absolute;
+      left: 22px;
+      top: 7px;
+      width: 512px;
+      height: 160px;
+      object-fit: contain;
+    }
+    #ct-since {
+      position: absolute;
+      left: 646px;
+      top: 54px;
+      height: 50px;
+      padding: 0 22px;
+      border-radius: 25px;
+      background: #d4af37;
+      color: #071428;
+      font-size: 28px;
+      font-weight: 900;
+      line-height: 50px;
+      letter-spacing: 0.1em;
+      white-space: nowrap;
+    }
+    .ct-h {
+      position: absolute;
+      left: 646px;
+      font-size: 54px;
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+    #ct-h1 {
+      top: 114px;
+    }
+    #ct-h2 {
+      top: 170px;
+      color: #f1d27a;
+    }
+    .panel {
+      position: absolute;
+      left: 44px;
+      width: 1036px;
+      border-radius: 26px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 2px solid rgba(212, 175, 55, 0.5);
+    }
+    .panel .pglow {
+      position: absolute;
+      inset: -2px;
+      border-radius: 26px;
+      border: 3px solid #f1d27a;
+      background: rgba(212, 175, 55, 0.14);
+      opacity: 0;
+    }
+    #ct-phone {
+      top: 262px;
+      height: 270px;
+    }
+    #ct-web {
+      top: 560px;
+      height: 190px;
+    }
+    .icon {
+      position: absolute;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f1d27a, #d4af37);
+    }
+    .icon svg {
+      position: absolute;
+      inset: 0;
+    }
+    #ct-phone .icon {
+      left: 40px;
+      top: 75px;
+      width: 120px;
+      height: 120px;
+    }
+    #ct-ring1,
+    #ct-ring2 {
+      position: absolute;
+      left: 40px;
+      top: 75px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid #d4af37;
+    }
+    .plabel {
+      position: absolute;
+      left: 200px;
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      color: #d4af37;
+    }
+    #ct-phone .plabel {
+      top: 44px;
+    }
+    #ct-num {
+      position: absolute;
+      left: 196px;
+      top: 92px;
+      font-size: 100px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+    #ct-num span {
+      display: inline-block;
+    }
+    #ct-num .dash {
+      color: #d4af37;
+      margin: 0 4px;
+    }
+    #ct-web .icon {
+      left: 40px;
+      top: 35px;
+      width: 120px;
+      height: 120px;
+    }
+    #ct-web .plabel {
+      top: 30px;
+    }
+    #ct-url {
+      position: absolute;
+      left: 200px;
+      top: 76px;
+      font-size: 56px;
+      font-weight: 900;
+      letter-spacing: -0.015em;
+      white-space: nowrap;
+    }
+    #ct-foot {
+      position: absolute;
+      left: 44px;
+      top: 788px;
+      width: 1036px;
+      text-align: center;
+      font-size: 27px;
+      font-weight: 700;
+      color: #a9b8cf;
+      letter-spacing: 0.02em;
+    }
+    #ct-rule {
+      position: absolute;
+      left: 44px;
+      top: 770px;
+      width: 1036px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(212, 175, 55, 0), rgba(212, 175, 55, 0.7), rgba(212, 175, 55, 0));
+    }
+    #ct-cursor {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 56px;
+      height: 56px;
+      filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.5));
+    }
+    #ct-ripple {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 4px solid #f1d27a;
+    }
+    #ct-sweep {
+      position: absolute;
+      left: 0;
+      top: -120px;
+      width: 260px;
+      height: 1200px;
+      background: linear-gradient(100deg, rgba(255, 240, 190, 0), rgba(255, 240, 190, 0.28), rgba(255, 240, 190, 0));
+    }
+  </style>
+
+  <div id="root" data-composition-id="contact" data-width="1920" data-height="1080">
+    <div id="ct-card" data-layout-allow-overflow>
+      <div id="ct-band"></div>
+      <div id="ct-plate"><img id="ct-logo" src="assets/logo.jpg" alt="Allen &amp; Associates Insurance Agency" /></div>
+      <div id="ct-since">SINCE 1994</div>
+      <div class="ct-h" id="ct-h1">Free 2027</div>
+      <div class="ct-h" id="ct-h2">Part D Review</div>
+
+      <div class="panel" id="ct-phone">
+        <div class="pglow" id="ct-pglow"></div>
+        <div id="ct-ring1"></div><div id="ct-ring2"></div>
+        <div class="icon" id="ct-pico">
+          <svg viewBox="0 0 120 120"><g transform="translate(30 30) scale(2.5)"><path fill="#071428" d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z" /></g></svg>
+        </div>
+        <div class="plabel">CALL FOR YOUR FREE REVIEW</div>
+        <div id="ct-num" data-layout-allow-overlap><span id="ct-d1">800</span><span class="dash">-</span><span id="ct-d2">324</span><span class="dash">-</span><span id="ct-d3">9986</span></div>
+      </div>
+
+      <div class="panel" id="ct-web">
+        <div class="pglow" id="ct-wglow"></div>
+        <div class="icon" id="ct-wico">
+          <svg viewBox="0 0 120 120"><g transform="translate(30 30) scale(2.5)"><path fill="#071428" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm6.93 6h-2.95a15.65 15.65 0 0 0-1.38-3.56A8.03 8.03 0 0 1 18.93 8zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56A7.99 7.99 0 0 1 5.08 16zm2.95-8H5.08a7.99 7.99 0 0 1 4.33-3.56A15.65 15.65 0 0 0 8.03 8zM12 19.96A14.27 14.27 0 0 1 10.09 16h3.82A14.27 14.27 0 0 1 12 19.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2s.07-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z" /></g></svg>
+        </div>
+        <div class="plabel">OR VISIT ONLINE</div>
+        <div id="ct-url">allenandassociates.agency</div>
+      </div>
+
+      <div id="ct-rule"></div>
+      <div id="ct-foot">Plain-English Medicare help since 1994</div>
+
+      <div id="ct-ripple"></div>
+      <svg id="ct-cursor" viewBox="0 0 24 24"><path d="M4 2 L4 19 L8.6 14.6 L11.6 21.6 L14.4 20.4 L11.4 13.6 L18 13.4 Z" fill="#ffffff" stroke="#071428" stroke-width="1.4" stroke-linejoin="round" /></svg>
+      <div id="ct-sweep"></div>
+    </div>
+  </div>
+
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    // ---------- SHOT 37 (19.94 - 29.64): Free Review contact card ----------
+    tl.fromTo("#ct-card", { opacity: 0, y: 26, scale: 0.985 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "power2.out" }, 20.2);
+    tl.fromTo("#ct-plate", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.6)" }, 20.5);
+    tl.fromTo("#ct-since", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 20.75);
+    tl.fromTo("#ct-h1", { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 21.0); // "2027" spoken 21.28
+    tl.fromTo("#ct-h2", { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 21.35); // "Part D options"
+    tl.fromTo("#ct-rule", { opacity: 0 }, { opacity: 1, duration: 0.6 }, 21.6);
+    tl.fromTo("#ct-foot", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 21.7);
+
+    // phone panel lands on "call" (23.2); each number group ticks in as it is spoken
+    tl.fromTo("#ct-phone", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 22.8);
+    tl.fromTo("#ct-pico", { scale: 0.6 }, { scale: 1, duration: 0.5, ease: "back.out(2)" }, 23.0);
+    tl.fromTo(["#ct-d1", "#ct-d2", "#ct-d3", "#ct-num .dash"], { opacity: 0.14 }, { opacity: 0.14, duration: 0.01 }, 22.8);
+    // 800 @23.55, 324 @24.38, 9986 @24.94 (dial ticks at the same moments)
+    tl.fromTo("#ct-d1", { opacity: 0.14, scale: 1.18, color: "#f1d27a" }, { opacity: 1, scale: 1, color: "#ffffff", duration: 0.35, ease: "back.out(2)" }, 23.55);
+    tl.fromTo("#ct-d2", { opacity: 0.14, scale: 1.18, color: "#f1d27a" }, { opacity: 1, scale: 1, color: "#ffffff", duration: 0.35, ease: "back.out(2)" }, 24.38);
+    tl.fromTo("#ct-d3", { opacity: 0.14, scale: 1.18, color: "#f1d27a" }, { opacity: 1, scale: 1, color: "#ffffff", duration: 0.35, ease: "back.out(2)" }, 24.94);
+    tl.to("#ct-num .dash", { opacity: 1, duration: 0.3 }, 24.0);
+    // phone ripple pulses while the number is spoken
+    tl.fromTo("#ct-ring1", { scale: 1, opacity: 0.9 }, { scale: 1.7, opacity: 0, duration: 0.9, ease: "power1.out" }, 23.55);
+    tl.fromTo("#ct-ring2", { scale: 1, opacity: 0.9 }, { scale: 1.7, opacity: 0, duration: 0.9, ease: "power1.out", immediateRender: false }, 24.38);
+    tl.fromTo("#ct-ring1", { scale: 1, opacity: 0.9 }, { scale: 1.7, opacity: 0, duration: 0.9, ease: "power1.out", immediateRender: false }, 24.94);
+
+    // website panel on "visit" (27.16); cursor glides in and clicks on "dot agency" (~29.1)
+    tl.fromTo("#ct-web", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 26.8);
+    tl.fromTo("#ct-wico", { scale: 0.6 }, { scale: 1, duration: 0.5, ease: "back.out(2)" }, 27.0);
+    tl.fromTo("#ct-cursor", { x: 930, y: 790, opacity: 0 }, { x: 930, y: 790, opacity: 0, duration: 0.01 }, 0);
+    tl.fromTo("#ct-cursor", { x: 930, y: 790, opacity: 0 }, { x: 800, y: 700, opacity: 1, duration: 0.55, ease: "power2.out", immediateRender: false }, 27.85);
+    tl.to("#ct-cursor", { x: 744, y: 676, duration: 0.65, ease: "sine.inOut" }, 28.4);
+    tl.to("#ct-cursor", { scale: 0.82, duration: 0.07, ease: "power1.in" }, 29.04);
+    tl.to("#ct-cursor", { scale: 1, duration: 0.15, ease: "power2.out" }, 29.13);
+    tl.fromTo("#ct-ripple", { x: 734, y: 664, scale: 0.4, opacity: 0 }, { x: 734, y: 664, scale: 0.4, opacity: 0, duration: 0.01 }, 0);
+    tl.fromTo("#ct-ripple", { scale: 0.4, opacity: 0.95 }, { scale: 2.6, opacity: 0, duration: 0.6, ease: "power2.out", immediateRender: false }, 29.1);
+    tl.fromTo("#ct-wglow", { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power2.out" }, 29.1);
+
+    // resolving chord at 29.40: light sweep + gold glow on the card
+    tl.fromTo("#ct-sweep", { x: -320 }, { x: 1300, duration: 1.0, ease: "power2.inOut" }, 29.4);
+    tl.fromTo("#ct-card", { boxShadow: "0 30px 80px rgba(0,0,0,0.45)" }, { boxShadow: "0 30px 80px rgba(0,0,0,0.45), 0 0 70px 6px rgba(212,175,55,0.5)", duration: 0.7, ease: "power2.out" }, 29.4);
+
+    window.__timelines["contact"] = tl;
+  </script>
+</template>
