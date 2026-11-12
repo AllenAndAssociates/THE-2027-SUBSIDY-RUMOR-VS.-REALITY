@@ -40,16 +40,23 @@ hl_x = g.HERO_CX["HL"] - HERO_W // 2
 bx, by, bd = g.BUBBLE
 inner = bd - 20                                  # circle inside the ring
 fc = f"""
-[1:v]crop=808:1080:556:0,format=yuv420p,split=2[ka][kb];
-[ka]chromakey=color=0x08B83C:similarity=0.14:blend=0.07,format=yuva420p,alphaextract,erosion,gblur=sigma=0.6[al];
-[kb][al]alphamerge,tpad=stop_mode=clone:stop_duration=1.2,format=yuva420p,split=3[p1][p3][p4];
-[p1]scale={HERO_W}:{HERO_H}:flags=lanczos,split=2[hA][hB];
-[p3]crop=400:400:204:12,scale={inner}:{inner}:flags=lanczos,format=yuva420p,geq=lum='lum(X,Y)':cb='cb(X,Y)':cr='cr(X,Y)':a='if(lt(hypot(X-W/2,Y-H/2),W/2),alpha(X,Y),0)'[bub];
+[1:v]crop=808:1080:556:0,format=yuv420p,split=3[ka][kb][kc];
+[ka]chromakey=color=0x08B83C:similarity=0.14:blend=0.07,format=yuva420p,alphaextract,erosion,erosion,gblur=sigma=0.6,split=2[al1][al2];
+[al2]erosion,erosion,erosion,gblur=sigma=1.2,format=yuv420p[inner];
+[kb]despill=type=green:mix=0.85:expand=0.25[kd];
+[kd][kc][inner]maskedmerge[kcol];
+[kcol][al1]alphamerge,tpad=stop_mode=clone:stop_duration=1.2,format=yuva420p,split=3[p1][p3][p4];
+[p1]scale={HERO_W}:{HERO_H}:flags=lanczos,split=4[hA][hB][sA][sB];
+[sA]format=rgba,colorchannelmixer=rr=0:rg=0:rb=0:gr=0:gg=0:gb=0:br=0:bg=0:bb=0:aa=0.34,gblur=sigma=26[shA];
+[sB]format=rgba,colorchannelmixer=rr=0:rg=0:rb=0:gr=0:gg=0:gb=0:br=0:bg=0:bb=0:aa=0.34,gblur=sigma=26[shB];
+[p3]crop=357:357:224:42,scale={inner}:{inner}:flags=lanczos,format=yuva420p,geq=lum='lum(X,Y)':cb='cb(X,Y)':cr='cr(X,Y)':a='if(lt(hypot(X-W/2,Y-H/2),W/2),alpha(X,Y),0)'[bub];
 [p4]scale=728:972:flags=lanczos[sd];
-[0:v][hA]overlay=x={hr_x}:y={1080 - HERO_H}:{en('HR')}:eof_action=pass[v1];
-[v1][hB]overlay=x={hl_x}:y={1080 - HERO_H}:{en('HL')}:eof_action=pass[v2];
-[v2][bub]overlay=x={bx + 10}:y={by + 10}:{en('B')}:eof_action=pass[v3];
-[v3][sd]overlay=x=-29:y=108:{en('S')}:eof_action=pass,format=yuv420p[v]
+[0:v][shA]overlay=x={hr_x + 16}:y={1080 - HERO_H + 22}:{en('HR')}:eof_action=pass[w1];
+[w1][hA]overlay=x={hr_x}:y={1080 - HERO_H}:{en('HR')}:eof_action=pass[w2];
+[w2][shB]overlay=x={hl_x + 16}:y={1080 - HERO_H + 22}:{en('HL')}:eof_action=pass[w3];
+[w3][hB]overlay=x={hl_x}:y={1080 - HERO_H}:{en('HL')}:eof_action=pass[w4];
+[w4][bub]overlay=x={bx + 10}:y={by + 10}:{en('B')}:eof_action=pass[w5];
+[w5][sd]overlay=x=-29:y=108:{en('S')}:eof_action=pass,format=yuv420p[v]
 """
 cmd = ["ffmpeg", "-y", "-loglevel", "error", "-stats"]
 if ss:

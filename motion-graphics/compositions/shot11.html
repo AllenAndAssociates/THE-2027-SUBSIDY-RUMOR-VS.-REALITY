@@ -13,7 +13,7 @@
     <div id="s11e10" class="e" style="left:60px;top:46px;width:68px;height:68px;border-radius:16px;background:#fff"><svg viewBox="0 0 24 24" style="position:absolute;left:12px;top:12px;width:44px;height:44px"><path fill="#0B1F3A" d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg></div>
     <div id="s11e11" class="e" style="left:150px;top:42px;white-space:nowrap;font-size:48px;font-weight:400;color:#fff;letter-spacing:-.01em">Locked in by law</div>
     <div id="s11e12" class="e" style="left:150px;top:104px;white-space:nowrap;background:#D4AF37;color:#0B1F3A;font-size:22px;font-weight:900;padding:5px 14px;border-radius:5px">2027 rules</div>
-    <div id="s11e13" class="e" style="left:1550px;top:690px;width:320px;height:320px;border-radius:50%;background:#0a0a0a;border:10px solid #D4AF37;box-shadow:0 10px 30px rgba(0,0,0,.3)"></div>
+    <div id="s11e13" class="e" style="left:1550px;top:690px;width:320px;height:320px;border-radius:50%;background:#0a0a0a;border:10px solid #D4AF37;box-shadow:0 16px 40px rgba(0,0,0,.5),0 2px 8px rgba(0,0,0,.35)"></div>
     </div>
     <div id="s11-st" class="st" style="left:398px;top:150px">
     <div id="s11e1" class="e" style="left:60px;top:40px;white-space:nowrap;background:#F6E4A6;color:#0B1F3A;font-size:48px;font-weight:700;border-radius:8px;padding:8px 18px;line-height:1.15">Locked in by federal law</div>
@@ -30,18 +30,19 @@
   <script>
     const tl = gsap.timeline({ paused: true });
     tl.fromTo('#s11-bg', { opacity: 0 }, { opacity: 1, duration: 0.25, ease: 'power2.out' }, 0);
-    tl.fromTo('#s11e1',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.5,ease:'power2.out'},0.300);
-    tl.fromTo('#s11e2',{opacity:0,y:28,scale:.9,rotation:0},{opacity:1,y:0,scale:1,rotation:0,duration:0.5,ease:'back.out(1.5)'},1.180);
-    tl.fromTo('#s11e3',{opacity:0,y:28,scale:.9,rotation:0},{opacity:1,y:0,scale:1,rotation:0,duration:0.5,ease:'back.out(1.5)'},3.840);
-    tl.fromTo('#s11e4',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},1.180);
-    tl.fromTo('#s11e5',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},3.840);
-    tl.fromTo('#s11e6',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},5.440);
-    tl.fromTo('#s11e7',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},5.440);
+    tl.fromTo('#s11-st', { scale: 1 }, { scale: 1.03, duration: 7.280, ease: 'none' }, 0);
+    tl.fromTo('#s11e1',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.28,ease:'power2.out'},0.300);
+    tl.fromTo('#s11e2',{opacity:0,y:28,scale:.9,rotation:0},{opacity:1,y:0,scale:1,rotation:0,duration:0.5,ease:'back.out(1.5)'},0.400);
+    tl.fromTo('#s11e3',{opacity:0,y:28,scale:.9,rotation:0},{opacity:1,y:0,scale:1,rotation:0,duration:0.5,ease:'back.out(1.5)'},0.600);
+    tl.fromTo('#s11e4',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},0.500);
+    tl.fromTo('#s11e5',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},0.700);
+    tl.fromTo('#s11e6',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},0.800);
+    tl.fromTo('#s11e7',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},1.100);
     tl.fromTo('#s11e8',{opacity:0,y:28,scale:.9,rotation:0},{opacity:1,y:0,scale:1,rotation:0,duration:0.5,ease:'back.out(1.5)'},1.180);
     tl.fromTo('#s11e9',{opacity:0,y:28,scale:.9,rotation:0},{opacity:1,y:0,scale:1,rotation:0,duration:0.5,ease:'back.out(1.5)'},3.840);
     tl.fromTo('#s11e10',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.4,ease:'back.out(2)'},0.150);
-    tl.fromTo('#s11e11',{opacity:0,x:-80},{opacity:1,x:0,duration:0.45,ease:'power3.out'},0.200);
-    tl.fromTo('#s11e12',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.4,ease:'power2.out'},0.350);
+    tl.fromTo('#s11e11',{opacity:0,x:-80},{opacity:1,x:0,duration:0.3,ease:'power3.out'},0.200);
+    tl.fromTo('#s11e12',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.28,ease:'power2.out'},0.300);
     tl.fromTo('#s11e13',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},0.300);
     tl.to(['#s11-st', '#s11-pg'], { opacity: 0, duration: 0.22, ease: 'power2.in' }, 7.020);
     window.__timelines['shot11'] = tl;

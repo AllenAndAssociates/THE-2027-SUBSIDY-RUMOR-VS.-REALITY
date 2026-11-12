@@ -10,7 +10,7 @@
   <div id="root" data-composition-id="shot03" data-width="1920" data-height="1080">
     <div id="s03-bg" class="bgf" style="background:#fff"></div>
     <div id="s03-pg" class="pg">
-    
+    <div id="s03e5" class="e" style="left:-50px;top:40px;width:960px;height:1040px;background:radial-gradient(ellipse 50% 56% at 50% 54%,rgba(11,31,58,.11),rgba(11,31,58,0) 72%)"></div>
     </div>
     <div id="s03-st" class="st" style="left:756px;top:150px">
     <div id="s03e1" class="e" style="left:60px;top:70px;width:1000px;height:330px;background:#FFFFFF;border-radius:26px;box-shadow:0 14px 34px rgba(27,31,75,.16);"></div>
@@ -22,10 +22,12 @@
   <script>
     const tl = gsap.timeline({ paused: true });
     tl.fromTo('#s03-bg', { opacity: 0 }, { opacity: 1, duration: 0.25, ease: 'power2.out' }, 0);
+    tl.fromTo('#s03-st', { scale: 1 }, { scale: 1.03, duration: 7.640, ease: 'none' }, 0);
     tl.fromTo('#s03e1',{opacity:0,y:28,scale:.9,rotation:0},{opacity:1,y:0,scale:1,rotation:0,duration:0.5,ease:'back.out(1.5)'},0.820);
     tl.fromTo('#s03e2',{opacity:0,rotation:0},{opacity:1,rotation:0,duration:0.5,ease:'power2.out'},0.820);
-    tl.fromTo('#s03e3',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.5,ease:'power2.out'},4.620);
+    tl.fromTo('#s03e3',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.28,ease:'power2.out'},4.620);
     tl.fromTo('#s03e4',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},5.820);
+    tl.fromTo('#s03e5',{opacity:0,rotation:0},{opacity:1,rotation:0,duration:0.6,ease:'power2.out'},0.000);
     tl.to(['#s03-st', '#s03-pg'], { opacity: 0, duration: 0.22, ease: 'power2.in' }, 7.380);
     window.__timelines['shot03'] = tl;
   </script>

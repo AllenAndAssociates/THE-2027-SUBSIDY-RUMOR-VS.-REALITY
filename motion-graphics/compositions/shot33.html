@@ -13,27 +13,28 @@
     <div id="s33e6" class="e" style="left:60px;top:46px;width:68px;height:68px;border-radius:16px;background:#fff"><svg viewBox="0 0 24 24" style="position:absolute;left:12px;top:12px;width:44px;height:44px"><path fill="#0B1F3A" d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg></div>
     <div id="s33e7" class="e" style="left:150px;top:42px;white-space:nowrap;font-size:48px;font-weight:400;color:#fff;letter-spacing:-.01em">Danger 2</div>
     <div id="s33e8" class="e" style="left:150px;top:104px;white-space:nowrap;background:#D4AF37;color:#0B1F3A;font-size:22px;font-weight:900;padding:5px 14px;border-radius:5px">Late enrollment penalty</div>
-    <div id="s33e9" class="e" style="left:1550px;top:690px;width:320px;height:320px;border-radius:50%;background:#0a0a0a;border:10px solid #D4AF37;box-shadow:0 10px 30px rgba(0,0,0,.3)"></div>
+    <div id="s33e9" class="e" style="left:1550px;top:690px;width:320px;height:320px;border-radius:50%;background:#0a0a0a;border:10px solid #D4AF37;box-shadow:0 16px 40px rgba(0,0,0,.5),0 2px 8px rgba(0,0,0,.35)"></div>
     </div>
     <div id="s33-st" class="st" style="left:398px;top:150px">
     <div id="s33e1" class="e" style="left:40px;top:60px;width:130px;height:130px;border-radius:50%;background:#D4AF37;color:#0B1F3A;font-family:'Montserrat',sans-serif;font-weight:900;font-size:75px;line-height:130px;text-align:center">2</div>
     <div id="s33e2" class="e" style="left:200px;top:85px;white-space:nowrap;background:#F6E4A6;color:#0B1F3A;font-size:50px;font-weight:700;border-radius:8px;padding:8px 18px;line-height:1.15">Enroll in Part D later…</div>
     <div id="s33e3" class="e" style="left:80px;top:270px;width:300px;height:300px;border-radius:50%;background:#fff"><svg viewBox="0 0 24 24" style="position:absolute;left:63px;top:63px;width:174px;height:174px"><path fill="#0B1F3A" d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg></div>
     <div id="s33e4" class="e" style="left:430px;top:250px;font-family:'Montserrat',sans-serif;font-weight:900;line-height:1.02;font-size:84px;color:#D4AF37;text-align:left;text-transform:uppercase;width:640px;">Permanent<br>lifetime<br>late penalty</div>
-    <div id="s33e5" class="e" style="left:430px;top:650px;white-space:nowrap;background:#071428;color:#FFFFFF;font-size:48px;font-weight:700;border-radius:8px;padding:8px 18px;line-height:1.15">Charged by Medicare</div>
+    <div id="s33e5" class="e" style="left:430px;top:650px;font-size:48px;color:#fff;font-weight:900;text-align:left;line-height:1.2;white-space:nowrap;">Charged by Medicare</div>
     </div>
   </div>
   <script>
     const tl = gsap.timeline({ paused: true });
     tl.fromTo('#s33-bg', { opacity: 0 }, { opacity: 1, duration: 0.25, ease: 'power2.out' }, 0);
+    tl.fromTo('#s33-st', { scale: 1 }, { scale: 1.03, duration: 7.170, ease: 'none' }, 0);
     tl.fromTo('#s33e1',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},0.200);
-    tl.fromTo('#s33e2',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.5,ease:'power2.out'},2.960);
+    tl.fromTo('#s33e2',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.28,ease:'power2.out'},2.960);
     tl.fromTo('#s33e3',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},1.060);
     tl.fromTo('#s33e4',{opacity:0,y:28,scale:.9,rotation:0},{opacity:1,y:0,scale:1,rotation:0,duration:0.5,ease:'back.out(1.5)'},4.940);
-    tl.fromTo('#s33e5',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.5,ease:'power2.out'},3.640);
+    tl.fromTo('#s33e5',{opacity:0,rotation:0},{opacity:1,rotation:0,duration:0.45,ease:'power2.out'},3.640);
     tl.fromTo('#s33e6',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.4,ease:'back.out(2)'},0.150);
-    tl.fromTo('#s33e7',{opacity:0,x:-80},{opacity:1,x:0,duration:0.45,ease:'power3.out'},0.200);
-    tl.fromTo('#s33e8',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.4,ease:'power2.out'},0.350);
+    tl.fromTo('#s33e7',{opacity:0,x:-80},{opacity:1,x:0,duration:0.3,ease:'power3.out'},0.200);
+    tl.fromTo('#s33e8',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.28,ease:'power2.out'},0.300);
     tl.fromTo('#s33e9',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},0.300);
     tl.to(['#s33-st', '#s33-pg'], { opacity: 0, duration: 0.22, ease: 'power2.in' }, 6.910);
     window.__timelines['shot33'] = tl;

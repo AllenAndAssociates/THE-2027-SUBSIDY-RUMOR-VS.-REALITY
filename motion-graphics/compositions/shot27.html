@@ -13,7 +13,7 @@
     <div id="s27e10" class="e" style="left:60px;top:46px;width:68px;height:68px;border-radius:16px;background:#fff"><svg viewBox="0 0 24 24" style="position:absolute;left:12px;top:12px;width:44px;height:44px"><path fill="#0B1F3A" d="M4.22 11.29l7.07-7.07a5 5 0 0 1 7.07 7.07l-7.07 7.07a5 5 0 0 1-7.07-7.07zm1.41 1.41a3 3 0 0 0 4.24 4.24l2.83-2.83-4.24-4.24-2.83 2.83z"/></svg></div>
     <div id="s27e11" class="e" style="left:150px;top:42px;white-space:nowrap;font-size:48px;font-weight:400;color:#fff;letter-spacing:-.01em">Plan finder</div>
     <div id="s27e12" class="e" style="left:150px;top:104px;white-space:nowrap;background:#D4AF37;color:#0B1F3A;font-size:22px;font-weight:900;padding:5px 14px;border-radius:5px">Enter every medication</div>
-    <div id="s27e13" class="e" style="left:1550px;top:690px;width:320px;height:320px;border-radius:50%;background:#0a0a0a;border:10px solid #D4AF37;box-shadow:0 10px 30px rgba(0,0,0,.3)"></div>
+    <div id="s27e13" class="e" style="left:1550px;top:690px;width:320px;height:320px;border-radius:50%;background:#0a0a0a;border:10px solid #D4AF37;box-shadow:0 16px 40px rgba(0,0,0,.5),0 2px 8px rgba(0,0,0,.35)"></div>
     </div>
     <div id="s27-st" class="st" style="left:398px;top:150px">
     <div id="s27e1" class="e" style="left:60px;top:40px;white-space:nowrap;background:#F6E4A6;color:#0B1F3A;font-size:46px;font-weight:700;border-radius:8px;padding:8px 18px;line-height:1.15">On Medicare.gov, enter every…</div>
@@ -24,24 +24,25 @@
     <div id="s27e6" class="e" style="left:760px;top:190px;width:320px;height:400px;background:#FFFFFF;border-radius:26px;box-shadow:0 14px 34px rgba(27,31,75,.16);"></div>
     <div id="s27e7" class="e" style="left:840px;top:220px;width:160px;height:160px;border-radius:50%;background:#4F9B22"><svg viewBox="0 0 24 24" style="position:absolute;left:34px;top:34px;width:92px;height:92px"><path fill="#FFFFFF" d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div>
     <div id="s27e8" class="e" style="left:760px;top:420px;font-size:44px;color:#0B1F3A;font-weight:700;text-align:center;line-height:1.2;width:320px;">Your lowest<br>annual cost</div>
-    <div id="s27e9" class="e" style="left:120px;top:640px;white-space:nowrap;background:#071428;color:#FFFFFF;font-size:52px;font-weight:700;border-radius:8px;padding:8px 18px;line-height:1.15">Not the lowest premium</div>
+    <div id="s27e9" class="e" style="left:120px;top:640px;font-size:52px;color:#fff;font-weight:900;text-align:left;line-height:1.2;white-space:nowrap;">Not the lowest premium</div>
     </div>
   </div>
   <script>
     const tl = gsap.timeline({ paused: true });
     tl.fromTo('#s27-bg', { opacity: 0 }, { opacity: 1, duration: 0.25, ease: 'power2.out' }, 0);
-    tl.fromTo('#s27e1',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.5,ease:'power2.out'},1.060);
-    tl.fromTo('#s27e2',{opacity:0,x:-80},{opacity:1,x:0,duration:0.4,ease:'power3.out'},1.840);
+    tl.fromTo('#s27-st', { scale: 1 }, { scale: 1.03, duration: 8.760, ease: 'none' }, 0);
+    tl.fromTo('#s27e1',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.28,ease:'power2.out'},1.060);
+    tl.fromTo('#s27e2',{opacity:0,x:-80},{opacity:1,x:0,duration:0.4,ease:'power3.out'},0.450);
     tl.fromTo('#s27e3',{opacity:0,x:-80},{opacity:1,x:0,duration:0.4,ease:'power3.out'},3.200);
     tl.fromTo('#s27e4',{opacity:0,x:-80},{opacity:1,x:0,duration:0.4,ease:'power3.out'},3.740);
     tl.fromTo('#s27e5 path',{strokeDashoffset:1},{strokeDashoffset:0,duration:0.4,ease:'power2.inOut'},6.480);
     tl.fromTo('#s27e6',{opacity:0,y:28,scale:.9,rotation:0},{opacity:1,y:0,scale:1,rotation:0,duration:0.5,ease:'back.out(1.5)'},6.480);
     tl.fromTo('#s27e7',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},6.480);
     tl.fromTo('#s27e8',{opacity:0,rotation:0},{opacity:1,rotation:0,duration:0.45,ease:'power2.out'},7.300);
-    tl.fromTo('#s27e9',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.5,ease:'power2.out'},7.300);
+    tl.fromTo('#s27e9',{opacity:0,rotation:0},{opacity:1,rotation:0,duration:0.45,ease:'power2.out'},7.300);
     tl.fromTo('#s27e10',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.4,ease:'back.out(2)'},0.150);
-    tl.fromTo('#s27e11',{opacity:0,x:-80},{opacity:1,x:0,duration:0.45,ease:'power3.out'},0.200);
-    tl.fromTo('#s27e12',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.4,ease:'power2.out'},0.350);
+    tl.fromTo('#s27e11',{opacity:0,x:-80},{opacity:1,x:0,duration:0.3,ease:'power3.out'},0.200);
+    tl.fromTo('#s27e12',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.28,ease:'power2.out'},0.300);
     tl.fromTo('#s27e13',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},0.300);
     tl.to(['#s27-st', '#s27-pg'], { opacity: 0, duration: 0.22, ease: 'power2.in' }, 8.500);
     window.__timelines['shot27'] = tl;

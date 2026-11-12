@@ -30,6 +30,7 @@
   <script>
     const tl = gsap.timeline({ paused: true });
     tl.fromTo('#s09-bg', { opacity: 0 }, { opacity: 1, duration: 0.25, ease: 'power2.out' }, 0);
+    tl.fromTo('#s09-st', { scale: 1 }, { scale: 1.03, duration: 8.740, ease: 'none' }, 0);
     tl.fromTo('#s09e1',{opacity:0,y:28,scale:.9,rotation:0},{opacity:1,y:0,scale:1,rotation:0,duration:0.5,ease:'back.out(1.5)'},0.460);
     tl.fromTo('#s09e2',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},0.460);
     tl.fromTo('#s09e3',{opacity:0,rotation:0},{opacity:1,rotation:0,duration:0.45,ease:'power2.out'},0.460);

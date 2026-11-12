@@ -13,7 +13,7 @@
     <div id="s05e11" class="e" style="left:60px;top:46px;width:68px;height:68px;border-radius:16px;background:#fff"><svg viewBox="0 0 24 24" style="position:absolute;left:12px;top:12px;width:44px;height:44px"><path fill="#0B1F3A" d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div>
     <div id="s05e12" class="e" style="left:150px;top:42px;white-space:nowrap;font-size:48px;font-weight:400;color:#fff;letter-spacing:-.01em">Federal subsidies</div>
     <div id="s05e13" class="e" style="left:150px;top:104px;white-space:nowrap;background:#D4AF37;color:#0B1F3A;font-size:22px;font-weight:900;padding:5px 14px;border-radius:5px">The past two years</div>
-    <div id="s05e14" class="e" style="left:1550px;top:690px;width:320px;height:320px;border-radius:50%;background:#0a0a0a;border:10px solid #D4AF37;box-shadow:0 10px 30px rgba(0,0,0,.3)"></div>
+    <div id="s05e14" class="e" style="left:1550px;top:690px;width:320px;height:320px;border-radius:50%;background:#0a0a0a;border:10px solid #D4AF37;box-shadow:0 16px 40px rgba(0,0,0,.5),0 2px 8px rgba(0,0,0,.35)"></div>
     </div>
     <div id="s05-st" class="st" style="left:398px;top:150px">
     <div id="s05e1" class="e" style="left:60px;top:40px;white-space:nowrap;background:#F6E4A6;color:#0B1F3A;font-size:48px;font-weight:700;border-radius:8px;padding:8px 18px;line-height:1.15">Special federal subsidies</div>
@@ -25,13 +25,14 @@
     <div id="s05e7" class="e" style="left:392px;top:320px;width:120px;height:120px;border-radius:50%;background:#F6E4A6"><svg viewBox="0 0 24 24" style="position:absolute;left:25px;top:25px;width:69px;height:69px"><path fill="#0B1F3A" d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div>
     <div id="s05e8" class="e" style="left:40px;top:540px;font-size:44px;color:#fff;font-weight:700;text-align:center;line-height:1.2;width:340px;">Federal government</div>
     <div id="s05e9" class="e" style="left:724px;top:540px;font-size:44px;color:#fff;font-weight:700;text-align:center;line-height:1.2;width:340px;">Billion-dollar<br>Part D insurers</div>
-    <div id="s05e10" class="e" style="left:60px;top:740px;white-space:nowrap;background:#071428;color:#FFFFFF;font-size:44px;font-weight:700;border-radius:8px;padding:8px 18px;line-height:1.15">The past two years</div>
+    <div id="s05e10" class="e" style="left:60px;top:740px;font-size:44px;color:#fff;font-weight:900;text-align:left;line-height:1.2;white-space:nowrap;">The past two years</div>
     </div>
   </div>
   <script>
     const tl = gsap.timeline({ paused: true });
     tl.fromTo('#s05-bg', { opacity: 0 }, { opacity: 1, duration: 0.25, ease: 'power2.out' }, 0);
-    tl.fromTo('#s05e1',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.5,ease:'power2.out'},3.060);
+    tl.fromTo('#s05-st', { scale: 1 }, { scale: 1.03, duration: 7.580, ease: 'none' }, 0);
+    tl.fromTo('#s05e1',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.28,ease:'power2.out'},3.060);
     tl.fromTo('#s05e2',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},1.840);
     tl.fromTo('#s05e3',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},4.960);
     tl.fromTo('#s05e4 path',{strokeDashoffset:1},{strokeDashoffset:0,duration:0.8,ease:'power2.inOut'},2.699);
@@ -46,10 +47,10 @@
     tl.to('#s05e7',{opacity:0,duration:.25},5.049);
     tl.fromTo('#s05e8',{opacity:0,rotation:0},{opacity:1,rotation:0,duration:0.45,ease:'power2.out'},1.840);
     tl.fromTo('#s05e9',{opacity:0,rotation:0},{opacity:1,rotation:0,duration:0.45,ease:'power2.out'},4.960);
-    tl.fromTo('#s05e10',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.5,ease:'power2.out'},0.460);
+    tl.fromTo('#s05e10',{opacity:0,rotation:0},{opacity:1,rotation:0,duration:0.45,ease:'power2.out'},0.460);
     tl.fromTo('#s05e11',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.4,ease:'back.out(2)'},0.150);
-    tl.fromTo('#s05e12',{opacity:0,x:-80},{opacity:1,x:0,duration:0.45,ease:'power3.out'},0.200);
-    tl.fromTo('#s05e13',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.4,ease:'power2.out'},0.350);
+    tl.fromTo('#s05e12',{opacity:0,x:-80},{opacity:1,x:0,duration:0.3,ease:'power3.out'},0.200);
+    tl.fromTo('#s05e13',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:0.28,ease:'power2.out'},0.300);
     tl.fromTo('#s05e14',{opacity:0,scale:.3},{opacity:1,scale:1,duration:0.5,ease:'back.out(2)'},0.300);
     tl.to(['#s05-st', '#s05-pg'], { opacity: 0, duration: 0.22, ease: 'power2.in' }, 7.320);
     window.__timelines['shot05'] = tl;
