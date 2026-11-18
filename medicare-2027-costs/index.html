@@ -53,11 +53,14 @@
       }
       /* left zone reserved for the HeyGen presenter */
       #avatar-zone {
-        position: absolute; left: 0; top: 0; width: 780px; height: 1080px;
-        background: linear-gradient(90deg, rgba(5,18,36,0.55) 0%, rgba(5,18,36,0) 100%);
+        position: absolute; left: 30px; top: 140px; width: 760px; height: 900px;
+        border-radius: 26px; overflow: hidden; background: #000;
+        border: 4px solid rgba(242,184,75,0.85);
+        box-shadow: 0 30px 70px rgba(0,0,0,0.5);
       }
+      #avatar { object-fit: cover; }
       #accent-rail {
-        position: absolute; left: 790px; top: 150px; width: 4px; height: 820px;
+        position: absolute; left: 812px; top: 150px; width: 4px; height: 820px;
         background: linear-gradient(var(--gold), rgba(242,184,75,0));
         border-radius: 2px;
       }
@@ -264,11 +267,10 @@
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-start="0" data-duration="310" data-width="1920" data-height="1080">
+    <div id="root" data-composition-id="main" data-start="0" data-duration="288" data-width="1920" data-height="1080">
       <!-- ================= persistent chrome ================= -->
-      <div id="chrome" class="clip" data-start="0" data-duration="310" data-track-index="0">
+      <div id="chrome" class="clip" data-start="0" data-duration="288" data-track-index="0">
         <div id="grid"></div>
-        <div id="avatar-zone"></div>
         <div id="accent-rail"></div>
         <div id="tabs">
           <div class="tab" id="tab1"><span class="n">1</span>Part B</div>
@@ -280,8 +282,11 @@
         <div id="logo-bug"><img src="assets/allen-associates-logo.png" alt="Allen &amp; Associates Insurance Agency" /></div>
       </div>
 
+      <!-- HeyGen presenter (not inside a timed wrapper so its frame clock stays at film time) -->
+      <div id="avatar-zone"><video id="avatar" class="clip" src="assets/avatar.mp4" data-start="0" data-duration="283.6" data-has-audio="true" data-track-index="2" playsinline style="left: -442px; top: -10px; width: 1632px; height: 918px"></video></div>
+
       <!-- ================= Scene 1: Hook & Authority 0:00–0:32 ================= -->
-      <div id="s1" class="clip" data-hold data-start="0" data-duration="32" data-track-index="1">
+      <div id="s1" class="clip" data-hold data-start="0" data-duration="42.6" data-track-index="1">
         <div id="s1-banner"><span class="dot"></span>OFFICIAL <span class="gold">2027</span> MEDICARE COSTS RELEASED<span class="dot"></span></div>
         <div class="pill card" id="s1-p1" style="top: 220px">
           <div class="ico" style="background: var(--blue)">B</div>
@@ -311,7 +316,7 @@
       </div>
 
       <!-- ================= Scene 2: Part B 0:32–1:14 ================= -->
-      <div id="s2" class="clip" data-hold data-start="32" data-duration="42" data-track-index="1">
+      <div id="s2" class="clip" data-hold data-start="42.6" data-duration="39.2" data-track-index="1">
         <div class="stage">
           <div class="eyebrow" id="s2-eb">Medicare Part B · 2026 vs. 2027</div>
           <div class="h1" id="s2-h" style="margin-top: 10px">Doctor visits, outpatient care,<br />labs &amp; equipment</div>
@@ -339,7 +344,7 @@
       </div>
 
       <!-- ================= Scene 3: Medigap 1:14–1:52 ================= -->
-      <div id="s3" class="clip" data-hold data-start="74" data-duration="38" data-track-index="1">
+      <div id="s3" class="clip" data-hold data-start="81.8" data-duration="34.4" data-track-index="1">
         <div class="stage">
           <div class="eyebrow" id="s3-eb">Impact on Medigap</div>
           <div class="h1" id="s3-h" style="margin-top: 10px">Plan G, Plan N &amp;<br />High-Deductible G</div>
@@ -371,7 +376,7 @@
       </div>
 
       <!-- ================= Scene 4: IRMAA 1:52–2:48 ================= -->
-      <div id="s4" class="clip" data-hold data-start="112" data-duration="56" data-track-index="1">
+      <div id="s4" class="clip" data-hold data-start="116.2" data-duration="50.5" data-track-index="1">
         <div class="stage">
           <div class="eyebrow" id="s4-eb">IRMAA · Income-Related Monthly Adjustment Amount</div>
           <div class="h1" id="s4-h" style="margin-top: 10px; font-size: 48px">A surcharge on Part B <em style="font-style: normal; color: var(--gold)">and</em> Part D</div>
@@ -410,7 +415,7 @@
       </div>
 
       <!-- ================= Scene 5: Triggers & SSA-44 2:48–3:32 ================= -->
-      <div id="s5" class="clip" data-hold data-start="168" data-duration="44" data-track-index="1">
+      <div id="s5" class="clip" data-hold data-start="166.7" data-duration="31.0" data-track-index="1">
         <div class="stage">
           <div class="eyebrow" id="s5-eb">IRMAA · Trigger vs. Appeal</div>
           <div class="h1" id="s5-h" style="margin-top: 10px; font-size: 50px">What raises it — and how to lower it</div>
@@ -438,7 +443,7 @@
       </div>
 
       <!-- ================= Scene 6: Part A & D 3:32–4:18 ================= -->
-      <div id="s6" class="clip" data-hold data-start="212" data-duration="46" data-track-index="1">
+      <div id="s6" class="clip" data-hold data-start="197.7" data-duration="40.1" data-track-index="1">
         <div class="stage">
           <div class="eyebrow" id="s6-eb">Official 2027 Part A &amp; Part D Limits</div>
           <div class="h1" id="s6-h" style="margin-top: 10px; font-size: 50px">Hospital &amp; prescription costs</div>
@@ -463,7 +468,7 @@
       </div>
 
       <!-- ================= Scene 7: Checklist & CTA 4:18–5:10 ================= -->
-      <div id="s7" class="clip" data-hold data-start="258" data-duration="52" data-track-index="1">
+      <div id="s7" class="clip" data-hold data-start="237.8" data-duration="50.2" data-track-index="1">
         <div class="stage">
           <div class="eyebrow" id="s7-eb">Before January 1st</div>
           <div class="h1" id="s7-h" style="margin-top: 6px; font-size: 46px">4 steps to protect your budget</div>
@@ -518,125 +523,128 @@
       };
       const sceneOut = (id, at) => tl.to(id, { opacity: 0, duration: 0.4, ease: "power1.in" }, at - 0.4);
 
+      /* Cue times below are synced to word timestamps from the avatar's own audio (assets/avatar.mp4). */
       /* ---------- ambient drift (keeps the stage alive under the presenter) ---------- */
-      tl.fromTo("#grid", { backgroundPosition: "0px 0px" }, { backgroundPosition: "600px 300px", duration: 310, ease: "none" }, 0);
+      tl.fromTo("#grid", { backgroundPosition: "0px 0px" }, { backgroundPosition: "560px 280px", duration: 288, ease: "none" }, 0);
+      tl.fromTo("#avatar-zone", { x: -40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7, ease: "power3.out" }, 0);
 
       /* ---------- chapter tabs ---------- */
       tl.set("#tabs", { opacity: 0, y: -20 }, 0);
-      tl.to("#tabs", { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 31.6);
-      const tabTimes = [32, 74, 112, 212, 258];
+      tl.to("#tabs", { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 42.2);
+      const tabTimes = [42.6, 81.8, 116.2, 197.7, 237.8];
       tabTimes.forEach((t, i) => {
         const id = "#tab" + (i + 1);
-        tl.to(id, { backgroundColor: "#f2b84b", color: "#0b2545", borderColor: "#f2b84b", scale: 1.06, duration: 0.35, ease: "power2.out" }, t);
         const end = tabTimes[i + 1]; // IRMAA tab spans scenes 4–5
+        tl.to(id, { backgroundColor: "#f2b84b", color: "#0b2545", borderColor: "#f2b84b", scale: 1.06, duration: 0.35, ease: "power2.out" }, t);
         tl.to(id + " .n", { color: "#0b2545", duration: 0.35 }, t);
         if (end) tl.to(id + " .n", { color: "#f2b84b", duration: 0.35 }, end - 0.2);
         if (end) tl.to(id, { backgroundColor: "rgba(255,255,255,0.08)", color: "#b9c7dc", borderColor: "rgba(255,255,255,0.12)", scale: 1, duration: 0.35 }, end - 0.2);
       });
 
-      /* ---------- Scene 1 ---------- */
+      /* ---------- Scene 1: 0:00–0:42.6 ---------- */
       tl.fromTo("#s1-banner", { y: -140 }, { y: 0, duration: 0.7, ease: "bounce.out" }, 0);
-      tl.to("#s1-banner", { y: -140, duration: 0.5, ease: "power2.in" }, 31);
+      tl.to("#s1-banner", { y: -140, duration: 0.5, ease: "power2.in" }, 41.8);
       ["#s1-p1", "#s1-p2", "#s1-p3"].forEach((s, i) =>
         tl.fromTo(s, { x: 220, opacity: 0, scale: 0.9 }, { x: 0, opacity: 1, scale: 1, duration: 0.55, ease: "back.out(1.8)" }, 1.4 + i * 0.9));
-      bump("#s1-p1 .delta", 6.5);
-      bump("#s1-p2 .delta", 8.8);
-      bump("#s1-p3 .ico", 11);
-      tl.fromTo("#s1-auth", { x: -760, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7, ease: "power4.out" }, 15);
-      tl.to("#s1-auth", { x: -760, opacity: 0, duration: 0.6, ease: "power3.in" }, 25);
-      tl.fromTo("#s1-topics .chip", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, stagger: 0.55, ease: "back.out(2)" }, 25.5);
-      sceneOut("#s1", 32);
+      bump("#s1-p1 .delta", 13.25);   // "$209.40"
+      bump("#s1-p2 .delta", 15.3);    // "Part B deductible is going up"
+      bump("#s1-p3 .ico", 17.6);      // "new income brackets"
+      tl.fromTo("#s1-auth", { x: -760, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7, ease: "power4.out" }, 21.6); // "I am Arric Allen"
+      tl.to("#s1-auth", { x: -760, opacity: 0, duration: 0.6, ease: "power3.in" }, 30.4);
+      tl.fromTo("#s1-topics .chip", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, stagger: 0.75, ease: "back.out(2)" }, 34.6); // "Part B, Medigap, IRMAA..."
+      sceneOut("#s1", 42.6);
 
-      /* ---------- Scene 2 ---------- */
-      sceneIn("#s2", 32);
-      tl.fromTo("#s2-card", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 33);
+      /* ---------- Scene 2: Part B 0:42.6–1:21.8 ---------- */
+      sceneIn("#s2", 42.6);
+      tl.fromTo("#s2-card", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 43.6);
       ["#s2-r1", "#s2-r2", "#s2-r3", "#s2-r4"].forEach((s, i) =>
-        tl.fromTo(s, { x: 60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.45, ease: "power3.out" }, 33.6 + i * 0.4));
-      tl.set("#s2-r2 .v, #s2-r3 .v", { opacity: 0 }, 33);
-      counter("#s2-prem", 202.9, 209.4, 40, 1.4, 2);
-      tl.to("#s2-r1 .tag", { scale: 1.15, duration: 0.2, yoyo: true, repeat: 1 }, 41.4);
-      tl.fromTo("#s2-r2 .v", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(2.2)" }, 54);
-      tl.fromTo("#s2-r3 .v", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(2.2)" }, 56.5);
-      tl.fromTo("#s2-hl", { scaleX: 0 }, { scaleX: 1, duration: 0.55, ease: "power2.inOut" }, 66);
-      sceneOut("#s2", 74);
+        tl.fromTo(s, { x: 60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.45, ease: "power3.out" }, 44.2 + i * 0.4));
+      tl.set("#s2-r2 .v, #s2-r3 .v", { opacity: 0 }, 42.6);
+      bump("#s2-r1 .tag", 56.1);                       // "$6.50"
+      counter("#s2-prem", 202.9, 209.4, 58.2, 1.6, 2); // "$202.90 up to $209.40"
+      tl.fromTo("#s2-r2 .v", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(2.2)" }, 65.3);
+      tl.fromTo("#s2-r3 .v", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(2.2)" }, 68.85);
+      bump("#s2-r4 .tag", 77.95);                      // "by $9"
+      tl.fromTo("#s2-hl", { scaleX: 0 }, { scaleX: 1, duration: 0.55, ease: "power2.inOut" }, 80.4); // "$292"
+      sceneOut("#s2", 81.8);
 
-      /* ---------- Scene 3 ---------- */
-      sceneIn("#s3", 74);
-      tl.fromTo("#s3-l", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 74.8);
-      tl.fromTo("#s3-r", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 75.2);
-      tl.set("#s3-tag", { opacity: 0 }, 74);
-      tl.to("#s3-circle ellipse", { attr: { "stroke-dashoffset": 0 }, duration: 0.8, ease: "power2.inOut" }, 84);
-      tl.fromTo("#s3-r", { scale: 1 }, { scale: 1.04, duration: 0.2, yoyo: true, repeat: 1, ease: "power2.out" }, 98);
-      counter("#s3-hdg", 2950, 3050, 98.2, 1.2, 0);
-      pop("#s3-tag", 99.4);
-      sceneOut("#s3", 112);
+      /* ---------- Scene 3: Medigap 1:21.8–1:56.2 ---------- */
+      sceneIn("#s3", 81.8);
+      tl.fromTo("#s3-l", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 82.6);
+      tl.fromTo("#s3-r", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 83.0);
+      tl.set("#s3-tag", { opacity: 0 }, 81.8);
+      tl.to("#s3-circle ellipse", { attr: { "stroke-dashoffset": 0 }, duration: 0.8, ease: "power2.inOut" }, 97.6); // "circle"
+      pop("#s3-tag", 107.5);                                                                                         // "$100"
+      tl.fromTo("#s3-r", { scale: 1 }, { scale: 1.04, duration: 0.2, yoyo: true, repeat: 1, ease: "power2.out" }, 108.7);
+      counter("#s3-hdg", 2950, 3050, 108.8, 1.4, 0);                                                                 // "$2,950 to $3,050"
+      sceneOut("#s3", 116.2);
 
-      /* ---------- Scene 4 ---------- */
-      sceneIn("#s4", 112);
-      tl.fromTo("#s4-badge", { x: -50, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 113);
+      /* ---------- Scene 4: IRMAA 1:56.2–2:46.7 ---------- */
+      sceneIn("#s4", 116.2);
+      tl.fromTo("#s4-badge", { x: -50, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 117.2);
       ["#s4-b0", "#s4-b1", "#s4-b2", "#s4-b3", "#s4-b4"].forEach((s, i) =>
-        tl.fromTo(s, { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.6, ease: "power3.out" }, 114 + i * 0.35));
-      tl.set("#s4-b0 .step-lbl, #s4-b1 .step-lbl", { opacity: 0 }, 112);
-      tl.to("#s4-b0 .step-lbl", { opacity: 1, duration: 0.3 }, 115);
-      tl.to("#s4-b1 .step-lbl", { opacity: 1, duration: 0.3 }, 115.4);
-      // two-year rewind tick 2027 -> 2025
+        tl.fromTo(s, { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.6, ease: "power3.out" }, 118 + i * 0.35));
+      tl.set("#s4-b0 .step-lbl, #s4-b1 .step-lbl", { opacity: 0 }, 116.2);
+      tl.to("#s4-b0 .step-lbl", { opacity: 1, duration: 0.3 }, 119);
+      tl.to("#s4-b1 .step-lbl", { opacity: 1, duration: 0.3 }, 119.4);
+      // two-year rewind tick 2027 -> 2025 on "two years ago"
       const yrEl = document.querySelector("#s4-yr");
       const yr = { v: 2027 };
-      tl.to(yr, { v: 2025, duration: 0.8, ease: "steps(2)", onUpdate: () => { yrEl.textContent = Math.round(yr.v); } }, 125);
-      bump("#s4-badge", 125.9);
-      pop("#s4-t1", 142);
-      pop("#s4-t2", 144);
-      tl.fromTo("#s4-stamp", { scale: 2.6, opacity: 0, rotation: -14 }, { scale: 1, opacity: 1, rotation: -6, duration: 0.28, ease: "power4.in" }, 156);
+      tl.to(yr, { v: 2025, duration: 0.8, ease: "steps(2)", onUpdate: () => { yrEl.textContent = Math.round(yr.v); } }, 135.0);
+      bump("#s4-badge", 136.5);
+      pop("#s4-t1", 144.7); // "$112,000"
+      pop("#s4-t2", 148.3); // "$224,000"
+      tl.fromTo("#s4-stamp", { scale: 2.6, opacity: 0, rotation: -14 }, { scale: 1, opacity: 1, rotation: -6, duration: 0.28, ease: "power4.in" }, 156.0); // "steep cliffs"
       tl.fromTo("#s4-chart", { x: 0 }, { x: 10, duration: 0.05, yoyo: true, repeat: 5, ease: "none" }, 156.28);
-      sceneOut("#s4", 168);
+      sceneOut("#s4", 166.7);
 
-      /* ---------- Scene 5 ---------- */
-      sceneIn("#s5", 168);
-      tl.fromTo("#s5-l", { x: -60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, 169);
-      tl.fromTo("#s5-r", { x: 60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, 169.4);
-      ["#s5-i1", "#s5-i2", "#s5-i3", "#s5-i4"].forEach((s, i) => pop(s, 172 + i * 1.6));
-      tl.set("#s5-form, #s5-r .events span", { opacity: 0 }, 168);
-      tl.fromTo("#s5-form", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "back.out(1.8)" }, 191.4);
-      tl.fromTo("#s5-stamp", { scale: 2.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: "power4.in" }, 192);
-      tl.to("#s5-r .events span", { opacity: 1, duration: 0.35, stagger: 0.7 }, 196);
-      sceneOut("#s5", 212);
+      /* ---------- Scene 5: Triggers & SSA-44 2:46.7–3:17.7 ---------- */
+      sceneIn("#s5", 166.7);
+      tl.fromTo("#s5-l", { x: -60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, 167.2);
+      tl.fromTo("#s5-r", { x: 60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, 167.6);
+      [169.0, 170.9, 172.4, 175.35].forEach((t, i) => pop("#s5-i" + (i + 1), t)); // selling / capital gains / converting / severance
+      tl.set("#s5-form, #s5-r .events span", { opacity: 0 }, 166.7);
+      tl.to("#s5-r .events span", { opacity: 1, duration: 0.35, stagger: 0.8 }, 186.0); // retirement, marriage, divorce, death of spouse
+      tl.fromTo("#s5-form", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "back.out(1.8)" }, 193.2);
+      tl.fromTo("#s5-stamp", { scale: 2.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: "power4.in" }, 193.85); // "Form SSA-44"
+      sceneOut("#s5", 197.7);
 
-      /* ---------- Scene 6 ---------- */
-      sceneIn("#s6", 212);
-      tl.fromTo("#s6-a", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, 213);
-      tl.fromTo("#s6-d", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, 213.5);
-      tl.set("#s6-lock", { opacity: 0, scale: 0.4 }, 212);
-      counter("#s6-ded", 1736, 1776, 225, 1.2, 0);
-      counter("#s6-dd", 615, 700, 242, 1.0, 0);
-      counter("#s6-cap", 2100, 2400, 243.2, 1.2, 0);
-      tl.to("#s6-lock", { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(3)" }, 244.5);
-      sceneOut("#s6", 258);
+      /* ---------- Scene 6: Part A & D 3:17.7–3:57.8 ---------- */
+      sceneIn("#s6", 197.7);
+      tl.fromTo("#s6-a", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, 198.7);
+      tl.fromTo("#s6-d", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, 199.2);
+      tl.set("#s6-lock", { opacity: 0, scale: 0.4 }, 197.7);
+      counter("#s6-ded", 1736, 1776, 216.5, 1.6, 0); // "$1,736 up to $1,776"
+      counter("#s6-dd", 615, 700, 227.3, 0.9, 0);    // "$615 to $700"
+      counter("#s6-cap", 2100, 2400, 234.1, 1.8, 0); // "$2,100 to $2,400"
+      tl.to("#s6-lock", { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(3)" }, 236.0);
+      sceneOut("#s6", 237.8);
 
-      /* ---------- Scene 7 ---------- */
-      sceneIn("#s7", 258);
+      /* ---------- Scene 7: Checklist & CTA 3:57.8–4:48 ---------- */
+      sceneIn("#s7", 237.8);
       ["#s7-c1", "#s7-c2", "#s7-c3", "#s7-c4"].forEach((s, i) =>
-        tl.fromTo(s, { x: 60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 258.8 + i * 0.3));
-      tl.set("#s7-t1, #s7-t2, #s7-t3, #s7-t4", { scale: 0, opacity: 0 }, 258);
-      [262, 267, 272, 277.5].forEach((t, i) => {
+        tl.fromTo(s, { x: 60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 238.6 + i * 0.3));
+      tl.set("#s7-t1, #s7-t2, #s7-t3, #s7-t4", { scale: 0, opacity: 0 }, 237.8);
+      [242.9, 247.85, 252.65, 256.7].forEach((t, i) => { // adjust / check / review / never switch
         tl.to("#s7-t" + (i + 1), { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(3)" }, t);
         tl.to("#s7-c" + (i + 1), { borderColor: "#22b07d", backgroundColor: "rgba(34,176,125,0.16)", duration: 0.3 }, t);
       });
-      tl.set("#s7-o1, #s7-o2", { opacity: 0, y: 40 }, 258);
-      tl.to("#s7-o1", { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 284);
-      bump("#s7-o1 .web", 286);
-      tl.to("#s7-o2", { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 292);
-      tl.to("#logo-bug", { opacity: 0, y: 20, duration: 0.4 }, 291.6);
-      tl.set("#s7-w1, #s7-w2, #s7-w3", { opacity: 0 }, 258);
-      [298, 298.4, 298.8].forEach((t, i) =>
+      tl.set("#s7-o1, #s7-o2", { opacity: 0, y: 40 }, 237.8);
+      tl.to("#s7-o1", { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 262.7); // "To compare"
+      bump("#s7-o1 .web", 268.4);                                                      // "Medicare.gov"
+      tl.to("#logo-bug", { opacity: 0, y: 20, duration: 0.4 }, 269.2);
+      tl.to("#s7-o2", { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 269.6); // "And if you would like..."
+      tl.set("#s7-w1, #s7-w2, #s7-w3", { opacity: 0 }, 237.8);
+      [277.0, 277.4, 277.8].forEach((t, i) =>                                          // "800-324-9986"
         tl.fromTo("#s7-w" + (i + 1), { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.18, yoyo: true, repeat: 3, ease: "power1.inOut" }, t));
-      tl.set("#s7-cursor", { opacity: 0 }, 258);
-      tl.fromTo("#s7-cursor", { opacity: 0, x: 120, y: 60 }, { opacity: 1, x: 0, y: 0, duration: 0.8, ease: "power2.out" }, 300.5);
-      tl.to("#s7-cursor", { scale: 0.8, duration: 0.1, yoyo: true, repeat: 1 }, 301.4);
-      tl.to("#s7-url", { color: "#f2b84b", duration: 0.2 }, 301.45);
-      tl.set("#s7-end", { opacity: 0 }, 258);
-      tl.to("#s7 .stage", { opacity: 0, duration: 0.5 }, 301.9);
-      tl.to("#s7-end", { opacity: 1, duration: 0.8, ease: "power2.out" }, 302);
-      tl.fromTo("#s7-end .lg", { scale: 0.9 }, { scale: 1, duration: 8, ease: "power1.out" }, 302);
+      tl.set("#s7-cursor", { opacity: 0 }, 237.8);
+      tl.fromTo("#s7-cursor", { opacity: 0, x: 120, y: 60 }, { opacity: 1, x: 0, y: 0, duration: 0.8, ease: "power2.out" }, 279.2);
+      tl.to("#s7-cursor", { scale: 0.8, duration: 0.1, yoyo: true, repeat: 1 }, 280.1);    // "allenandassociates.agency"
+      tl.to("#s7-url", { color: "#f2b84b", duration: 0.2 }, 280.15);
+      tl.set("#s7-end", { opacity: 0 }, 237.8);
+      tl.to("#s7 .stage", { opacity: 0, duration: 0.5 }, 280.9);
+      tl.to("#s7-end", { opacity: 1, duration: 0.8, ease: "power2.out" }, 281.0);
+      tl.fromTo("#s7-end .lg", { scale: 0.92 }, { scale: 1, duration: 7, ease: "power1.out" }, 281.0);
 
       window.__timelines["main"] = tl;
       tl.seek(0);
