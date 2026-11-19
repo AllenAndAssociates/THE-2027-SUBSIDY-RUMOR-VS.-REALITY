@@ -1,0 +1,4 @@
+.hyperframes/
+node_modules/
+# hard link to the avatar on main: "Official 2027 Medicare Premiums and Deductibles_1080p.mp4"
+assets/avatar.mp4

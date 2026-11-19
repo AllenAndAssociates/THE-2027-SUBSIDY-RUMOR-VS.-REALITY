@@ -1,0 +1,3458 @@
+[
+  {
+    "text": "Medicare",
+    "start": 0.73,
+    "end": 0.86,
+    "id": "w0"
+  },
+  {
+    "text": "just",
+    "start": 0.86,
+    "end": 1.09,
+    "id": "w1"
+  },
+  {
+    "text": "released",
+    "start": 1.09,
+    "end": 1.68,
+    "id": "w2"
+  },
+  {
+    "text": "the",
+    "start": 1.81,
+    "end": 2.08,
+    "id": "w3"
+  },
+  {
+    "text": "official",
+    "start": 2.09,
+    "end": 2.85,
+    "id": "w4"
+  },
+  {
+    "text": "2027",
+    "start": 2.93,
+    "end": 3.78,
+    "id": "w5"
+  },
+  {
+    "text": "premiums",
+    "start": 3.78,
+    "end": 4.32,
+    "id": "w6"
+  },
+  {
+    "text": "and",
+    "start": 4.48,
+    "end": 4.51,
+    "id": "w7"
+  },
+  {
+    "text": "deductibles,",
+    "start": 4.51,
+    "end": 5,
+    "id": "w8"
+  },
+  {
+    "text": "and",
+    "start": 5,
+    "end": 5.86,
+    "id": "w9"
+  },
+  {
+    "text": "every",
+    "start": 6.06,
+    "end": 6.42,
+    "id": "w10"
+  },
+  {
+    "text": "single",
+    "start": 6.42,
+    "end": 6.88,
+    "id": "w11"
+  },
+  {
+    "text": "part",
+    "start": 6.88,
+    "end": 7.18,
+    "id": "w12"
+  },
+  {
+    "text": "of",
+    "start": 7.18,
+    "end": 7.24,
+    "id": "w13"
+  },
+  {
+    "text": "Medicare",
+    "start": 7.24,
+    "end": 8.11,
+    "id": "w14"
+  },
+  {
+    "text": "is",
+    "start": 8.11,
+    "end": 8.19,
+    "id": "w15"
+  },
+  {
+    "text": "moving",
+    "start": 8.19,
+    "end": 8.63,
+    "id": "w16"
+  },
+  {
+    "text": "upward.",
+    "start": 8.75,
+    "end": 9.61,
+    "id": "w17"
+  },
+  {
+    "text": "The",
+    "start": 9.64,
+    "end": 9.91,
+    "id": "w18"
+  },
+  {
+    "text": "standard",
+    "start": 10.5,
+    "end": 10.63,
+    "id": "w19"
+  },
+  {
+    "text": "Part",
+    "start": 10.63,
+    "end": 10.99,
+    "id": "w20"
+  },
+  {
+    "text": "Bmonthly",
+    "start": 10.99,
+    "end": 11.71,
+    "id": "w21"
+  },
+  {
+    "text": "premium",
+    "start": 11.71,
+    "end": 12.34,
+    "id": "w22"
+  },
+  {
+    "text": "is",
+    "start": 12.35,
+    "end": 12.48,
+    "id": "w23"
+  },
+  {
+    "text": "rising",
+    "start": 12.57,
+    "end": 13.06,
+    "id": "w24"
+  },
+  {
+    "text": "to",
+    "start": 13.06,
+    "end": 13.14,
+    "id": "w25"
+  },
+  {
+    "text": "$209.40.",
+    "start": 13.25,
+    "end": 15.21,
+    "id": "w26"
+  },
+  {
+    "text": "The",
+    "start": 15.24,
+    "end": 15.46,
+    "id": "w27"
+  },
+  {
+    "text": "Part",
+    "start": 15.46,
+    "end": 15.76,
+    "id": "w28"
+  },
+  {
+    "text": "Bdeductible",
+    "start": 15.76,
+    "end": 16.57,
+    "id": "w29"
+  },
+  {
+    "text": "is",
+    "start": 16.57,
+    "end": 16.63,
+    "id": "w30"
+  },
+  {
+    "text": "going",
+    "start": 16.74,
+    "end": 17.09,
+    "id": "w31"
+  },
+  {
+    "text": "up,",
+    "start": 17.09,
+    "end": 17.36,
+    "id": "w32"
+  },
+  {
+    "text": "and",
+    "start": 17.38,
+    "end": 17.6,
+    "id": "w33"
+  },
+  {
+    "text": "new",
+    "start": 17.6,
+    "end": 17.82,
+    "id": "w34"
+  },
+  {
+    "text": "income",
+    "start": 17.82,
+    "end": 18.27,
+    "id": "w35"
+  },
+  {
+    "text": "brackets",
+    "start": 18.27,
+    "end": 18.86,
+    "id": "w36"
+  },
+  {
+    "text": "could",
+    "start": 18.86,
+    "end": 19.23,
+    "id": "w37"
+  },
+  {
+    "text": "push",
+    "start": 19.23,
+    "end": 19.53,
+    "id": "w38"
+  },
+  {
+    "text": "high",
+    "start": 19.53,
+    "end": 19.83,
+    "id": "w39"
+  },
+  {
+    "text": "earners",
+    "start": 19.83,
+    "end": 20.25,
+    "id": "w40"
+  },
+  {
+    "text": "even",
+    "start": 20.36,
+    "end": 20.67,
+    "id": "w41"
+  },
+  {
+    "text": "higher.",
+    "start": 20.72,
+    "end": 21.72,
+    "id": "w42"
+  },
+  {
+    "text": "I",
+    "start": 21.72,
+    "end": 21.78,
+    "id": "w43"
+  },
+  {
+    "text": "am",
+    "start": 21.78,
+    "end": 21.91,
+    "id": "w44"
+  },
+  {
+    "text": "Eric",
+    "start": 21.91,
+    "end": 22.17,
+    "id": "w45"
+  },
+  {
+    "text": "Allen",
+    "start": 22.17,
+    "end": 22.59,
+    "id": "w46"
+  },
+  {
+    "text": "with",
+    "start": 22.59,
+    "end": 22.76,
+    "id": "w47"
+  },
+  {
+    "text": "Allen",
+    "start": 22.76,
+    "end": 23.08,
+    "id": "w48"
+  },
+  {
+    "text": "&",
+    "start": 23.09,
+    "end": 23.13,
+    "id": "w49"
+  },
+  {
+    "text": "Associates,",
+    "start": 23.22,
+    "end": 23.84,
+    "id": "w50"
+  },
+  {
+    "text": "and",
+    "start": 23.94,
+    "end": 24.09,
+    "id": "w51"
+  },
+  {
+    "text": "since",
+    "start": 24.26,
+    "end": 24.47,
+    "id": "w52"
+  },
+  {
+    "text": "1994,",
+    "start": 24.47,
+    "end": 25.4,
+    "id": "w53"
+  },
+  {
+    "text": "I",
+    "start": 25.4,
+    "end": 25.46,
+    "id": "w54"
+  },
+  {
+    "text": "have",
+    "start": 25.46,
+    "end": 25.72,
+    "id": "w55"
+  },
+  {
+    "text": "helped",
+    "start": 25.72,
+    "end": 26.04,
+    "id": "w56"
+  },
+  {
+    "text": "people",
+    "start": 26.2,
+    "end": 26.52,
+    "id": "w57"
+  },
+  {
+    "text": "cut",
+    "start": 26.52,
+    "end": 26.72,
+    "id": "w58"
+  },
+  {
+    "text": "through",
+    "start": 26.72,
+    "end": 27.14,
+    "id": "w59"
+  },
+  {
+    "text": "the",
+    "start": 27.28,
+    "end": 27.52,
+    "id": "w60"
+  },
+  {
+    "text": "confusion",
+    "start": 28.14,
+    "end": 28.24,
+    "id": "w61"
+  },
+  {
+    "text": "with",
+    "start": 28.24,
+    "end": 28.56,
+    "id": "w62"
+  },
+  {
+    "text": "plain",
+    "start": 28.56,
+    "end": 28.96,
+    "id": "w63"
+  },
+  {
+    "text": "English",
+    "start": 28.96,
+    "end": 29.52,
+    "id": "w64"
+  },
+  {
+    "text": "Medicare",
+    "start": 29.52,
+    "end": 30.13,
+    "id": "w65"
+  },
+  {
+    "text": "facts.",
+    "start": 30.21,
+    "end": 30.78,
+    "id": "w66"
+  },
+  {
+    "text": "Today",
+    "start": 30.84,
+    "end": 31.29,
+    "id": "w67"
+  },
+  {
+    "text": "we",
+    "start": 31.29,
+    "end": 31.47,
+    "id": "w68"
+  },
+  {
+    "text": "are",
+    "start": 31.7,
+    "end": 31.74,
+    "id": "w69"
+  },
+  {
+    "text": "walking",
+    "start": 31.74,
+    "end": 32.37,
+    "id": "w70"
+  },
+  {
+    "text": "through",
+    "start": 32.37,
+    "end": 32.96,
+    "id": "w71"
+  },
+  {
+    "text": "every",
+    "start": 33.06,
+    "end": 33.45,
+    "id": "w72"
+  },
+  {
+    "text": "official",
+    "start": 33.45,
+    "end": 34.1,
+    "id": "w73"
+  },
+  {
+    "text": "2027",
+    "start": 34.18,
+    "end": 35.16,
+    "id": "w74"
+  },
+  {
+    "text": "number",
+    "start": 35.32,
+    "end": 35.79,
+    "id": "w75"
+  },
+  {
+    "text": "across",
+    "start": 35.79,
+    "end": 36.25,
+    "id": "w76"
+  },
+  {
+    "text": "Part",
+    "start": 36.54,
+    "end": 36.69,
+    "id": "w77"
+  },
+  {
+    "text": "B,",
+    "start": 36.69,
+    "end": 36.96,
+    "id": "w78"
+  },
+  {
+    "text": "Medigap,",
+    "start": 36.96,
+    "end": 37.76,
+    "id": "w79"
+  },
+  {
+    "text": "IRMA-A,",
+    "start": 37.89,
+    "end": 38.38,
+    "id": "w80"
+  },
+  {
+    "text": "Part",
+    "start": 38.52,
+    "end": 38.9,
+    "id": "w81"
+  },
+  {
+    "text": "A,",
+    "start": 38.9,
+    "end": 39.18,
+    "id": "w82"
+  },
+  {
+    "text": "and",
+    "start": 39.38,
+    "end": 39.46,
+    "id": "w83"
+  },
+  {
+    "text": "Part",
+    "start": 39.46,
+    "end": 39.84,
+    "id": "w84"
+  },
+  {
+    "text": "Dso",
+    "start": 39.84,
+    "end": 40.12,
+    "id": "w85"
+  },
+  {
+    "text": "you",
+    "start": 40.12,
+    "end": 40.4,
+    "id": "w86"
+  },
+  {
+    "text": "can",
+    "start": 40.4,
+    "end": 40.64,
+    "id": "w87"
+  },
+  {
+    "text": "budget",
+    "start": 40.74,
+    "end": 41.24,
+    "id": "w88"
+  },
+  {
+    "text": "with",
+    "start": 41.25,
+    "end": 41.63,
+    "id": "w89"
+  },
+  {
+    "text": "confidence.",
+    "start": 41.63,
+    "end": 42.84,
+    "id": "w90"
+  },
+  {
+    "text": "Let",
+    "start": 42.92,
+    "end": 43.11,
+    "id": "w91"
+  },
+  {
+    "text": "us",
+    "start": 43.11,
+    "end": 43.24,
+    "id": "w92"
+  },
+  {
+    "text": "start",
+    "start": 43.24,
+    "end": 43.56,
+    "id": "w93"
+  },
+  {
+    "text": "with",
+    "start": 43.78,
+    "end": 43.82,
+    "id": "w94"
+  },
+  {
+    "text": "Medicare",
+    "start": 43.82,
+    "end": 44.31,
+    "id": "w95"
+  },
+  {
+    "text": "Part",
+    "start": 44.32,
+    "end": 44.59,
+    "id": "w96"
+  },
+  {
+    "text": "B,",
+    "start": 44.59,
+    "end": 44.77,
+    "id": "w97"
+  },
+  {
+    "text": "which",
+    "start": 44.77,
+    "end": 45.04,
+    "id": "w98"
+  },
+  {
+    "text": "covers",
+    "start": 45.14,
+    "end": 45.47,
+    "id": "w99"
+  },
+  {
+    "text": "doctor",
+    "start": 45.47,
+    "end": 45.76,
+    "id": "w100"
+  },
+  {
+    "text": "visits,",
+    "start": 45.85,
+    "end": 46.35,
+    "id": "w101"
+  },
+  {
+    "text": "outpatient",
+    "start": 46.35,
+    "end": 46.99,
+    "id": "w102"
+  },
+  {
+    "text": "hospital",
+    "start": 46.99,
+    "end": 47.59,
+    "id": "w103"
+  },
+  {
+    "text": "care,",
+    "start": 47.59,
+    "end": 48.27,
+    "id": "w104"
+  },
+  {
+    "text": "lab",
+    "start": 48.27,
+    "end": 48.44,
+    "id": "w105"
+  },
+  {
+    "text": "work,",
+    "start": 48.56,
+    "end": 49.01,
+    "id": "w106"
+  },
+  {
+    "text": "and",
+    "start": 49.01,
+    "end": 49.23,
+    "id": "w107"
+  },
+  {
+    "text": "medical",
+    "start": 49.43,
+    "end": 49.71,
+    "id": "w108"
+  },
+  {
+    "text": "equipment.",
+    "start": 49.76,
+    "end": 50.67,
+    "id": "w109"
+  },
+  {
+    "text": "In",
+    "start": 50.68,
+    "end": 50.87,
+    "id": "w110"
+  },
+  {
+    "text": "2027,",
+    "start": 51.44,
+    "end": 52.06,
+    "id": "w111"
+  },
+  {
+    "text": "the",
+    "start": 52.2,
+    "end": 52.4,
+    "id": "w112"
+  },
+  {
+    "text": "standard",
+    "start": 52.47,
+    "end": 53.24,
+    "id": "w113"
+  },
+  {
+    "text": "Part",
+    "start": 53.24,
+    "end": 53.62,
+    "id": "w114"
+  },
+  {
+    "text": "Bmonthly",
+    "start": 53.62,
+    "end": 54.38,
+    "id": "w115"
+  },
+  {
+    "text": "premium",
+    "start": 54.38,
+    "end": 55,
+    "id": "w116"
+  },
+  {
+    "text": "increases",
+    "start": 55.06,
+    "end": 55.83,
+    "id": "w117"
+  },
+  {
+    "text": "by",
+    "start": 55.9,
+    "end": 56.1,
+    "id": "w118"
+  },
+  {
+    "text": "$6.50",
+    "start": 56.1,
+    "end": 57.15,
+    "id": "w119"
+  },
+  {
+    "text": "from",
+    "start": 57.32,
+    "end": 57.6,
+    "id": "w120"
+  },
+  {
+    "text": "$202.90",
+    "start": 57.73,
+    "end": 59.44,
+    "id": "w121"
+  },
+  {
+    "text": "up",
+    "start": 59.56,
+    "end": 59.68,
+    "id": "w122"
+  },
+  {
+    "text": "to",
+    "start": 59.68,
+    "end": 59.78,
+    "id": "w123"
+  },
+  {
+    "text": "$209.40",
+    "start": 59.91,
+    "end": 61.8,
+    "id": "w124"
+  },
+  {
+    "text": "a",
+    "start": 61.8,
+    "end": 61.91,
+    "id": "w125"
+  },
+  {
+    "text": "month.",
+    "start": 61.91,
+    "end": 62.8,
+    "id": "w126"
+  },
+  {
+    "text": "Over",
+    "start": 62.8,
+    "end": 63.19,
+    "id": "w127"
+  },
+  {
+    "text": "a",
+    "start": 63.19,
+    "end": 63.28,
+    "id": "w128"
+  },
+  {
+    "text": "full",
+    "start": 63.66,
+    "end": 63.67,
+    "id": "w129"
+  },
+  {
+    "text": "year,",
+    "start": 63.67,
+    "end": 64.21,
+    "id": "w130"
+  },
+  {
+    "text": "that",
+    "start": 64.3,
+    "end": 64.64,
+    "id": "w131"
+  },
+  {
+    "text": "comes",
+    "start": 64.64,
+    "end": 65.12,
+    "id": "w132"
+  },
+  {
+    "text": "to",
+    "start": 65.12,
+    "end": 65.16,
+    "id": "w133"
+  },
+  {
+    "text": "$2,512.80",
+    "start": 65.34,
+    "end": 67.61,
+    "id": "w134"
+  },
+  {
+    "text": "per",
+    "start": 67.62,
+    "end": 67.81,
+    "id": "w135"
+  },
+  {
+    "text": "person,",
+    "start": 67.92,
+    "end": 68.66,
+    "id": "w136"
+  },
+  {
+    "text": "or",
+    "start": 68.86,
+    "end": 68.87,
+    "id": "w137"
+  },
+  {
+    "text": "$5,025.60",
+    "start": 68.87,
+    "end": 71.18,
+    "id": "w138"
+  },
+  {
+    "text": "for",
+    "start": 71.18,
+    "end": 71.47,
+    "id": "w139"
+  },
+  {
+    "text": "a",
+    "start": 71.47,
+    "end": 71.56,
+    "id": "w140"
+  },
+  {
+    "text": "married",
+    "start": 71.56,
+    "end": 71.88,
+    "id": "w141"
+  },
+  {
+    "text": "couple.",
+    "start": 72.44,
+    "end": 73.2,
+    "id": "w142"
+  },
+  {
+    "text": "Meanwhile,",
+    "start": 74.1,
+    "end": 74.48,
+    "id": "w143"
+  },
+  {
+    "text": "the",
+    "start": 74.48,
+    "end": 74.82,
+    "id": "w144"
+  },
+  {
+    "text": "annual",
+    "start": 74.82,
+    "end": 75.5,
+    "id": "w145"
+  },
+  {
+    "text": "Part",
+    "start": 75.5,
+    "end": 75.94,
+    "id": "w146"
+  },
+  {
+    "text": "Bdeductible",
+    "start": 75.97,
+    "end": 77.07,
+    "id": "w147"
+  },
+  {
+    "text": "rises",
+    "start": 77.22,
+    "end": 77.76,
+    "id": "w148"
+  },
+  {
+    "text": "by",
+    "start": 77.76,
+    "end": 77.97,
+    "id": "w149"
+  },
+  {
+    "text": "$9,",
+    "start": 77.98,
+    "end": 78.65,
+    "id": "w150"
+  },
+  {
+    "text": "from",
+    "start": 78.65,
+    "end": 79.1,
+    "id": "w151"
+  },
+  {
+    "text": "$283",
+    "start": 79.1,
+    "end": 80.16,
+    "id": "w152"
+  },
+  {
+    "text": "to",
+    "start": 80.29,
+    "end": 80.45,
+    "id": "w153"
+  },
+  {
+    "text": "$292.",
+    "start": 80.45,
+    "end": 82,
+    "id": "w154"
+  },
+  {
+    "text": "How",
+    "start": 82.02,
+    "end": 82.21,
+    "id": "w155"
+  },
+  {
+    "text": "do",
+    "start": 82.21,
+    "end": 82.34,
+    "id": "w156"
+  },
+  {
+    "text": "these",
+    "start": 82.34,
+    "end": 82.67,
+    "id": "w157"
+  },
+  {
+    "text": "Part",
+    "start": 82.88,
+    "end": 82.93,
+    "id": "w158"
+  },
+  {
+    "text": "Bchanges",
+    "start": 82.93,
+    "end": 83.41,
+    "id": "w159"
+  },
+  {
+    "text": "affect",
+    "start": 83.52,
+    "end": 83.83,
+    "id": "w160"
+  },
+  {
+    "text": "you",
+    "start": 83.83,
+    "end": 84.03,
+    "id": "w161"
+  },
+  {
+    "text": "if",
+    "start": 84.03,
+    "end": 84.14,
+    "id": "w162"
+  },
+  {
+    "text": "you",
+    "start": 84.24,
+    "end": 84.35,
+    "id": "w163"
+  },
+  {
+    "text": "carry",
+    "start": 84.35,
+    "end": 84.68,
+    "id": "w164"
+  },
+  {
+    "text": "a",
+    "start": 84.68,
+    "end": 84.69,
+    "id": "w165"
+  },
+  {
+    "text": "Medicare",
+    "start": 84.74,
+    "end": 85.24,
+    "id": "w166"
+  },
+  {
+    "text": "Supplement",
+    "start": 85.28,
+    "end": 85.85,
+    "id": "w167"
+  },
+  {
+    "text": "or",
+    "start": 86,
+    "end": 86.06,
+    "id": "w168"
+  },
+  {
+    "text": "Medigap",
+    "start": 86.06,
+    "end": 86.6,
+    "id": "w169"
+  },
+  {
+    "text": "policy?",
+    "start": 87.34,
+    "end": 87.7,
+    "id": "w170"
+  },
+  {
+    "text": "If",
+    "start": 87.72,
+    "end": 87.88,
+    "id": "w171"
+  },
+  {
+    "text": "you",
+    "start": 87.88,
+    "end": 88.13,
+    "id": "w172"
+  },
+  {
+    "text": "have",
+    "start": 88.13,
+    "end": 88.59,
+    "id": "w173"
+  },
+  {
+    "text": "standard",
+    "start": 88.59,
+    "end": 89.13,
+    "id": "w174"
+  },
+  {
+    "text": "Plan",
+    "start": 89.13,
+    "end": 89.44,
+    "id": "w175"
+  },
+  {
+    "text": "Gor",
+    "start": 89.51,
+    "end": 89.7,
+    "id": "w176"
+  },
+  {
+    "text": "Plan",
+    "start": 89.7,
+    "end": 90.03,
+    "id": "w177"
+  },
+  {
+    "text": "N,",
+    "start": 90.03,
+    "end": 90.27,
+    "id": "w178"
+  },
+  {
+    "text": "your",
+    "start": 90.27,
+    "end": 90.56,
+    "id": "w179"
+  },
+  {
+    "text": "plan",
+    "start": 90.65,
+    "end": 90.93,
+    "id": "w180"
+  },
+  {
+    "text": "covers",
+    "start": 90.93,
+    "end": 91.42,
+    "id": "w181"
+  },
+  {
+    "text": "the",
+    "start": 91.43,
+    "end": 91.55,
+    "id": "w182"
+  },
+  {
+    "text": "20%",
+    "start": 91.7,
+    "end": 92.26,
+    "id": "w183"
+  },
+  {
+    "text": "Part",
+    "start": 92.26,
+    "end": 92.58,
+    "id": "w184"
+  },
+  {
+    "text": "Bcoinsurance",
+    "start": 92.58,
+    "end": 93.58,
+    "id": "w185"
+  },
+  {
+    "text": "and",
+    "start": 93.78,
+    "end": 93.96,
+    "id": "w186"
+  },
+  {
+    "text": "hospital",
+    "start": 93.96,
+    "end": 94.62,
+    "id": "w187"
+  },
+  {
+    "text": "deductibles,",
+    "start": 94.83,
+    "end": 95.68,
+    "id": "w188"
+  },
+  {
+    "text": "so",
+    "start": 95.77,
+    "end": 95.85,
+    "id": "w189"
+  },
+  {
+    "text": "the",
+    "start": 95.85,
+    "end": 96.08,
+    "id": "w190"
+  },
+  {
+    "text": "one",
+    "start": 96.09,
+    "end": 96.33,
+    "id": "w191"
+  },
+  {
+    "text": "number",
+    "start": 96.5,
+    "end": 96.81,
+    "id": "w192"
+  },
+  {
+    "text": "you",
+    "start": 96.89,
+    "end": 97.1,
+    "id": "w193"
+  },
+  {
+    "text": "need",
+    "start": 97.1,
+    "end": 97.43,
+    "id": "w194"
+  },
+  {
+    "text": "to",
+    "start": 97.43,
+    "end": 97.59,
+    "id": "w195"
+  },
+  {
+    "text": "circle",
+    "start": 97.59,
+    "end": 98.09,
+    "id": "w196"
+  },
+  {
+    "text": "is",
+    "start": 98.09,
+    "end": 98.25,
+    "id": "w197"
+  },
+  {
+    "text": "that",
+    "start": 98.25,
+    "end": 98.58,
+    "id": "w198"
+  },
+  {
+    "text": "new",
+    "start": 98.58,
+    "end": 98.81,
+    "id": "w199"
+  },
+  {
+    "text": "$292",
+    "start": 98.82,
+    "end": 99.38,
+    "id": "w200"
+  },
+  {
+    "text": "annual",
+    "start": 99.69,
+    "end": 100.16,
+    "id": "w201"
+  },
+  {
+    "text": "Part",
+    "start": 100.16,
+    "end": 100.43,
+    "id": "w202"
+  },
+  {
+    "text": "Bdeductible.",
+    "start": 100.56,
+    "end": 102.07,
+    "id": "w203"
+  },
+  {
+    "text": "If",
+    "start": 102.08,
+    "end": 102.24,
+    "id": "w204"
+  },
+  {
+    "text": "you",
+    "start": 102.24,
+    "end": 102.48,
+    "id": "w205"
+  },
+  {
+    "text": "carry",
+    "start": 102.48,
+    "end": 102.95,
+    "id": "w206"
+  },
+  {
+    "text": "high",
+    "start": 102.95,
+    "end": 103.18,
+    "id": "w207"
+  },
+  {
+    "text": "deductible",
+    "start": 103.23,
+    "end": 104.01,
+    "id": "w208"
+  },
+  {
+    "text": "Plan",
+    "start": 104.01,
+    "end": 104.33,
+    "id": "w209"
+  },
+  {
+    "text": "G,",
+    "start": 104.33,
+    "end": 104.44,
+    "id": "w210"
+  },
+  {
+    "text": "your",
+    "start": 104.62,
+    "end": 104.89,
+    "id": "w211"
+  },
+  {
+    "text": "annual",
+    "start": 104.89,
+    "end": 105.36,
+    "id": "w212"
+  },
+  {
+    "text": "out-of-pocket",
+    "start": 105.42,
+    "end": 106.4,
+    "id": "w213"
+  },
+  {
+    "text": "ceiling",
+    "start": 106.56,
+    "end": 106.95,
+    "id": "w214"
+  },
+  {
+    "text": "rises",
+    "start": 106.97,
+    "end": 107.37,
+    "id": "w215"
+  },
+  {
+    "text": "by",
+    "start": 107.37,
+    "end": 107.52,
+    "id": "w216"
+  },
+  {
+    "text": "$100,",
+    "start": 107.52,
+    "end": 108.44,
+    "id": "w217"
+  },
+  {
+    "text": "from",
+    "start": 108.44,
+    "end": 108.78,
+    "id": "w218"
+  },
+  {
+    "text": "$2,950",
+    "start": 108.78,
+    "end": 110.07,
+    "id": "w219"
+  },
+  {
+    "text": "to",
+    "start": 110.07,
+    "end": 110.13,
+    "id": "w220"
+  },
+  {
+    "text": "$3,050,",
+    "start": 110.25,
+    "end": 111.66,
+    "id": "w221"
+  },
+  {
+    "text": "and",
+    "start": 111.7,
+    "end": 111.94,
+    "id": "w222"
+  },
+  {
+    "text": "your",
+    "start": 112.04,
+    "end": 112.27,
+    "id": "w223"
+  },
+  {
+    "text": "Part",
+    "start": 112.42,
+    "end": 112.64,
+    "id": "w224"
+  },
+  {
+    "text": "Bdeductible",
+    "start": 112.64,
+    "end": 113.57,
+    "id": "w225"
+  },
+  {
+    "text": "counts",
+    "start": 113.57,
+    "end": 113.88,
+    "id": "w226"
+  },
+  {
+    "text": "directly",
+    "start": 114.17,
+    "end": 114.79,
+    "id": "w227"
+  },
+  {
+    "text": "toward",
+    "start": 114.79,
+    "end": 115.31,
+    "id": "w228"
+  },
+  {
+    "text": "that",
+    "start": 115.31,
+    "end": 115.65,
+    "id": "w229"
+  },
+  {
+    "text": "limit.",
+    "start": 115.65,
+    "end": 116.44,
+    "id": "w230"
+  },
+  {
+    "text": "Now",
+    "start": 116.44,
+    "end": 116.66,
+    "id": "w231"
+  },
+  {
+    "text": "let",
+    "start": 116.66,
+    "end": 116.88,
+    "id": "w232"
+  },
+  {
+    "text": "us",
+    "start": 116.88,
+    "end": 117.03,
+    "id": "w233"
+  },
+  {
+    "text": "look",
+    "start": 117.3,
+    "end": 117.33,
+    "id": "w234"
+  },
+  {
+    "text": "at",
+    "start": 117.33,
+    "end": 117.48,
+    "id": "w235"
+  },
+  {
+    "text": "IRMA-A,",
+    "start": 117.48,
+    "end": 118.05,
+    "id": "w236"
+  },
+  {
+    "text": "the",
+    "start": 118.05,
+    "end": 118.27,
+    "id": "w237"
+  },
+  {
+    "text": "income-related",
+    "start": 118.27,
+    "end": 119.29,
+    "id": "w238"
+  },
+  {
+    "text": "monthly",
+    "start": 119.37,
+    "end": 119.82,
+    "id": "w239"
+  },
+  {
+    "text": "adjustment",
+    "start": 119.82,
+    "end": 120.56,
+    "id": "w240"
+  },
+  {
+    "text": "amount",
+    "start": 120.56,
+    "end": 121,
+    "id": "w241"
+  },
+  {
+    "text": "that",
+    "start": 121,
+    "end": 121.3,
+    "id": "w242"
+  },
+  {
+    "text": "affects",
+    "start": 121.3,
+    "end": 121.78,
+    "id": "w243"
+  },
+  {
+    "text": "roughly",
+    "start": 121.82,
+    "end": 122.3,
+    "id": "w244"
+  },
+  {
+    "text": "9%",
+    "start": 122.44,
+    "end": 122.8,
+    "id": "w245"
+  },
+  {
+    "text": "of",
+    "start": 122.8,
+    "end": 122.98,
+    "id": "w246"
+  },
+  {
+    "text": "Medicare",
+    "start": 123.3,
+    "end": 123.71,
+    "id": "w247"
+  },
+  {
+    "text": "beneficiaries.",
+    "start": 123.71,
+    "end": 125.2,
+    "id": "w248"
+  },
+  {
+    "text": "IRMA-A",
+    "start": 125.2,
+    "end": 125.7,
+    "id": "w249"
+  },
+  {
+    "text": "is",
+    "start": 125.7,
+    "end": 125.87,
+    "id": "w250"
+  },
+  {
+    "text": "an",
+    "start": 125.87,
+    "end": 126.07,
+    "id": "w251"
+  },
+  {
+    "text": "extra",
+    "start": 126.07,
+    "end": 126.48,
+    "id": "w252"
+  },
+  {
+    "text": "surcharge",
+    "start": 126.48,
+    "end": 127.27,
+    "id": "w253"
+  },
+  {
+    "text": "added",
+    "start": 127.27,
+    "end": 127.56,
+    "id": "w254"
+  },
+  {
+    "text": "onto",
+    "start": 127.74,
+    "end": 128.05,
+    "id": "w255"
+  },
+  {
+    "text": "both",
+    "start": 128.13,
+    "end": 128.41,
+    "id": "w256"
+  },
+  {
+    "text": "your",
+    "start": 128.41,
+    "end": 128.7,
+    "id": "w257"
+  },
+  {
+    "text": "Part",
+    "start": 128.8,
+    "end": 129.03,
+    "id": "w258"
+  },
+  {
+    "text": "Bpremium",
+    "start": 129.18,
+    "end": 129.82,
+    "id": "w259"
+  },
+  {
+    "text": "and",
+    "start": 129.82,
+    "end": 130.05,
+    "id": "w260"
+  },
+  {
+    "text": "your",
+    "start": 130.07,
+    "end": 130.36,
+    "id": "w261"
+  },
+  {
+    "text": "Part",
+    "start": 130.42,
+    "end": 130.72,
+    "id": "w262"
+  },
+  {
+    "text": "Ddrug",
+    "start": 130.87,
+    "end": 131.05,
+    "id": "w263"
+  },
+  {
+    "text": "coverage",
+    "start": 131.26,
+    "end": 132.08,
+    "id": "w264"
+  },
+  {
+    "text": "if",
+    "start": 132.08,
+    "end": 132.22,
+    "id": "w265"
+  },
+  {
+    "text": "your",
+    "start": 132.22,
+    "end": 132.51,
+    "id": "w266"
+  },
+  {
+    "text": "modified",
+    "start": 132.94,
+    "end": 133.09,
+    "id": "w267"
+  },
+  {
+    "text": "adjusted",
+    "start": 133.09,
+    "end": 133.67,
+    "id": "w268"
+  },
+  {
+    "text": "gross",
+    "start": 133.67,
+    "end": 134.03,
+    "id": "w269"
+  },
+  {
+    "text": "income",
+    "start": 134.03,
+    "end": 134.44,
+    "id": "w270"
+  },
+  {
+    "text": "from",
+    "start": 134.62,
+    "end": 134.76,
+    "id": "w271"
+  },
+  {
+    "text": "two",
+    "start": 134.76,
+    "end": 134.92,
+    "id": "w272"
+  },
+  {
+    "text": "years",
+    "start": 135.01,
+    "end": 135.3,
+    "id": "w273"
+  },
+  {
+    "text": "ago,",
+    "start": 135.34,
+    "end": 135.7,
+    "id": "w274"
+  },
+  {
+    "text": "meaning",
+    "start": 135.7,
+    "end": 136.21,
+    "id": "w275"
+  },
+  {
+    "text": "your",
+    "start": 136.21,
+    "end": 136.4,
+    "id": "w276"
+  },
+  {
+    "text": "2025",
+    "start": 136.56,
+    "end": 137.37,
+    "id": "w277"
+  },
+  {
+    "text": "tax",
+    "start": 137.37,
+    "end": 137.52,
+    "id": "w278"
+  },
+  {
+    "text": "return,",
+    "start": 137.79,
+    "end": 138.48,
+    "id": "w279"
+  },
+  {
+    "text": "exceeded",
+    "start": 138.48,
+    "end": 139.02,
+    "id": "w280"
+  },
+  {
+    "text": "the",
+    "start": 139.02,
+    "end": 139.35,
+    "id": "w281"
+  },
+  {
+    "text": "threshold.",
+    "start": 139.35,
+    "end": 140.04,
+    "id": "w282"
+  },
+  {
+    "text": "In",
+    "start": 140.04,
+    "end": 140.18,
+    "id": "w283"
+  },
+  {
+    "text": "2027,",
+    "start": 140.18,
+    "end": 141.13,
+    "id": "w284"
+  },
+  {
+    "text": "standard",
+    "start": 141.24,
+    "end": 141.76,
+    "id": "w285"
+  },
+  {
+    "text": "premiums",
+    "start": 141.83,
+    "end": 142.38,
+    "id": "w286"
+  },
+  {
+    "text": "apply",
+    "start": 142.38,
+    "end": 142.73,
+    "id": "w287"
+  },
+  {
+    "text": "if",
+    "start": 142.75,
+    "end": 142.88,
+    "id": "w288"
+  },
+  {
+    "text": "your",
+    "start": 142.97,
+    "end": 143.18,
+    "id": "w289"
+  },
+  {
+    "text": "2025",
+    "start": 143.18,
+    "end": 144.07,
+    "id": "w290"
+  },
+  {
+    "text": "income",
+    "start": 144.07,
+    "end": 144.36,
+    "id": "w291"
+  },
+  {
+    "text": "was",
+    "start": 144.52,
+    "end": 144.73,
+    "id": "w292"
+  },
+  {
+    "text": "$112,000",
+    "start": 144.73,
+    "end": 146.26,
+    "id": "w293"
+  },
+  {
+    "text": "or",
+    "start": 146.26,
+    "end": 146.4,
+    "id": "w294"
+  },
+  {
+    "text": "less",
+    "start": 146.4,
+    "end": 146.69,
+    "id": "w295"
+  },
+  {
+    "text": "for",
+    "start": 146.69,
+    "end": 146.91,
+    "id": "w296"
+  },
+  {
+    "text": "single",
+    "start": 146.91,
+    "end": 147.48,
+    "id": "w297"
+  },
+  {
+    "text": "filers",
+    "start": 147.48,
+    "end": 148.16,
+    "id": "w298"
+  },
+  {
+    "text": "or",
+    "start": 148.16,
+    "end": 148.32,
+    "id": "w299"
+  },
+  {
+    "text": "$224,000",
+    "start": 148.32,
+    "end": 150.02,
+    "id": "w300"
+  },
+  {
+    "text": "or",
+    "start": 150.02,
+    "end": 150.18,
+    "id": "w301"
+  },
+  {
+    "text": "less",
+    "start": 150.18,
+    "end": 150.5,
+    "id": "w302"
+  },
+  {
+    "text": "for",
+    "start": 150.5,
+    "end": 150.74,
+    "id": "w303"
+  },
+  {
+    "text": "married",
+    "start": 150.74,
+    "end": 151.31,
+    "id": "w304"
+  },
+  {
+    "text": "couples",
+    "start": 151.31,
+    "end": 151.87,
+    "id": "w305"
+  },
+  {
+    "text": "filing",
+    "start": 151.9,
+    "end": 152.37,
+    "id": "w306"
+  },
+  {
+    "text": "jointly.",
+    "start": 152.37,
+    "end": 153.17,
+    "id": "w307"
+  },
+  {
+    "text": "Remember,",
+    "start": 154.1,
+    "end": 154.31,
+    "id": "w308"
+  },
+  {
+    "text": "IRMA-A",
+    "start": 154.31,
+    "end": 154.92,
+    "id": "w309"
+  },
+  {
+    "text": "brackets",
+    "start": 154.92,
+    "end": 155.79,
+    "id": "w310"
+  },
+  {
+    "text": "are",
+    "start": 155.79,
+    "end": 156.08,
+    "id": "w311"
+  },
+  {
+    "text": "steep",
+    "start": 156.17,
+    "end": 156.64,
+    "id": "w312"
+  },
+  {
+    "text": "cliffs,",
+    "start": 156.64,
+    "end": 157.49,
+    "id": "w313"
+  },
+  {
+    "text": "not",
+    "start": 157.49,
+    "end": 157.81,
+    "id": "w314"
+  },
+  {
+    "text": "gradual",
+    "start": 157.81,
+    "end": 158.54,
+    "id": "w315"
+  },
+  {
+    "text": "slopes.",
+    "start": 158.54,
+    "end": 159.6,
+    "id": "w316"
+  },
+  {
+    "text": "Landing",
+    "start": 159.6,
+    "end": 160.12,
+    "id": "w317"
+  },
+  {
+    "text": "even",
+    "start": 160.12,
+    "end": 160.47,
+    "id": "w318"
+  },
+  {
+    "text": "one",
+    "start": 160.47,
+    "end": 160.63,
+    "id": "w319"
+  },
+  {
+    "text": "single",
+    "start": 160.63,
+    "end": 160.98,
+    "id": "w320"
+  },
+  {
+    "text": "dollar",
+    "start": 161.1,
+    "end": 161.51,
+    "id": "w321"
+  },
+  {
+    "text": "over",
+    "start": 161.51,
+    "end": 161.72,
+    "id": "w322"
+  },
+  {
+    "text": "a",
+    "start": 161.82,
+    "end": 161.87,
+    "id": "w323"
+  },
+  {
+    "text": "bracket",
+    "start": 161.87,
+    "end": 162.39,
+    "id": "w324"
+  },
+  {
+    "text": "pushes",
+    "start": 162.39,
+    "end": 162.82,
+    "id": "w325"
+  },
+  {
+    "text": "you",
+    "start": 162.86,
+    "end": 163.05,
+    "id": "w326"
+  },
+  {
+    "text": "into",
+    "start": 163.05,
+    "end": 163.34,
+    "id": "w327"
+  },
+  {
+    "text": "that",
+    "start": 163.34,
+    "end": 163.63,
+    "id": "w328"
+  },
+  {
+    "text": "entire",
+    "start": 163.63,
+    "end": 163.92,
+    "id": "w329"
+  },
+  {
+    "text": "surcharge",
+    "start": 164.08,
+    "end": 164.61,
+    "id": "w330"
+  },
+  {
+    "text": "tier",
+    "start": 164.72,
+    "end": 165.04,
+    "id": "w331"
+  },
+  {
+    "text": "for",
+    "start": 165.12,
+    "end": 165.44,
+    "id": "w332"
+  },
+  {
+    "text": "the",
+    "start": 165.44,
+    "end": 165.76,
+    "id": "w333"
+  },
+  {
+    "text": "full",
+    "start": 165.98,
+    "end": 166.19,
+    "id": "w334"
+  },
+  {
+    "text": "year.",
+    "start": 166.19,
+    "end": 166.96,
+    "id": "w335"
+  },
+  {
+    "text": "One-time",
+    "start": 166.96,
+    "end": 167.49,
+    "id": "w336"
+  },
+  {
+    "text": "financial",
+    "start": 167.82,
+    "end": 168.06,
+    "id": "w337"
+  },
+  {
+    "text": "events,",
+    "start": 168.16,
+    "end": 168.62,
+    "id": "w338"
+  },
+  {
+    "text": "such",
+    "start": 168.62,
+    "end": 168.89,
+    "id": "w339"
+  },
+  {
+    "text": "as",
+    "start": 168.89,
+    "end": 169.02,
+    "id": "w340"
+  },
+  {
+    "text": "selling",
+    "start": 169.02,
+    "end": 169.32,
+    "id": "w341"
+  },
+  {
+    "text": "investment",
+    "start": 169.5,
+    "end": 170.16,
+    "id": "w342"
+  },
+  {
+    "text": "property,",
+    "start": 170.16,
+    "end": 170.79,
+    "id": "w343"
+  },
+  {
+    "text": "realizing",
+    "start": 170.94,
+    "end": 171.28,
+    "id": "w344"
+  },
+  {
+    "text": "capital",
+    "start": 171.44,
+    "end": 171.9,
+    "id": "w345"
+  },
+  {
+    "text": "gains,",
+    "start": 171.9,
+    "end": 172.4,
+    "id": "w346"
+  },
+  {
+    "text": "converting",
+    "start": 172.4,
+    "end": 172.855,
+    "id": "w347"
+  },
+  {
+    "text": "a",
+    "start": 172.855,
+    "end": 173.31,
+    "id": "w348"
+  },
+  {
+    "text": "traditional",
+    "start": 173.31,
+    "end": 174.09,
+    "id": "w349"
+  },
+  {
+    "text": "IRA",
+    "start": 174.09,
+    "end": 174.31,
+    "id": "w350"
+  },
+  {
+    "text": "to",
+    "start": 174.31,
+    "end": 174.46,
+    "id": "w351"
+  },
+  {
+    "text": "a",
+    "start": 174.46,
+    "end": 174.51,
+    "id": "w352"
+  },
+  {
+    "text": "Roth",
+    "start": 174.51,
+    "end": 174.81,
+    "id": "w353"
+  },
+  {
+    "text": "IRA,",
+    "start": 174.98,
+    "end": 175.2,
+    "id": "w354"
+  },
+  {
+    "text": "or",
+    "start": 175.2,
+    "end": 175.29,
+    "id": "w355"
+  },
+  {
+    "text": "taking",
+    "start": 175.37,
+    "end": 175.8,
+    "id": "w356"
+  },
+  {
+    "text": "a",
+    "start": 175.8,
+    "end": 175.87,
+    "id": "w357"
+  },
+  {
+    "text": "large",
+    "start": 175.87,
+    "end": 176.24,
+    "id": "w358"
+  },
+  {
+    "text": "retirement",
+    "start": 176.24,
+    "end": 176.99,
+    "id": "w359"
+  },
+  {
+    "text": "severance,",
+    "start": 176.99,
+    "end": 177.79,
+    "id": "w360"
+  },
+  {
+    "text": "can",
+    "start": 177.81,
+    "end": 177.87,
+    "id": "w361"
+  },
+  {
+    "text": "temporarily",
+    "start": 178.98,
+    "end": 179.09,
+    "id": "w362"
+  },
+  {
+    "text": "trigger",
+    "start": 179.09,
+    "end": 179.71,
+    "id": "w363"
+  },
+  {
+    "text": "IRMA-A",
+    "start": 179.71,
+    "end": 180.19,
+    "id": "w364"
+  },
+  {
+    "text": "two",
+    "start": 180.19,
+    "end": 180.47,
+    "id": "w365"
+  },
+  {
+    "text": "years",
+    "start": 180.47,
+    "end": 180.91,
+    "id": "w366"
+  },
+  {
+    "text": "later.",
+    "start": 180.91,
+    "end": 181.62,
+    "id": "w367"
+  },
+  {
+    "text": "However,",
+    "start": 181.68,
+    "end": 182.27,
+    "id": "w368"
+  },
+  {
+    "text": "if",
+    "start": 182.27,
+    "end": 182.4,
+    "id": "w369"
+  },
+  {
+    "text": "your",
+    "start": 182.55,
+    "end": 182.66,
+    "id": "w370"
+  },
+  {
+    "text": "income",
+    "start": 182.66,
+    "end": 183.04,
+    "id": "w371"
+  },
+  {
+    "text": "has",
+    "start": 183.05,
+    "end": 183.24,
+    "id": "w372"
+  },
+  {
+    "text": "dropped",
+    "start": 183.24,
+    "end": 183.7,
+    "id": "w373"
+  },
+  {
+    "text": "since",
+    "start": 183.7,
+    "end": 184.02,
+    "id": "w374"
+  },
+  {
+    "text": "2025",
+    "start": 184.02,
+    "end": 184.8,
+    "id": "w375"
+  },
+  {
+    "text": "due",
+    "start": 184.8,
+    "end": 184.94,
+    "id": "w376"
+  },
+  {
+    "text": "to",
+    "start": 185.02,
+    "end": 185.12,
+    "id": "w377"
+  },
+  {
+    "text": "a",
+    "start": 185.12,
+    "end": 185.18,
+    "id": "w378"
+  },
+  {
+    "text": "qualifying",
+    "start": 185.18,
+    "end": 185.83,
+    "id": "w379"
+  },
+  {
+    "text": "life-changing",
+    "start": 185.83,
+    "end": 186.67,
+    "id": "w380"
+  },
+  {
+    "text": "event",
+    "start": 186.67,
+    "end": 187.06,
+    "id": "w381"
+  },
+  {
+    "text": "like",
+    "start": 187.08,
+    "end": 187.37,
+    "id": "w382"
+  },
+  {
+    "text": "retirement,",
+    "start": 187.94,
+    "end": 188.17,
+    "id": "w383"
+  },
+  {
+    "text": "marriage,",
+    "start": 188.23,
+    "end": 188.95,
+    "id": "w384"
+  },
+  {
+    "text": "divorce,",
+    "start": 188.95,
+    "end": 189.59,
+    "id": "w385"
+  },
+  {
+    "text": "or",
+    "start": 189.62,
+    "end": 189.73,
+    "id": "w386"
+  },
+  {
+    "text": "the",
+    "start": 189.73,
+    "end": 189.92,
+    "id": "w387"
+  },
+  {
+    "text": "death",
+    "start": 190.01,
+    "end": 190.3,
+    "id": "w388"
+  },
+  {
+    "text": "of",
+    "start": 190.3,
+    "end": 190.44,
+    "id": "w389"
+  },
+  {
+    "text": "a",
+    "start": 190.44,
+    "end": 190.51,
+    "id": "w390"
+  },
+  {
+    "text": "spouse,",
+    "start": 190.51,
+    "end": 191.08,
+    "id": "w391"
+  },
+  {
+    "text": "you",
+    "start": 191.08,
+    "end": 191.29,
+    "id": "w392"
+  },
+  {
+    "text": "can",
+    "start": 191.29,
+    "end": 191.4,
+    "id": "w393"
+  },
+  {
+    "text": "appeal",
+    "start": 191.56,
+    "end": 191.93,
+    "id": "w394"
+  },
+  {
+    "text": "by",
+    "start": 191.93,
+    "end": 192.07,
+    "id": "w395"
+  },
+  {
+    "text": "filing",
+    "start": 192.07,
+    "end": 192.5,
+    "id": "w396"
+  },
+  {
+    "text": "Social",
+    "start": 192.6,
+    "end": 193.14,
+    "id": "w397"
+  },
+  {
+    "text": "Security",
+    "start": 193.46,
+    "end": 193.86,
+    "id": "w398"
+  },
+  {
+    "text": "Form",
+    "start": 193.86,
+    "end": 194.22,
+    "id": "w399"
+  },
+  {
+    "text": "SSA-44",
+    "start": 194.22,
+    "end": 194.96,
+    "id": "w400"
+  },
+  {
+    "text": "with",
+    "start": 195.14,
+    "end": 195.45,
+    "id": "w401"
+  },
+  {
+    "text": "proof",
+    "start": 195.53,
+    "end": 195.87,
+    "id": "w402"
+  },
+  {
+    "text": "of",
+    "start": 195.94,
+    "end": 196.1,
+    "id": "w403"
+  },
+  {
+    "text": "your",
+    "start": 196.2,
+    "end": 196.43,
+    "id": "w404"
+  },
+  {
+    "text": "reduced",
+    "start": 196.58,
+    "end": 197.09,
+    "id": "w405"
+  },
+  {
+    "text": "income.",
+    "start": 197.09,
+    "end": 197.91,
+    "id": "w406"
+  },
+  {
+    "text": "Next,",
+    "start": 197.92,
+    "end": 198.37,
+    "id": "w407"
+  },
+  {
+    "text": "let",
+    "start": 198.37,
+    "end": 198.59,
+    "id": "w408"
+  },
+  {
+    "text": "us",
+    "start": 198.59,
+    "end": 198.79,
+    "id": "w409"
+  },
+  {
+    "text": "check",
+    "start": 198.79,
+    "end": 199.07,
+    "id": "w410"
+  },
+  {
+    "text": "Medicare",
+    "start": 199.12,
+    "end": 199.64,
+    "id": "w411"
+  },
+  {
+    "text": "Part",
+    "start": 199.71,
+    "end": 200,
+    "id": "w412"
+  },
+  {
+    "text": "A",
+    "start": 200.01,
+    "end": 200.04,
+    "id": "w413"
+  },
+  {
+    "text": "hospital",
+    "start": 200.14,
+    "end": 200.68,
+    "id": "w414"
+  },
+  {
+    "text": "coverage",
+    "start": 200.68,
+    "end": 201.28,
+    "id": "w415"
+  },
+  {
+    "text": "and",
+    "start": 201.28,
+    "end": 201.42,
+    "id": "w416"
+  },
+  {
+    "text": "Part",
+    "start": 201.52,
+    "end": 201.75,
+    "id": "w417"
+  },
+  {
+    "text": "Dprescription",
+    "start": 201.87,
+    "end": 202.76,
+    "id": "w418"
+  },
+  {
+    "text": "drug",
+    "start": 202.76,
+    "end": 203.06,
+    "id": "w419"
+  },
+  {
+    "text": "limits",
+    "start": 203.06,
+    "end": 203.36,
+    "id": "w420"
+  },
+  {
+    "text": "for",
+    "start": 203.56,
+    "end": 203.86,
+    "id": "w421"
+  },
+  {
+    "text": "2027.",
+    "start": 204.42,
+    "end": 205.4,
+    "id": "w422"
+  },
+  {
+    "text": "While",
+    "start": 205.4,
+    "end": 205.71,
+    "id": "w423"
+  },
+  {
+    "text": "most",
+    "start": 205.71,
+    "end": 205.96,
+    "id": "w424"
+  },
+  {
+    "text": "people",
+    "start": 206.26,
+    "end": 206.34,
+    "id": "w425"
+  },
+  {
+    "text": "pay",
+    "start": 206.34,
+    "end": 206.49,
+    "id": "w426"
+  },
+  {
+    "text": "zero",
+    "start": 206.55,
+    "end": 206.77,
+    "id": "w427"
+  },
+  {
+    "text": "monthly",
+    "start": 206.78,
+    "end": 207.21,
+    "id": "w428"
+  },
+  {
+    "text": "premium",
+    "start": 207.21,
+    "end": 207.66,
+    "id": "w429"
+  },
+  {
+    "text": "for",
+    "start": 207.66,
+    "end": 207.77,
+    "id": "w430"
+  },
+  {
+    "text": "Part",
+    "start": 207.94,
+    "end": 208.09,
+    "id": "w431"
+  },
+  {
+    "text": "A",
+    "start": 208.13,
+    "end": 208.16,
+    "id": "w432"
+  },
+  {
+    "text": "because",
+    "start": 208.16,
+    "end": 208.6,
+    "id": "w433"
+  },
+  {
+    "text": "they",
+    "start": 208.6,
+    "end": 208.85,
+    "id": "w434"
+  },
+  {
+    "text": "worked",
+    "start": 208.85,
+    "end": 209.23,
+    "id": "w435"
+  },
+  {
+    "text": "at",
+    "start": 209.23,
+    "end": 209.38,
+    "id": "w436"
+  },
+  {
+    "text": "least",
+    "start": 209.38,
+    "end": 209.66,
+    "id": "w437"
+  },
+  {
+    "text": "40",
+    "start": 209.66,
+    "end": 210.11,
+    "id": "w438"
+  },
+  {
+    "text": "quarters,",
+    "start": 210.9,
+    "end": 211.09,
+    "id": "w439"
+  },
+  {
+    "text": "the",
+    "start": 211.09,
+    "end": 211.38,
+    "id": "w440"
+  },
+  {
+    "text": "Part",
+    "start": 211.38,
+    "end": 211.77,
+    "id": "w441"
+  },
+  {
+    "text": "A",
+    "start": 211.77,
+    "end": 211.8,
+    "id": "w442"
+  },
+  {
+    "text": "inpatient",
+    "start": 211.93,
+    "end": 212.73,
+    "id": "w443"
+  },
+  {
+    "text": "hospital",
+    "start": 212.73,
+    "end": 213.51,
+    "id": "w444"
+  },
+  {
+    "text": "deductible",
+    "start": 213.51,
+    "end": 214.44,
+    "id": "w445"
+  },
+  {
+    "text": "rises",
+    "start": 214.6,
+    "end": 214.96,
+    "id": "w446"
+  },
+  {
+    "text": "by",
+    "start": 214.96,
+    "end": 215.13,
+    "id": "w447"
+  },
+  {
+    "text": "$40,",
+    "start": 215.24,
+    "end": 215.98,
+    "id": "w448"
+  },
+  {
+    "text": "from",
+    "start": 216.18,
+    "end": 216.4,
+    "id": "w449"
+  },
+  {
+    "text": "$1,736",
+    "start": 216.43,
+    "end": 217.84,
+    "id": "w450"
+  },
+  {
+    "text": "up",
+    "start": 217.84,
+    "end": 218,
+    "id": "w451"
+  },
+  {
+    "text": "to",
+    "start": 218.05,
+    "end": 218.16,
+    "id": "w452"
+  },
+  {
+    "text": "$1,776",
+    "start": 218.23,
+    "end": 219.2,
+    "id": "w453"
+  },
+  {
+    "text": "per",
+    "start": 219.76,
+    "end": 220.08,
+    "id": "w454"
+  },
+  {
+    "text": "benefit",
+    "start": 220.08,
+    "end": 220.95,
+    "id": "w455"
+  },
+  {
+    "text": "period.",
+    "start": 220.95,
+    "end": 221.87,
+    "id": "w456"
+  },
+  {
+    "text": "Over",
+    "start": 221.88,
+    "end": 222.2,
+    "id": "w457"
+  },
+  {
+    "text": "on",
+    "start": 222.2,
+    "end": 222.36,
+    "id": "w458"
+  },
+  {
+    "text": "the",
+    "start": 222.36,
+    "end": 222.6,
+    "id": "w459"
+  },
+  {
+    "text": "prescription",
+    "start": 222.75,
+    "end": 223.56,
+    "id": "w460"
+  },
+  {
+    "text": "side,",
+    "start": 223.57,
+    "end": 224,
+    "id": "w461"
+  },
+  {
+    "text": "the",
+    "start": 224.1,
+    "end": 224.25,
+    "id": "w462"
+  },
+  {
+    "text": "maximum",
+    "start": 224.42,
+    "end": 224.83,
+    "id": "w463"
+  },
+  {
+    "text": "annual",
+    "start": 224.9,
+    "end": 225.34,
+    "id": "w464"
+  },
+  {
+    "text": "Part",
+    "start": 225.34,
+    "end": 225.66,
+    "id": "w465"
+  },
+  {
+    "text": "Ddeductible",
+    "start": 225.66,
+    "end": 226.55,
+    "id": "w466"
+  },
+  {
+    "text": "rises",
+    "start": 226.55,
+    "end": 226.89,
+    "id": "w467"
+  },
+  {
+    "text": "from",
+    "start": 227,
+    "end": 227.27,
+    "id": "w468"
+  },
+  {
+    "text": "$615",
+    "start": 227.27,
+    "end": 228.16,
+    "id": "w469"
+  },
+  {
+    "text": "to",
+    "start": 228.16,
+    "end": 228.16,
+    "id": "w470"
+  },
+  {
+    "text": "$700,",
+    "start": 228.16,
+    "end": 229.01,
+    "id": "w471"
+  },
+  {
+    "text": "and",
+    "start": 229.03,
+    "end": 229.22,
+    "id": "w472"
+  },
+  {
+    "text": "your",
+    "start": 229.22,
+    "end": 229.5,
+    "id": "w473"
+  },
+  {
+    "text": "annual",
+    "start": 229.5,
+    "end": 229.85,
+    "id": "w474"
+  },
+  {
+    "text": "out-of-pocket",
+    "start": 229.95,
+    "end": 230.83,
+    "id": "w475"
+  },
+  {
+    "text": "spending",
+    "start": 230.83,
+    "end": 231.37,
+    "id": "w476"
+  },
+  {
+    "text": "cap",
+    "start": 231.42,
+    "end": 231.61,
+    "id": "w477"
+  },
+  {
+    "text": "for",
+    "start": 231.61,
+    "end": 231.82,
+    "id": "w478"
+  },
+  {
+    "text": "covered",
+    "start": 231.82,
+    "end": 232.31,
+    "id": "w479"
+  },
+  {
+    "text": "medications",
+    "start": 232.31,
+    "end": 233.09,
+    "id": "w480"
+  },
+  {
+    "text": "increases",
+    "start": 233.09,
+    "end": 233.58,
+    "id": "w481"
+  },
+  {
+    "text": "from",
+    "start": 233.86,
+    "end": 234.02,
+    "id": "w482"
+  },
+  {
+    "text": "$2,100",
+    "start": 234.08,
+    "end": 235.74,
+    "id": "w483"
+  },
+  {
+    "text": "to",
+    "start": 235.74,
+    "end": 235.96,
+    "id": "w484"
+  },
+  {
+    "text": "$2,400.",
+    "start": 235.96,
+    "end": 237.91,
+    "id": "w485"
+  },
+  {
+    "text": "Before",
+    "start": 238,
+    "end": 238.44,
+    "id": "w486"
+  },
+  {
+    "text": "January",
+    "start": 238.86,
+    "end": 238.95,
+    "id": "w487"
+  },
+  {
+    "text": "1st,",
+    "start": 238.95,
+    "end": 239.41,
+    "id": "w488"
+  },
+  {
+    "text": "run",
+    "start": 239.49,
+    "end": 239.67,
+    "id": "w489"
+  },
+  {
+    "text": "through",
+    "start": 239.67,
+    "end": 240.07,
+    "id": "w490"
+  },
+  {
+    "text": "four",
+    "start": 240.22,
+    "end": 240.36,
+    "id": "w491"
+  },
+  {
+    "text": "quick",
+    "start": 240.54,
+    "end": 240.83,
+    "id": "w492"
+  },
+  {
+    "text": "steps",
+    "start": 240.83,
+    "end": 241.19,
+    "id": "w493"
+  },
+  {
+    "text": "to",
+    "start": 241.19,
+    "end": 241.21,
+    "id": "w494"
+  },
+  {
+    "text": "protect",
+    "start": 241.34,
+    "end": 241.83,
+    "id": "w495"
+  },
+  {
+    "text": "your",
+    "start": 241.98,
+    "end": 242.13,
+    "id": "w496"
+  },
+  {
+    "text": "budget.",
+    "start": 242.13,
+    "end": 242.86,
+    "id": "w497"
+  },
+  {
+    "text": "Adjust",
+    "start": 242.88,
+    "end": 243.3,
+    "id": "w498"
+  },
+  {
+    "text": "your",
+    "start": 243.3,
+    "end": 243.58,
+    "id": "w499"
+  },
+  {
+    "text": "monthly",
+    "start": 243.75,
+    "end": 244.03,
+    "id": "w500"
+  },
+  {
+    "text": "household",
+    "start": 244.08,
+    "end": 244.69,
+    "id": "w501"
+  },
+  {
+    "text": "budget",
+    "start": 244.69,
+    "end": 245.12,
+    "id": "w502"
+  },
+  {
+    "text": "for",
+    "start": 245.12,
+    "end": 245.25,
+    "id": "w503"
+  },
+  {
+    "text": "the",
+    "start": 245.42,
+    "end": 245.54,
+    "id": "w504"
+  },
+  {
+    "text": "$209.40",
+    "start": 245.54,
+    "end": 246.87,
+    "id": "w505"
+  },
+  {
+    "text": "Part",
+    "start": 246.87,
+    "end": 247.15,
+    "id": "w506"
+  },
+  {
+    "text": "Bpremium,",
+    "start": 247.15,
+    "end": 247.85,
+    "id": "w507"
+  },
+  {
+    "text": "check",
+    "start": 247.85,
+    "end": 248.18,
+    "id": "w508"
+  },
+  {
+    "text": "your",
+    "start": 248.18,
+    "end": 248.45,
+    "id": "w509"
+  },
+  {
+    "text": "2025",
+    "start": 248.61,
+    "end": 249.32,
+    "id": "w510"
+  },
+  {
+    "text": "tax",
+    "start": 249.32,
+    "end": 249.6,
+    "id": "w511"
+  },
+  {
+    "text": "return",
+    "start": 249.6,
+    "end": 250.1,
+    "id": "w512"
+  },
+  {
+    "text": "against",
+    "start": 250.46,
+    "end": 250.68,
+    "id": "w513"
+  },
+  {
+    "text": "the",
+    "start": 250.68,
+    "end": 250.93,
+    "id": "w514"
+  },
+  {
+    "text": "new",
+    "start": 250.93,
+    "end": 251.18,
+    "id": "w515"
+  },
+  {
+    "text": "IRMA-A",
+    "start": 251.18,
+    "end": 251.66,
+    "id": "w516"
+  },
+  {
+    "text": "thresholds,",
+    "start": 251.66,
+    "end": 252.66,
+    "id": "w517"
+  },
+  {
+    "text": "review",
+    "start": 252.66,
+    "end": 253.1,
+    "id": "w518"
+  },
+  {
+    "text": "your",
+    "start": 253.2,
+    "end": 253.43,
+    "id": "w519"
+  },
+  {
+    "text": "Part",
+    "start": 253.58,
+    "end": 253.82,
+    "id": "w520"
+  },
+  {
+    "text": "Ddrug",
+    "start": 253.82,
+    "end": 254.23,
+    "id": "w521"
+  },
+  {
+    "text": "plan",
+    "start": 254.23,
+    "end": 254.56,
+    "id": "w522"
+  },
+  {
+    "text": "before",
+    "start": 254.56,
+    "end": 255.01,
+    "id": "w523"
+  },
+  {
+    "text": "December",
+    "start": 255.31,
+    "end": 255.84,
+    "id": "w524"
+  },
+  {
+    "text": "7th,",
+    "start": 255.84,
+    "end": 256.27,
+    "id": "w525"
+  },
+  {
+    "text": "and",
+    "start": 256.27,
+    "end": 256.46,
+    "id": "w526"
+  },
+  {
+    "text": "never",
+    "start": 256.7,
+    "end": 256.78,
+    "id": "w527"
+  },
+  {
+    "text": "switch",
+    "start": 256.78,
+    "end": 257.16,
+    "id": "w528"
+  },
+  {
+    "text": "Medigap",
+    "start": 257.16,
+    "end": 257.53,
+    "id": "w529"
+  },
+  {
+    "text": "carriers",
+    "start": 257.63,
+    "end": 258.1,
+    "id": "w530"
+  },
+  {
+    "text": "on",
+    "start": 258.1,
+    "end": 258.21,
+    "id": "w531"
+  },
+  {
+    "text": "impulse",
+    "start": 258.38,
+    "end": 258.67,
+    "id": "w532"
+  },
+  {
+    "text": "without",
+    "start": 258.67,
+    "end": 259.12,
+    "id": "w533"
+  },
+  {
+    "text": "checking",
+    "start": 259.12,
+    "end": 259.63,
+    "id": "w534"
+  },
+  {
+    "text": "state",
+    "start": 259.63,
+    "end": 259.95,
+    "id": "w535"
+  },
+  {
+    "text": "medical",
+    "start": 259.95,
+    "end": 260.4,
+    "id": "w536"
+  },
+  {
+    "text": "underwriting",
+    "start": 260.4,
+    "end": 261.18,
+    "id": "w537"
+  },
+  {
+    "text": "rules",
+    "start": 261.28,
+    "end": 261.83,
+    "id": "w538"
+  },
+  {
+    "text": "first.",
+    "start": 262.14,
+    "end": 262.67,
+    "id": "w539"
+  },
+  {
+    "text": "To",
+    "start": 262.72,
+    "end": 262.88,
+    "id": "w540"
+  },
+  {
+    "text": "compare",
+    "start": 262.88,
+    "end": 263.59,
+    "id": "w541"
+  },
+  {
+    "text": "2027",
+    "start": 263.59,
+    "end": 264.44,
+    "id": "w542"
+  },
+  {
+    "text": "plans",
+    "start": 264.51,
+    "end": 264.84,
+    "id": "w543"
+  },
+  {
+    "text": "and",
+    "start": 264.94,
+    "end": 265.09,
+    "id": "w544"
+  },
+  {
+    "text": "verify",
+    "start": 265.26,
+    "end": 265.57,
+    "id": "w545"
+  },
+  {
+    "text": "official",
+    "start": 265.65,
+    "end": 266.22,
+    "id": "w546"
+  },
+  {
+    "text": "Medicare",
+    "start": 266.33,
+    "end": 266.96,
+    "id": "w547"
+  },
+  {
+    "text": "numbers,",
+    "start": 266.96,
+    "end": 267.7,
+    "id": "w548"
+  },
+  {
+    "text": "visit",
+    "start": 267.7,
+    "end": 268.1,
+    "id": "w549"
+  },
+  {
+    "text": "Medicare.gov.",
+    "start": 268.43,
+    "end": 269.6,
+    "id": "w550"
+  },
+  {
+    "text": "And",
+    "start": 269.6,
+    "end": 269.76,
+    "id": "w551"
+  },
+  {
+    "text": "if",
+    "start": 269.76,
+    "end": 269.87,
+    "id": "w552"
+  },
+  {
+    "text": "you",
+    "start": 269.87,
+    "end": 270.03,
+    "id": "w553"
+  },
+  {
+    "text": "would",
+    "start": 270.03,
+    "end": 270.31,
+    "id": "w554"
+  },
+  {
+    "text": "like",
+    "start": 270.46,
+    "end": 270.53,
+    "id": "w555"
+  },
+  {
+    "text": "to",
+    "start": 270.53,
+    "end": 270.64,
+    "id": "w556"
+  },
+  {
+    "text": "speak",
+    "start": 270.64,
+    "end": 270.92,
+    "id": "w557"
+  },
+  {
+    "text": "directly",
+    "start": 270.92,
+    "end": 271.29,
+    "id": "w558"
+  },
+  {
+    "text": "with",
+    "start": 271.39,
+    "end": 271.58,
+    "id": "w559"
+  },
+  {
+    "text": "a",
+    "start": 271.58,
+    "end": 271.63,
+    "id": "w560"
+  },
+  {
+    "text": "licensed",
+    "start": 271.63,
+    "end": 271.96,
+    "id": "w561"
+  },
+  {
+    "text": "consultant",
+    "start": 272.14,
+    "end": 272.55,
+    "id": "w562"
+  },
+  {
+    "text": "about",
+    "start": 272.62,
+    "end": 272.88,
+    "id": "w563"
+  },
+  {
+    "text": "your",
+    "start": 272.94,
+    "end": 273.1,
+    "id": "w564"
+  },
+  {
+    "text": "2027",
+    "start": 273.2,
+    "end": 273.78,
+    "id": "w565"
+  },
+  {
+    "text": "options,",
+    "start": 273.78,
+    "end": 274.36,
+    "id": "w566"
+  },
+  {
+    "text": "call",
+    "start": 274.36,
+    "end": 274.72,
+    "id": "w567"
+  },
+  {
+    "text": "Allen",
+    "start": 274.72,
+    "end": 275.23,
+    "id": "w568"
+  },
+  {
+    "text": "&",
+    "start": 275.23,
+    "end": 275.27,
+    "id": "w569"
+  },
+  {
+    "text": "Associates",
+    "start": 275.27,
+    "end": 276.19,
+    "id": "w570"
+  },
+  {
+    "text": "at",
+    "start": 276.19,
+    "end": 276.37,
+    "id": "w571"
+  },
+  {
+    "text": "800-324-9986,",
+    "start": 276.37,
+    "end": 279.37,
+    "id": "w572"
+  },
+  {
+    "text": "or",
+    "start": 279.48,
+    "end": 279.65,
+    "id": "w573"
+  },
+  {
+    "text": "visit",
+    "start": 279.65,
+    "end": 280.11,
+    "id": "w574"
+  },
+  {
+    "text": "AllenandAssociates.agency.",
+    "start": 280.11,
+    "end": 282.64,
+    "id": "w575"
+  }
+]
