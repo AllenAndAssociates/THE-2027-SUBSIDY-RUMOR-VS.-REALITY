@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Generate the vertical 9:16 shorts that funnel to the full 2027 Medicare costs video.
 
-Each short = one segment of the HeyGen avatar video + burned-in captions + a stat card
-synced to the spoken numbers + a CTA end screen voiced with the ElevenLabs "Arric Allen" clone.
+Native-creator style: the HeyGen avatar fills the frame, bold captions, and the key number
+pops in as it is spoken. It ends with one soft line in the ElevenLabs "Arric Allen" clone voice
+over a blurred freeze-frame, pointing to the full video on the channel. No logo/card/phone.
 
 Run:  python3 build.py   (writes <slug>/index.html, one project per short)
 Render (from <slug>/): npx hyperframes render -f 25 -o ../../renders/shorts/<slug>.mp4
@@ -101,69 +102,95 @@ def clean(t):
     return t
 
 
-def caption_chunks(src_in, src_out):
-    """Group words into short caption chunks (<=3 words, break on punctuation or pauses)."""
-    ws = []
-    for w in WORDS:
-        if w["start"] >= src_in - 0.05 and w["start"] < src_out:
-            for i, part in enumerate(clean(w["text"]).split()):
-                ws.append({"t": part, "s": w["start"] + i * 0.12, "e": w["end"]})
+def chunk(ws, total_end):
+    """ws: [{t,s}] in film time -> [(start, end, text)] chunks of <=3 words."""
     chunks, cur = [], []
     for i, w in enumerate(ws):
         cur.append(w)
         nxt = ws[i + 1] if i + 1 < len(ws) else None
-        brk = (len(cur) >= 3 or re.search(r"[.,?!]$", w["t"]) or nxt is None
-               or nxt["s"] - w["s"] > 0.9)
-        if brk:
+        if len(cur) >= 3 or re.search(r"[.,?!]$", w["t"]) or nxt is None or nxt["s"] - w["s"] > 0.9:
             chunks.append(cur)
             cur = []
     out = []
     for i, c in enumerate(chunks):
-        start = c[0]["s"] - src_in
-        end = (chunks[i + 1][0]["s"] - src_in) if i + 1 < len(chunks) else (src_out - src_in)
-        out.append((max(0, start), end, " ".join(x["t"] for x in c)))
+        end = chunks[i + 1][0]["s"] if i + 1 < len(chunks) else total_end
+        out.append((max(0, c[0]["s"]), end, " ".join(x["t"] for x in c)))
     return out
 
 
-def money_js(v):
-    return json.dumps(v)
+def avatar_words(src_in, src_out):
+    ws = []
+    for w in WORDS:
+        if src_in - 0.05 <= w["start"] < src_out:
+            for i, part in enumerate(clean(w["text"]).split()):
+                ws.append({"t": part, "s": round(w["start"] - src_in + i * 0.12, 2)})
+    return ws
+
+
+def cta_words(slug, offset):
+    raw = json.load(open(HERE / f"assets/cta-{slug}.words.json"))
+    ws, i = [], 0
+    while i < len(raw):
+        t = raw[i]["text"]
+        # spoken "twenty twenty-seven" -> caption "2027"
+        if t.lower() == "twenty" and i + 1 < len(raw) and raw[i + 1]["text"].lower().startswith("twenty-seven"):
+            t = "2027" + raw[i + 1]["text"][len("twenty-seven"):]
+            ws.append({"t": t, "s": round(raw[i]["start"] + offset, 2)})
+            i += 2
+            continue
+        ws.append({"t": t, "s": round(raw[i]["start"] + offset, 2)})
+        i += 1
+    return ws, raw[-1]["end"]
+
+
+def mark(text):
+    return re.sub(r"(\$[\d,.]+|\b\d[\d,.%]*\b|IRMAA|SSA-44|Part [ABD]\b|channel\.?)", r"<b>\1</b>", html.escape(text))
 
 
 def build(sh):
+    slug = sh["slug"]
     seg = round(sh["src_out"] - sh["src_in"], 2)
-    cta_len = dur(HERE / "assets" / sh["cta"])
-    cta_start = round(seg, 2)
-    total = round(cta_start + cta_len + 1.4, 2)
     rel = lambda t: round(t - sh["src_in"], 2)
+    cta_start = round(seg + 0.15, 2)
+    cws, cta_len = cta_words(slug, cta_start)
+    total = round(cta_start + cta_len + 1.2, 2)
 
-    rows_html, rows_js = [], []
-    for i, (label, old, new, tag, t) in enumerate(sh["rows"]):
-        old_html = f'<span class="old">{html.escape(old)}</span><span class="arr">➔</span>' if old else ""
-        tag_html = f'<span class="tag">{html.escape(tag)}</span>' if tag else ""
-        rows_html.append(
-            f'<div class="row" id="r{i}"><div class="k">{html.escape(label)}</div>'
-            f'<div class="v">{old_html}<span class="new" id="r{i}n">{html.escape(new)}</span></div>{tag_html}</div>')
-        rows_js.append({"i": i, "t": rel(t), "old": old, "new": new, "tag": bool(tag)})
+    caps = chunk(avatar_words(sh["src_in"], sh["src_out"]), seg) + chunk(cws, total - 0.4)
+    caps_html = "\n".join(f'<div class="cap" id="c{i}">{mark(t)}</div>' for i, (_, _, t) in enumerate(caps))
 
-    caps = caption_chunks(sh["src_in"], sh["src_out"])
-    caps_html = "\n".join(
-        f'<div class="cap" id="c{i}">' + re.sub(r"(\$[\d,.]+|\b\d[\d,.%]*\b|IRMAA|SSA-44)", r'<b>\1</b>', html.escape(text)) + "</div>"
-        for i, (_, _, text) in enumerate(caps))
-    caps_js = json.dumps([[s, e] for s, e, _ in caps])
-
-    stamp_html, stamp_js = "", "null"
+    # number pops: each holds until the next one (or the segment end)
+    pops = [{"label": l, "old": o, "new": n, "tag": g, "t": rel(t)} for (l, o, n, g, t) in sh["rows"]]
     if sh["stamp"]:
-        stamp_html = f'<div id="stamp">⚠️ {html.escape(sh["stamp"][0])}</div>'
-        stamp_js = json.dumps(rel(sh["stamp"][1]))
+        pops.append({"label": None, "old": None, "new": sh["stamp"][0], "tag": None, "t": rel(sh["stamp"][1]), "alert": True})
+    pops.sort(key=lambda p: p["t"])
+    for i, p in enumerate(pops):
+        p["end"] = pops[i + 1]["t"] if i + 1 < len(pops) else seg
+        p["i"] = i
+    pops_html = []
+    for p in pops:
+        lbl = f'<div class="lbl">{html.escape(p["label"])}</div>' if p["label"] else ""
+        old = f'<span class="old">{html.escape(p["old"])}</span>' if p["old"] else ""
+        tag = f'<span class="tag">{html.escape(p["tag"])}</span>' if p["tag"] else ""
+        cls = "pop alert" if p.get("alert") else "pop"
+        pops_html.append(f'<div class="{cls}" id="p{p["i"]}">{lbl}<div class="big">{old}<span class="n" id="p{p["i"]}n">{html.escape(p["new"])}</span></div>{tag}</div>')
+
+    freeze = f"freeze-{slug}.jpg"
+    fp = HERE / "assets" / freeze
+    if not fp.exists():
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", str(sh["src_out"] - 0.1), "-i", str(HERE / "assets/avatar.mp4"),
+                        "-frames:v", "1", "-q:v", "3", str(fp)], check=True)
 
     return TEMPLATE.format(
-        slug=sh["slug"], total=total, cta_hold=round(total - cta_start, 2), seg=seg, src_in=sh["src_in"], cta_start=cta_start,
-        cta_len=round(cta_len, 2), cta=sh["cta"], eyebrow=html.escape(sh["eyebrow"]), hook=sh["hook"],
-        rows="\n".join(rows_html), rows_js=json.dumps(rows_js), caps=caps_html, caps_js=caps_js,
-        stamp=stamp_html, stamp_js=stamp_js, cta_line=html.escape(sh["cta_line"]),
-        n_rows=len(sh["rows"]),
+        slug=slug, total=total, seg=seg, src_in=sh["src_in"], cta_start=cta_start, cta_hold=round(total - cta_start, 2),
+        cta_len=round(cta_len, 2), hook=sh["hook"].replace("<br/>", " "), eyebrow=html.escape(sh["eyebrow"]),
+        caps=caps_html, caps_js=json.dumps([[a, b] for a, b, _ in caps]), pops="\n".join(pops_html),
+        pops_js=json.dumps([{"i": p["i"], "t": p["t"], "end": p["end"], "old": p["old"], "new": p["new"], "tag": bool(p["tag"])} for p in pops]),
+        freeze=freeze, tail=round(total - seg, 2), first_pop=pops[0]["t"] if pops else seg,
     )
 
+
+# Source avatar is 1920x1080; scaled x1.778 to fill the 1920-tall frame, cropped on his face.
+AV = 'left: -1167px; top: 0; width: 3413px; height: 1920px'
 
 TEMPLATE = r"""<!doctype html>
 <html lang="en">
@@ -171,188 +198,114 @@ TEMPLATE = r"""<!doctype html>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=1080, height=1920" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
     <style>
-      /* generated by build.py — edit the template there, not this file */
-      :root {{
-        --navy: #0b2545; --navy-2: #13315c; --navy-3: #1c3f73; --gold: #f2b84b;
-        --blue: #1b75bc; --green: #8dc63f; --emerald: #22b07d; --coral: #ef5b5b;
-        --ink: #fff; --ink-dim: #b9c7dc; --card-ink: #0b2545; --card-dim: #5a6b85;
-        --font: "Montserrat", "Helvetica Neue", Arial, sans-serif;
-      }}
+      /* generated by build.py — edit the template there, not this file.
+         Text stays inside the Reels/Shorts safe area (x 70–880, y 290–1245). */
       * {{ margin: 0; padding: 0; box-sizing: border-box; }}
-      html, body {{ width: 1080px; height: 1920px; overflow: hidden; background: var(--navy); }}
-      #root {{
-        position: relative; width: 1080px; height: 1920px; overflow: hidden; font-family: var(--font); color: var(--ink);
-        background:
-          radial-gradient(900px 700px at 90% 5%, #1c4a86 0%, rgba(28,74,134,0) 60%),
-          radial-gradient(800px 700px at 0% 100%, #0f3a66 0%, rgba(15,58,102,0) 60%),
-          linear-gradient(160deg, #0b2545 0%, #0d2b52 60%, #0a2140 100%);
-      }}
+      html, body {{ width: 1080px; height: 1920px; overflow: hidden; background: #000; }}
+      #root {{ position: relative; width: 1080px; height: 1920px; overflow: hidden; color: #fff;
+        font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif; background: #000; }}
       .clip {{ position: absolute; inset: 0; }}
-      #grid {{ position: absolute; inset: 0; opacity: 0.07;
-        background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px);
-        background-size: 60px 60px; }}
-
-      /* Safe area = Instagram Reels ∩ YouTube Shorts: text lives in x 70–880, y 290–1245.
-         Only decoration (grid, avatar edges, logo strip) sits outside it. */
-      #head {{ position: absolute; left: 70px; right: 200px; top: 290px; }}
-      #eyebrow {{ font-size: 28px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }}
-      #hook {{ margin-top: 4px; font-size: 48px; font-weight: 900; line-height: 1.05; letter-spacing: -0.01em; }}
-      #hook .hot {{ color: var(--gold); display: inline-block; }}
-
-      /* avatar */
-      #avatar-panel {{ position: absolute; left: 70px; top: 432px; width: 810px; height: 410px; border-radius: 26px; overflow: hidden;
-        background: #000; border: 4px solid rgba(242,184,75,0.9); box-shadow: 0 24px 60px rgba(0,0,0,0.5); }}
       #avatar {{ object-fit: cover; }}
-      #caps {{ position: absolute; left: 80px; width: 790px; top: 700px; height: 130px; }}
-      .cap {{ position: absolute; left: 10px; right: 10px; bottom: 0; text-align: center; opacity: 0;
-        font-size: 50px; font-weight: 900; line-height: 1.08; color: #fff;
-        text-shadow: 0 4px 0 #0b2545, 0 0 18px rgba(0,0,0,0.8), 3px 3px 0 #0b2545, -3px -3px 0 #0b2545, 3px -3px 0 #0b2545, -3px 3px 0 #0b2545; }}
-      .cap b {{ color: var(--gold); font-weight: 900; }}
+      #shade {{ position: absolute; inset: 0; pointer-events: none;
+        background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 22%, rgba(0,0,0,0) 34%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.6) 68%, rgba(0,0,0,0.3) 100%); }}
+      .stroke {{ text-shadow: 0 0 2px #000, 3px 3px 0 #000, -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 0 6px 18px rgba(0,0,0,0.6); }}
 
-      /* stat card */
-      #card {{ position: absolute; left: 70px; top: 858px; width: 810px; background: #fff; color: var(--card-ink);
-        border-radius: 22px; padding: 6px 22px; box-shadow: 0 24px 60px rgba(0,0,0,0.35); }}
-      .row {{ display: flex; align-items: center; gap: 12px; height: 92px; border-top: 2px solid #e6ebf3; }}
-      .row:first-child {{ border-top: 0; }}
-      .row .k {{ flex: 1; font-size: 28px; font-weight: 700; color: var(--card-dim); line-height: 1.1; }}
-      .row .v {{ display: flex; align-items: baseline; gap: 8px; font-size: 40px; font-weight: 900; white-space: nowrap; }}
-      .row .old {{ font-size: 28px; font-weight: 700; color: var(--card-dim); text-decoration: line-through; }}
-      .row .arr {{ font-size: 28px; color: var(--blue); }}
-      .row .tag {{ font-size: 28px; font-weight: 800; color: #fff; background: var(--coral); padding: 4px 12px; border-radius: 999px; }}
-      #stamp {{ position: absolute; left: 90px; width: 770px; top: 1158px; padding: 12px 16px; text-align: center;
-        border: 5px solid var(--coral); border-radius: 16px; color: var(--coral); background: rgba(11,37,69,0.95);
-        font-size: 32px; font-weight: 900; transform: rotate(-2deg); opacity: 0; }}
-      #strip {{ position: absolute; left: 0; right: 0; top: 1290px; display: flex; justify-content: center; }}
-      #strip .lg {{ background: #fff; border-radius: 14px; padding: 8px 12px; width: 300px; opacity: 0.95; }}
-      #strip .lg img {{ width: 100%; display: block; }}
+      #hook {{ position: absolute; left: 70px; right: 200px; top: 740px; }}
+      #hook .eb {{ font-size: 30px; font-weight: 800; color: #ffd166; letter-spacing: 0.04em; }}
+      #hook .tx {{ margin-top: 6px; font-size: 64px; font-weight: 900; line-height: 1.04; }}
+      #hook .hot {{ color: #ffd166; }}
 
-      /* CTA end screen */
-      #cta {{ background: linear-gradient(170deg, #0b2545 0%, #13315c 100%); }}
-      #cta .eb {{ position: absolute; left: 70px; right: 200px; top: 290px; text-align: center; font-size: 30px; font-weight: 800;
-        letter-spacing: 0.16em; color: var(--gold); }}
-      #cta .line {{ position: absolute; left: 70px; right: 200px; top: 338px; text-align: center; font-size: 30px; font-weight: 800; color: var(--ink-dim); }}
-      #cta .ttl {{ position: absolute; left: 70px; right: 200px; top: 390px; text-align: center; font-size: 52px; font-weight: 900; line-height: 1.05; }}
-      #cta .ttl span {{ color: var(--gold); }}
-      #thumb {{ position: absolute; left: 115px; top: 520px; width: 720px; height: 405px; border-radius: 22px; overflow: hidden;
-        border: 5px solid var(--gold); box-shadow: 0 30px 80px rgba(0,0,0,0.55); }}
-      #thumb img {{ width: 100%; height: 100%; object-fit: cover; display: block; }}
-      #thumb .play {{ position: absolute; left: 50%; top: 50%; width: 130px; height: 130px; margin: -65px 0 0 -65px; border-radius: 50%;
-        background: rgba(239,91,91,0.95); display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }}
-      #thumb .play i {{ display: block; width: 0; height: 0; border-left: 46px solid #fff; border-top: 28px solid transparent;
-        border-bottom: 28px solid transparent; margin-left: 10px; }}
-      #thumb .len {{ position: absolute; left: 14px; bottom: 14px; background: rgba(0,0,0,0.8); padding: 4px 12px; border-radius: 8px;
-        font-size: 28px; font-weight: 800; }}
-      #chips {{ position: absolute; left: 70px; right: 200px; top: 945px; display: flex; flex-wrap: nowrap; justify-content: center; gap: 10px; }}
-      #chips div {{ font-size: 28px; font-weight: 800; padding: 8px 14px; border-radius: 12px; background: rgba(255,255,255,0.1);
-        border: 2px solid rgba(242,184,75,0.7); white-space: nowrap; }}
-      #tap {{ position: absolute; left: 130px; right: 260px; top: 1018px; height: 100px; border-radius: 999px; background: var(--gold);
-        color: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 40px; font-weight: 900; }}
-      #brand {{ position: absolute; left: 70px; right: 200px; top: 1140px; text-align: center; }}
-      #brand .ph {{ font-size: 30px; font-weight: 800; color: var(--ink); line-height: 1.35; }}
-      #brand .ph span {{ color: var(--gold); }}
+      .pop {{ position: absolute; left: 70px; right: 200px; top: 770px; opacity: 0; }}
+      .pop .lbl {{ font-size: 34px; font-weight: 800; }}
+      .pop .big {{ display: flex; align-items: baseline; gap: 18px; margin-top: 2px; }}
+      .pop .n {{ font-size: 112px; font-weight: 900; color: #ffd166; letter-spacing: -0.02em; line-height: 1; }}
+      .pop .old {{ font-size: 44px; font-weight: 800; color: rgba(255,255,255,0.75); text-decoration: line-through; text-decoration-thickness: 4px; }}
+      .pop .tag {{ display: inline-block; margin-top: 10px; font-size: 34px; font-weight: 900; color: #fff; background: #ef4444;
+        padding: 4px 16px; border-radius: 10px; text-shadow: none; }}
+      .pop.alert .n {{ font-size: 58px; color: #fff; background: #ef4444; padding: 10px 18px; border-radius: 14px; line-height: 1.1; text-shadow: none; }}
+
+      #caps {{ position: absolute; left: 70px; width: 810px; top: 1040px; height: 200px; }}
+      .cap {{ position: absolute; left: 0; right: 0; bottom: 0; text-align: center; opacity: 0;
+        font-size: 66px; font-weight: 900; line-height: 1.08; text-transform: uppercase; }}
+      .cap b {{ color: #ffd166; font-weight: 900; }}
+
+      #freeze {{ position: absolute; inset: 0; overflow: hidden; }}
+      #freeze img {{ position: absolute; {AV}; object-fit: cover; filter: blur(14px) brightness(0.55); }}
+      #nudge {{ position: absolute; left: 70px; right: 200px; top: 700px; text-align: center; }}
+      #nudge .a {{ font-size: 40px; font-weight: 800; color: #ffd166; }}
+      #nudge .b {{ margin-top: 10px; font-size: 72px; font-weight: 900; line-height: 1.04; }}
     </style>
   </head>
   <body>
     <div id="root" data-composition-id="{slug}" data-start="0" data-duration="{total}" data-width="1080" data-height="1920">
-      <div id="bg" class="clip" data-start="0" data-duration="{total}" data-track-index="0" data-hold><div id="grid"></div></div>
+      <video id="avatar" class="clip" src="assets/avatar.mp4" muted playsinline data-start="0" data-duration="{seg}"
+        data-media-start="{src_in}" data-track-index="0" style="{AV}"></video>
+      <audio id="voice" src="assets/avatar-voice.m4a" data-start="0" data-duration="{seg}" data-media-start="{src_in}" data-fade-out="0.15" data-track-index="5"></audio>
 
-      <!-- avatar + its loudness-normalized voice, trimmed to this short's segment -->
-      <div id="avatar-panel"><video id="avatar" class="clip" src="assets/avatar.mp4" muted playsinline data-start="0" data-duration="{seg}"
-        data-media-start="{src_in}" data-track-index="1" style="left: -195px; top: -8px; width: 1190px; height: 670px"></video></div>
-      <audio id="voice" src="assets/avatar-voice.m4a" data-start="0" data-duration="{seg}" data-media-start="{src_in}" data-fade-out="0.2" data-track-index="5"></audio>
+      <div id="end" class="clip" data-start="{seg}" data-duration="{tail}" data-track-index="1" data-hold>
+        <div id="freeze"><img src="assets/{freeze}" alt="" /></div>
+        <div id="nudge" class="stroke"><div class="a">Want every 2027 number?</div><div class="b">Full breakdown<br/>on my channel</div></div>
+      </div>
+      <audio id="cta-vo" src="assets/cta-{slug}.m4a" data-start="{cta_start}" data-duration="{cta_len}" data-track-index="6"></audio>
 
-      <div id="main" class="clip" data-start="0" data-duration="{cta_start}" data-track-index="2" data-hold>
-        <div id="head"><div id="eyebrow">{eyebrow}</div><div id="hook">{hook}</div></div>
-        <div id="caps">
+      <div id="ui" class="clip" data-start="0" data-duration="{total}" data-track-index="2" data-hold>
+        <div id="shade" data-layout-ignore></div>
+        <div id="hook" class="stroke"><div class="eb">{eyebrow}</div><div class="tx">{hook}</div></div>
+        {pops}
+        <div id="caps" class="stroke">
 {caps}
         </div>
-        <div id="card">
-{rows}
-        </div>
-        {stamp}
       </div>
-      <div id="strip" data-layout-allow-safe-zone><div class="lg"><img src="assets/allen-associates-logo.png" alt="Allen &amp; Associates" /></div></div>
-
-      <div id="cta" class="clip" data-start="{cta_start}" data-duration="{cta_hold}" data-track-index="3" data-hold>
-        <div class="eb">▶ WATCH THE FULL VIDEO</div>
-        <div class="line">{cta_line}</div>
-        <div class="ttl">Official <span>2027</span> Medicare<br/>Premiums &amp; Deductibles</div>
-        <div id="thumb"><img src="assets/full-video-thumb.jpg" alt="Full video thumbnail" /><div class="play"><i></i></div><div class="len">4:48</div></div>
-        <div id="chips"><div>Part B</div><div>Medigap</div><div>IRMAA</div><div>Part A</div><div>Part D</div></div>
-        <div id="tap">Tap the link to watch ▶</div>
-        <div id="brand"><div class="ph"><span>800-324-9986</span><br/>allenandassociates.agency</div></div>
-      </div>
-      <audio id="cta-vo" src="assets/{cta}" data-start="{cta_start}" data-duration="{cta_len}" data-track-index="6"></audio>
     </div>
 
     <script>
       window.__timelines = window.__timelines || {{}};
       const tl = gsap.timeline({{ paused: true }});
-      const ROWS = {rows_js};
-      const CAPS = {caps_js};
-      const STAMP = {stamp_js};
+      const CAPS = {caps_js}, POPS = {pops_js}, SEG = {seg};
       const parse = (s) => parseFloat(String(s).replace(/[$,]/g, ""));
       const fmt = (v, dec) => "$" + v.toLocaleString("en-US", {{ minimumFractionDigits: dec, maximumFractionDigits: dec }});
 
-      tl.fromTo("#grid", {{ backgroundPosition: "0px 0px" }}, {{ backgroundPosition: "0px 600px", duration: {total}, ease: "none" }}, 0);
+      // slow push-in keeps the talking head alive, like a handheld creator video
+      tl.fromTo("#avatar", {{ scale: 1 }}, {{ scale: 1.06, duration: SEG, ease: "none", transformOrigin: "50% 30%" }}, 0);
 
-      // open
-      // frame 0 is the thumbnail on social players: title, avatar and card are on screen from the first frame
-      tl.fromTo("#hook .hot", {{ scale: 1 }}, {{ scale: 1.08, duration: 0.25, yoyo: true, repeat: 1, ease: "power2.out", transformOrigin: "0% 50%" }}, 0.3);
+      // hook is on frame 0 (social thumbnail), leaves before the first number
+      tl.fromTo("#hook .hot", {{ scale: 1 }}, {{ scale: 1.1, duration: 0.2, yoyo: true, repeat: 1, transformOrigin: "0% 60%" }}, 0.4);
+      tl.to("#hook", {{ opacity: 0, y: -20, duration: 0.3 }}, Math.min(4.0, {first_pop} - 0.4));
 
-      // captions: one chunk at a time
       CAPS.forEach(([s, e], i) => {{
-        tl.fromTo("#c" + i, {{ opacity: 0, scale: 0.85 }}, {{ opacity: 1, scale: 1, duration: 0.12, ease: "back.out(2.5)" }}, s);
+        tl.fromTo("#c" + i, {{ opacity: 0, scale: 0.8, y: 10 }}, {{ opacity: 1, scale: 1, y: 0, duration: 0.12, ease: "back.out(3)" }}, s);
         tl.set("#c" + i, {{ opacity: 0 }}, e);
       }});
 
-      // stat rows: dim until spoken, then reveal / count
-      ROWS.forEach((r) => {{
-        const row = "#r" + r.i, nEl = document.querySelector("#r" + r.i + "n");
-        tl.set(row + " .v, " + row + " .tag", {{ opacity: 0 }}, 0);
-        tl.set(row + " .k", {{ opacity: 0.45 }}, 0);
-        tl.to(row + " .k", {{ opacity: 1, duration: 0.2 }}, r.t - 0.2);
-        tl.fromTo(row + " .v", {{ opacity: 0, scale: 0.7 }}, {{ opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2.2)", transformOrigin: "100% 50%" }}, r.t);
-        if (r.old && /^\$/.test(r.new)) {{
-          const a = parse(r.old), b = parse(r.new), dec = /\./.test(r.new) ? 2 : 0, o = {{ v: a }};
-          tl.set(nEl, {{ textContent: r.old }}, 0);
-          tl.to(o, {{ v: b, duration: 1.2, ease: "steps(12)", onUpdate: () => {{ nEl.textContent = fmt(o.v, dec); }} }}, r.t + 0.3);
+      POPS.forEach((p) => {{
+        const id = "#p" + p.i, nEl = document.querySelector(id + "n");
+        tl.fromTo(id, {{ opacity: 0, scale: 0.6, rotation: -4 }}, {{ opacity: 1, scale: 1, rotation: 0, duration: 0.3, ease: "back.out(2.4)", transformOrigin: "0% 50%" }}, p.t - 0.1);
+        if (p.old && /^\$/.test(p.new)) {{
+          const a = parse(p.old), b = parse(p.new), dec = /\./.test(p.new) ? 2 : 0, o = {{ v: a }};
+          tl.set(nEl, {{ textContent: p.old }}, 0);
+          tl.to(o, {{ v: b, duration: 1.0, ease: "steps(10)", onUpdate: () => {{ nEl.textContent = fmt(o.v, dec); }} }}, p.t + 0.25);
         }}
-        if (r.tag) tl.fromTo(row + " .tag", {{ opacity: 0, scale: 0.5 }}, {{ opacity: 1, scale: 1, duration: 0.3, ease: "back.out(3)" }}, r.t + 1.5);
-        tl.fromTo(row, {{ backgroundColor: "rgba(242,184,75,0.35)" }}, {{ backgroundColor: "rgba(242,184,75,0)", duration: 1.6, immediateRender: false }}, r.t);
+        if (p.tag) tl.fromTo(id + " .tag", {{ opacity: 0, scale: 0.4 }}, {{ opacity: 1, scale: 1, duration: 0.25, ease: "back.out(3)" }}, p.t + 1.3);
+        tl.to(id, {{ opacity: 0, x: -30, duration: 0.2 }}, p.end - 0.2);
       }});
-      if (STAMP !== null) {{
-        tl.fromTo("#stamp", {{ opacity: 0, scale: 2.4, rotation: -10 }}, {{ opacity: 1, scale: 1, rotation: -4, duration: 0.28, ease: "power4.in" }}, STAMP);
-        tl.fromTo("#card", {{ x: 0 }}, {{ x: 10, duration: 0.05, yoyo: true, repeat: 5, ease: "none" }}, STAMP + 0.28);
-      }}
 
-      // CTA
-      const C = {cta_start};
-      tl.fromTo("#cta", {{ opacity: 0 }}, {{ opacity: 1, duration: 0.4, ease: "power2.out" }}, C);
-      tl.fromTo("#cta .eb", {{ y: -30, opacity: 0 }}, {{ y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }}, C + 0.2);
-      tl.fromTo("#cta .line", {{ opacity: 0 }}, {{ opacity: 1, duration: 0.4 }}, C + 0.3);
-      tl.fromTo("#cta .ttl", {{ y: 40, opacity: 0 }}, {{ y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }}, C + 0.4);
-      tl.fromTo("#thumb", {{ scale: 0.8, opacity: 0 }}, {{ scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.6)" }}, C + 0.6);
-      tl.fromTo("#thumb .play", {{ scale: 1 }}, {{ scale: 1.12, duration: 0.5, yoyo: true, repeat: 7, ease: "sine.inOut" }}, C + 1.2);
-      tl.fromTo("#chips div", {{ y: 20, opacity: 0 }}, {{ y: 0, opacity: 1, duration: 0.3, stagger: 0.15, ease: "back.out(2)" }}, C + 1.2);
-      tl.fromTo("#tap", {{ y: 40, opacity: 0 }}, {{ y: 0, opacity: 1, duration: 0.45, ease: "back.out(2)" }}, C + 2.0);
-      tl.fromTo("#tap", {{ scale: 1 }}, {{ scale: 1.05, duration: 0.45, yoyo: true, repeat: 9, ease: "sine.inOut" }}, C + 2.6);
-      tl.fromTo("#brand", {{ opacity: 0 }}, {{ opacity: 1, duration: 0.5 }}, C + 2.4);
-      tl.to("#strip", {{ y: 0 }}, C); // strip stays on the end screen too
+      // soft spoken CTA over a blurred freeze-frame
+      tl.fromTo("#end", {{ opacity: 0 }}, {{ opacity: 1, duration: 0.25 }}, SEG);
+      tl.fromTo("#nudge", {{ y: 30, opacity: 0 }}, {{ y: 0, opacity: 1, duration: 0.4, ease: "back.out(1.8)" }}, SEG + 0.2);
 
       window.__timelines["{slug}"] = tl;
       tl.seek(0);
     </script>
   </body>
 </html>
-"""
+""".replace("{AV}", AV)
 
 if __name__ == "__main__":
     for sh in SHORTS:
-        d = HERE / sh["slug"]          # one HyperFrames project per short
+        d = HERE / sh["slug"]
         d.mkdir(exist_ok=True)
         (d / "index.html").write_text(build(sh))
         link = d / "assets"
